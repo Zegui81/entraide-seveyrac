@@ -1,12 +1,23 @@
 /* Séparateur avec un texte centré */
 .hr {
-    display: flex;
-    align-items: center;
-    margin: 1em 0;
+	display: flex;
+	align-items: center;
+	margin: 1em 0;
 }
 .hr::before, .hr::after {
-    content: '';
-    flex: 1;
-    margin: 0 .25em;
-    border-bottom: 1px solid rgba(0,0,0,.125);
+	content: '';
+	flex: 1;
+	margin: 0 .25em;
+	border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+/* Astérisque champ obligatoire */
+.required:after {
+	content: "  *";
+	color: red;
+}
+
+.input-group>.form-control {
+    border-top-right-radius: 0.25rem!important;
+    border-bottom-right-radius: 0.25rem!important;
 }

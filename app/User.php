@@ -2,28 +2,47 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable;
 
-class User extends Authenticatable
+class User extends Model implements Authenticatable
 {
-    use Notifiable;
+    protected $table = 'users';
+    
+    protected $fillable = ['id', 'email', 'password', 'nom', 'prenom', 'telFixe', 'telPortable', 'actif', 'remember_token'];
+    
+    protected $hidden = ['password', 'remember_token'];
+    
+    public $timestamps = false;
+    
+    public function getAuthIdentifier()
+    {
+        return $this->email;
+    }
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    public function getRememberToken()
+    {
+        return $this->remember_token;
+    }
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    public function getRememberTokenName()
+    {
+        return 'remember_token';
+    }
+
+    public function setRememberToken($value)
+    {
+        $this->remember_token = $value;
+    }
+
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
+
+    public function getAuthIdentifierName()
+    {
+        return 'email';
+    }
+    
 }

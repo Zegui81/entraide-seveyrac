@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +14,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Accueil
+Route::get('/', 'HomeController@index');
+
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout'); 
+
+Route::get('event', 'EventController@getAccueilEvent');
+
+
+Route::get('contact', 'FirstController@getFormContact');
+Route::post('contact', 'FirstController@postFormContact');
+
+Auth::routes();
