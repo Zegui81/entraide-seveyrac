@@ -21,3 +21,59 @@
     border-top-right-radius: 0.25rem!important;
     border-bottom-right-radius: 0.25rem!important;
 }
+
+.breadcrumb {
+	line-height: 35px;
+}
+
+.breadcrumb li {
+ 	font-size: 25px;
+ 	font-weight: bold;
+}
+
+#calendar {
+	@import ulr("https://bootswatch.com/4/sketchy/bootstrap.min.css");
+	
+}
+
+.bottom-0 {
+	position: absolute;
+	bottom: 0;
+}
+
+.text-hidden {
+	max-height: 120px;
+	overflow: hidden;
+}
+
+.hidden {
+	position: absolute;
+	z-index: 2;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 200px; /* adjust it to your needs */
+	background: url(data:image/svg+xml;base64,alotofcodehere);
+	background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%,
+		rgba(255, 255, 255, 1) 70%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255,
+		255, 255, 0)), color-stop(70%, rgba(255, 255, 255, 1)));
+	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%,
+		rgba(255, 255, 255, 1) 70%);
+	background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%,
+		rgba(255, 255, 255, 1) 70%);
+	background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%,
+		rgba(255, 255, 255, 1) 70%);
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%,
+		rgba(255, 255, 255, 1) 70%);
+}
+
+.vertical-center {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.w-25px {
+	width: 25px;
+}

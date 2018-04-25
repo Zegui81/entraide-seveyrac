@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -49,6 +51,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
         return User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -57,6 +60,14 @@ class RegisterController extends Controller
             'telFixe' => $data['telFixe'],
             'telPortable' => $data['telPortable']
         ]);
+    }
+    
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $user = $this->create($request->all());
+        Auth::logout(); // Déconnexion
+        return redirect('/');
     }
     
     /**

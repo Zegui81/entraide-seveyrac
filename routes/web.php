@@ -20,7 +20,9 @@ Route::get('/', 'HomeController@index');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout'); 
 
-Route::get('event', 'EventController@getAccueilEvent');
+Route::get('event', 'EventController@home');
+Route::get('event/calendar', 'EventController@calendar');
+Route::get('event/detail/{id}', 'EventController@detail');
 
 
 Route::get('contact', 'FirstController@getFormContact');

@@ -44,5 +44,16 @@ class User extends Model implements Authenticatable
     {
         return 'email';
     }
-    
+
+    public function userToArray() 
+    {
+        return array(
+            'id' => $this->id,
+            'email' => $this->email,
+            'nom' =>  $this->nom,
+            'prenom' => $this->prenom,
+            'telFixe' =>  isset($this->telFixe) ? chunk_split($this->telFixe, 2, ' ') : null,
+            'telPortable' => isset($this->telPortable) ? chunk_split($this->telPortable, 2, ' ') : null
+        );
+    }
 }

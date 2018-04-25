@@ -67,7 +67,7 @@ class LoginController extends Controller
             ->withErrors(['login' => $this->getFailedLoginMessage()
         ]);
     }
-        
+    
     protected function getFailedLoginMessage()
     {
         return 'Les informations fournis n\'ont pas permis de vous authentifier.';
