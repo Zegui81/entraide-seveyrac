@@ -21,6 +21,7 @@
       <link href="{{ asset('css/template-bootstrap.css') }}" rel="stylesheet">
       <link href="{{ asset('../vendor/components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
       <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+      <link href="{{ asset('css/effectHover.css') }}" rel="stylesheet">
       
       <!-- Calendar -->
       @if(isset($calendar))

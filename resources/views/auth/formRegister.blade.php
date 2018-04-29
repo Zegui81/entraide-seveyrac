@@ -1,4 +1,3 @@
-
 {!! Form::open() !!}
 	@csrf
 	<div class="form-group">

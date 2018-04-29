@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Carousel;
+
 class HomeController extends Controller
 {
     /**
@@ -21,6 +23,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $photos = Carousel::all();
+        
+        $liste = array();
+        foreach ($photos as $photo) {
+            array_push($liste, $photo->carouselToArray());
+        }
+        
+        return view('home')
+            ->withCarousel($liste);
     }
 }

@@ -43,5 +43,38 @@
              </div>
           </div>
        </div>
+       
+       <div class="card mt-3">
+          <div class="card-header">
+             <h4 class="mb-0">Page d'accueil</h4>
+          </div>
+          <div class="card-body">
+             <div class="row">
+                <a class="col-md-6 p-2" href="{{ asset('admin/home/carousel') }}">
+                   <div class="board btn btn-info w-100 p-3">
+                      <div class="number">
+                         <h3 class="float-left">{{ $nbImagesCarousel }} </h3>
+                         <h6 class="pt-11px">&nbsp;{{ $nbImagesCarousel > 1 ? 'images' : 'image' }}</h6>
+                         <small>Carousel</small>
+                      </div>
+                      <div class="icon">
+                         <i class="fa fa-picture-o fa-5x"></i>
+                      </div>
+                   </div>
+                </a>
+                <a class="col-md-6 p-2" href="">
+                   <div class="board btn btn-info w-100 p-3">
+                      <div class="number">
+                         <h3>32,850</h3>
+                         <small>Sales</small>
+                      </div>
+                      <div class="icon">
+                         <i class="fa fa-shopping-cart fa-5x blue"></i>
+                      </div>
+                   </div>
+                </a>
+             </div>
+          </div>
+       </div>
     </div>
 @endsection

@@ -38,8 +38,15 @@ Route::delete('admin/membership/{id}', 'Admin\AdminUserController@reject');
 Route::get('admin/user', 'Admin\AdminUserController@user');
 Route::delete('admin/user/{id}', 'Admin\AdminUserController@delete');
 
+// Ajouter un membre
 Route::get('admin/user/add', 'Admin\AdminUserController@register');
 Route::post('admin/user/add', 'Admin\AdminUserController@addUser');
+
+// Carousel de photos
+Route::get('admin/home/carousel', 'Admin\AdminHomeController@carousel');
+Route::post('admin/home/carousel', 'Admin\AdminHomeController@addPicture');
+Route::get('admin/home/carousel/{id}', 'Admin\AdminHomeController@removePicture');
+
 
 /* ------------------------------------------------------------------------- */
 
