@@ -49,10 +49,16 @@
                   <li class="nav-item">
                      <a class="nav-link" href="galerie.html">Galeries</a>
                   </li>
+
                </ul>
                
                @auth
     				<ul class="nav navbar-nav ml-auto">
+					    @if (Auth::user()->actif == 2)
+                            <li class="nav-item">
+                               <a class="nav-link" href="{{ asset('/admin') }}">Administrer le site</a>
+                            </li>					    
+    					@endif
                       <li class="nav-item">
                          <a class="nav-link" href="{{ asset('/logout') }}">Se déconnecter</a>
                       </li>
@@ -60,7 +66,7 @@
                @endauth
                
                @guest
-    				<ul class="nav navbar-nav ml-auto">
+    			   <ul class="nav navbar-nav ml-auto">
                       <li class="nav-item">
                          <a class="nav-link" href="{{ asset('/register') }}">Adhérer</a>
                       </li>

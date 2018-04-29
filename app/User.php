@@ -9,11 +9,11 @@ class User extends Model implements Authenticatable
 {
     protected $table = 'users';
     
-    protected $fillable = ['id', 'email', 'password', 'nom', 'prenom', 'telFixe', 'telPortable', 'actif', 'remember_token'];
+    protected $fillable = ['id', 'email', 'password', 'nom', 'prenom', 'telFixe', 'telPortable', 'actif', 'remember_token', 'created_at', 'updated_at'];
     
     protected $hidden = ['password', 'remember_token'];
     
-    public $timestamps = false;
+    public $timestamps = true;
     
     public function getAuthIdentifier()
     {
@@ -53,7 +53,8 @@ class User extends Model implements Authenticatable
             'nom' =>  $this->nom,
             'prenom' => $this->prenom,
             'telFixe' =>  isset($this->telFixe) ? chunk_split($this->telFixe, 2, ' ') : null,
-            'telPortable' => isset($this->telPortable) ? chunk_split($this->telPortable, 2, ' ') : null
+            'telPortable' => isset($this->telPortable) ? chunk_split($this->telPortable, 2, ' ') : null,
+            'created_at' => date('d/m/Y \à H\hi', strtotime($this->created_at))
         );
     }
 }

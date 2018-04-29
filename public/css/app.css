@@ -31,11 +31,6 @@
  	font-weight: bold;
 }
 
-#calendar {
-	@import ulr("https://bootswatch.com/4/sketchy/bootstrap.min.css");
-	
-}
-
 .bottom-0 {
 	position: absolute;
 	bottom: 0;
@@ -74,6 +69,23 @@
     float: none;
 }
 
-.w-25px {
-	width: 25px;
+.w-25px { width: 25px; }
+.w-32px { width: 32px; }
+
+/* Etiquettes d'administration */
+.board .number {
+    float: left;
+    text-align: left;
 }
+
+.number small {
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.board .icon {
+    float: right;
+}
+
+
