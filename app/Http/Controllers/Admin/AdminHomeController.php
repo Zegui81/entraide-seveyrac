@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Carousel;
 use App\Http\Requests\CarouselRequest;
+use App\Text;
+use Illuminate\Http\Request;
 
 class AdminHomeController extends Controller
 {
@@ -65,5 +67,46 @@ class AdminHomeController extends Controller
         unlink(public_path('img\carousel').'\\'.$id.'.'.$photo->ext);
         Carousel::destroy($id);
         return redirect()->back();
+    }
+    
+    public function text()
+    {
+        // Texte à gauche
+        $texteGauche = Text::where('code', 'HOME_TEXT_GAUCHE')->first();
+        if ($texteGauche == null) {
+            // Création du texte si inexistant
+            $texteGauche = new Text();
+            $texteGauche->code = 'HOME_TEXT_GAUCHE';
+            $texteGauche->save();
+        }
+        
+        // Texte en bas
+        $texteBas = Text::where('code', 'HOME_TEXT_BAS')->first();
+        if ($texteBas == null) {
+            // Création du texte si inexistant
+            $texteBas = new Text();
+            $texteBas->code = 'HOME_TEXT_BAS';
+            $texteBas->save();
+        }
+        
+        return view('admin.home.text')
+            ->withTextGauche($texteGauche->content)
+            ->withTextBas($texteBas->content);
+    }
+    
+    public function updateAccueil(Request $request) {
+        $texteGauche = Text::where('code', 'HOME_TEXT_GAUCHE')->first();
+        $texteGauche->content = $request->textGauche;
+        $texteGauche->save();
+        
+        $texteBas = Text::where('code', 'HOME_TEXT_BAS')->first();
+        $texteBas->content = $request->textBas;
+        $texteBas->save();
+        
+        if ($request->photo != null) {
+            $destinationPath = public_path('img');
+            $request->photo->move($destinationPath, 'home.jpg');
+        }
+        return redirect('/');
     }
 }

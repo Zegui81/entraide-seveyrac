@@ -12,6 +12,7 @@
       <!-- Scripts -->
       <script src="{{ asset('../vendor/components/jquery/jquery.min.js') }}"></script>
       <script src="{{ asset('../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+      <script src="{{ asset('ckeditor5/ckeditor.js') }}"></script>
       
       <!-- Police -->
       <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>

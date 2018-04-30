@@ -47,6 +47,9 @@ Route::get('admin/home/carousel', 'Admin\AdminHomeController@carousel');
 Route::post('admin/home/carousel', 'Admin\AdminHomeController@addPicture');
 Route::get('admin/home/carousel/{id}', 'Admin\AdminHomeController@removePicture');
 
+// Texte d'accueil
+Route::get('admin/home/text', 'Admin\AdminHomeController@text');
+Route::post('admin/home/text', 'Admin\AdminHomeController@updateAccueil');
 
 /* ------------------------------------------------------------------------- */
 

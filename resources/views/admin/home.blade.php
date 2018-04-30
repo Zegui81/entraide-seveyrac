@@ -62,14 +62,14 @@
                       </div>
                    </div>
                 </a>
-                <a class="col-md-6 p-2" href="">
+                <a class="col-md-6 p-2" href="{{ asset('admin/home/text') }}">
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
-                         <h3>32,850</h3>
-                         <small>Sales</small>
+                         <h3>&nbsp;</h3>
+                         <small>Texte d'accueil</small>
                       </div>
                       <div class="icon">
-                         <i class="fa fa-shopping-cart fa-5x blue"></i>
+                         <i class="fa fa-align-justify fa-5x"></i>
                       </div>
                    </div>
                 </a>

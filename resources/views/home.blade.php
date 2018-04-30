@@ -34,36 +34,14 @@
     <div class="container">
     	<div class="row mb-4 mt-4">
     		<div class="col-lg-6">
-    			<h2>Partage, terroir et patrimoines</h2>
-    			<p>Je suis une association citoyenne et solidaire. Ma philosophie
-    				c'est le lien social entre les villageois autour de Séveyrac</p>
-    			<p>On se retrouve autour de projets et d'ateliers :</p>
-    			<ul>
-    				<li>randonnée</li>
-    				<li>art créatif</li>
-    				<li>co-voiturage</li>
-    				<li>bio-diversité</li>
-    				<li>yoga</li>
-    				<li>cuisine</li>
-    				<li>jardinage</li>
-    				<li>patrimoine</li>
-    				<li>jardins musicaux</li>
-    				<li>réouverture de chemins</li>
-    				<li>jeux de société</li>
-    				<li>échange de livres</li>
-    				<li>photo...</li>
-    			</ul>
+				{!! $textGauche !!}
     		</div>
     		<div class="col-lg-6">
-    			<img class="img-fluid rounded" src="img/2.jpg" alt="">
+    			<img class="img-fluid rounded" src="img/home.jpg" alt="">
     		</div>
     		<div class="card text-center w-100">
         		<div class="card-body">
-        			<p class="card-text">
-        			Chacun vient en fonction de ce qu'il aime, chacun amène ses idées, chacun peut mettre en place un atelier.
-        				<br>Vous êtes les bienvenus...
-        			</p>
-        			<h5 class="card-title">Nous avons tous quelque-chose à partager !</h5>
+ 					{!! $textBas !!}
         		</div>
     		</div>
     	</div>
