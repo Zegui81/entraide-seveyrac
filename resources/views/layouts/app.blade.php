@@ -27,6 +27,7 @@
       <link href="{{ asset('css/effectHover.css') }}" rel="stylesheet">
       <link href="{{ asset('css/clockpicker.css') }}" rel="stylesheet">
       <link href="{{ asset('css/dropzone.css') }}" rel="stylesheet">
+      <link href="{{ asset('css/modal.css') }}" rel="stylesheet">
       
       <!-- Calendar -->
       @if(isset($calendar))

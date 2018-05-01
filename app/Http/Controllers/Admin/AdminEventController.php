@@ -131,6 +131,11 @@ class AdminEventController extends Controller
             $request->file->move($destinationPath, $request->file->hashName());
         }
         
-        return $this->editGallery($id);
+        return $this->gallery($id);
+    }
+    
+    public function deletePhoto($id, $photo) {
+        unlink(public_path('img\event\gallery').'\\'.$id.'\\'.$photo);
+        return redirect()->back();
     }
 }

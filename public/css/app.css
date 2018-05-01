@@ -131,3 +131,24 @@
 .dropzone, .dropzone * {
     box-sizing: border-box;
 }
+
+/* Suppression d'image */
+.suppress {
+	position: relative;
+	display: inline-block;
+}
+
+.suppress:hover .delete-icon {
+	display: block;
+}
+
+.delete-icon {
+	position: absolute;
+	right: 17px;
+	top: 0px;
+	display: none;
+}
+
+.delete-icon a {
+	color: #000;
+}

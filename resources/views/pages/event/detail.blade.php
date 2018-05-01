@@ -47,10 +47,24 @@
             <div class="row mt-3">
         		@foreach ($photos as $photo)
                     <div class="col-lg-3 col-sm-6 mb-4">
-                       <img class="img-fluid" src="{!! url('img/event/gallery/'.$event['id'].'/'.$photo) !!}" alt="">
+                       <img class="click-event img-fluid" src="{!! url('img/event/gallery/'.$event['id'].'/'.$photo) !!}" alt="">
                     </div>            	
         		@endforeach
             </div>
         @endif
+        <div id="modal" class="modal">
+          <span class="close" id="closeModal">&times;</span>
+          <img class="modal-content" id="modalContent">
+        </div>
+        <script type="text/javascript">
+        	$('.click-event').click(function(evt) {
+            	$('#modal').css('display', 'block');
+            	$('#modalContent').attr('src', evt.target.src);
+            });
+            $('#closeModal').click(function() {
+            	$('#modal').removeAttr('css');
+            	$('#modal').css('display', 'none');
+            });
+        </script>
     </div>
 @endsection
