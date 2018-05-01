@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
     <div class="container mt-4 mb-4">
        <div class="card">
@@ -37,6 +38,49 @@
                       </div>
                       <div class="icon">
                          <i class="fa fa-user-plus fa-5x"></i>
+                      </div>
+                   </div>
+                </a>
+             </div>
+          </div>
+       </div>
+       
+        <div class="card mt-3">
+          <div class="card-header">
+             <h4 class="mb-0">Contenu du site</h4>
+          </div>
+          <div class="card-body">
+             <div class="row">
+                <a class="col-md-4 p-2" href="{{ asset('admin/event') }}">
+                   <div class="board btn btn-info w-100 p-3">
+                      <div class="number">
+                         <h3>{{ $nbEvent }}</h3>
+                         <small>Évènements</small>
+                      </div>
+                      <div class="icon">
+                         <i class="fa fa-calendar-check-o fa-5x"></i>
+                      </div>
+                   </div>
+                </a>
+                <a class="col-md-4 p-2" href="{{ asset('admin/membership') }}">
+                   <div class="board btn btn-info w-100 p-3">
+                      <div class="number">
+                         <h3>0</h3>
+                         <small>Transport solidaire</small>
+                      </div>
+                      <div class="icon">
+                         <i class="fa fa-sign-language fa-5x"></i>
+                      </div>
+                   </div>
+                </a>
+                <a class="col-md-4 p-2" href="{{ asset('admin/user/add') }}">
+                   <div class="board btn btn-info w-100 p-3">
+                      <div class="number">
+                         <h3>0</h3>
+                         <small>Covoiturage</small>
+                      </div>
+                      <div class="icon">
+                         <i class="fa fa-car fa-5x"></i>
                       </div>
                    </div>
                 </a>

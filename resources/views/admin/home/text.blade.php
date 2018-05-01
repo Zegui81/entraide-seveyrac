@@ -55,8 +55,6 @@
     	ClassicEditor.create(document.querySelector('#textGauche'), {
             toolbar: config
         });
-
-        
     	$('#textGauche').val($('#1').text());
     	ClassicEditor.create(document.querySelector('#textBas'), {
             toolbar: config

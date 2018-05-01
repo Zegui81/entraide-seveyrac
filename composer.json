@@ -15,6 +15,7 @@
 		"laravel/framework" : "5.6.*",
 		"laravel/tinker" : "~1.0",
 		"laravelcollective/html" : "5.6.*",
+		"moxiecode/plupload" : "3.1.2",
 		"phpmailer/phpmailer" : "^6.0",
 		"twbs/bootstrap" : "4.0.0"
 	},

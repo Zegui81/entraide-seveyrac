@@ -39,14 +39,7 @@ class EventController extends Controller
         
         $liste = array();
         foreach ($events as $event) {
-            
-            array_push($liste, [
-                'title' => $event->titre,
-                'start' => $event->debut,
-                'end' => $event->fin,
-                'url' => url('event/detail/'.$event->id)
-            ]);
-            
+            array_push($liste, $event->eventToArrayForCalendar());
         }
         return view('pages.event.calendar')
             ->with('calendar', true)

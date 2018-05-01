@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Auth;
 // Accueil
 Route::get('/', 'HomeController@index');
 
-
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout'); 
 
 // Evènements
@@ -50,6 +49,14 @@ Route::get('admin/home/carousel/{id}', 'Admin\AdminHomeController@removePicture'
 // Texte d'accueil
 Route::get('admin/home/text', 'Admin\AdminHomeController@text');
 Route::post('admin/home/text', 'Admin\AdminHomeController@updateAccueil');
+
+// Évènements
+Route::get('admin/event', 'Admin\AdminEventController@events');
+Route::get('admin/event/add', 'Admin\AdminEventController@createEvent');
+Route::post('admin/event/add', 'Admin\AdminEventController@validateCreateEvent');
+Route::get('admin/event/{id}', 'Admin\AdminEventController@editEvent');
+Route::post('admin/event/{id}', 'Admin\AdminEventController@validateEditEvent');
+Route::delete('admin/event/{id}', 'Admin\AdminEventController@deleteEvent');
 
 /* ------------------------------------------------------------------------- */
 
