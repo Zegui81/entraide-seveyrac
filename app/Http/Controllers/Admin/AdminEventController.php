@@ -6,6 +6,7 @@ use App\Event;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Http\Requests\EventRequest;
+use Illuminate\Http\Request;
 
 class AdminEventController extends Controller
 {
@@ -100,5 +101,36 @@ class AdminEventController extends Controller
     {
         Event::destroy($id);
         return redirect('admin/event');
+    }
+    
+    public function gallery($id)
+    {
+        $event = Event::where('id', $id)->first();
+        
+        $dossier = public_path('img/event/gallery').'/'.$id;
+        if (!file_exists($dossier)) {
+            // Création du dossier s'il n'existe pas
+            mkdir($dossier, 0777, true);
+        }
+        
+        // Chargement de la liste des photos
+        $photos = scandir($dossier);
+        unset($photos[0]); // Fichier .
+        unset($photos[1]); // Fichier ..
+        
+        return view('admin.content.event.gallery')
+            ->withEvent($event->eventToArray())
+            ->withPhotos($photos);
+    }
+    
+    public function addPhoto(Request $request, $id)
+    {        
+        // Import de la photo
+        if ($request->file != null) {
+            $destinationPath = public_path('img/event/gallery').'/'.$id;
+            $request->file->move($destinationPath, $request->file->hashName());
+        }
+        
+        return $this->editGallery($id);
     }
 }

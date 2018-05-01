@@ -2,23 +2,22 @@
 
 @section('content')
     <div class="container mb-4 mt-4">
-       <!-- Page Heading/Breadcrumbs -->
        <ul class="breadcrumb">
           <li><a href="{{ asset('event') }}">Évènements</a> /&nbsp;</li>
           <li class="active">{{ $event['titre'] }}</li>
           <li class="ml-auto">
              <a class="btn btn-primary" href="{{ asset('event/calendar') }}">
-             Afficher le calendrier&nbsp;<i class="fa fa-calendar"></i>
+             	Afficher le calendrier&nbsp;&nbsp;<i class="fa fa-calendar"></i>
              </a>
           </li>
        </ul>
        <div class="row">
-          <div class="col-lg-7">
+          <div class="col-lg-6">
              <img class="img-fluid rounded mb-4" src="{!! url('img/event/'.$event['id'].'.jpg') !!}" alt="">
           </div>
-          <div class="col-lg-5">
+          <div class="col-lg-6">
              <h2>{{ $event['titre'] }}</h2>
-             <h6 class="mb-3 text-muted">{{ $event['debut'] }}</h6>
+             <h6 class="mb-3 text-muted">Date : {{ $event['debut'] }}</h6>
              <div class="card text-center">
              	<div class="card-header p-2 text-justify"><h6 class="mb-0">Organisateur</h6></div>
              	<div class="text-justify p-3 card-body">
@@ -41,39 +40,17 @@
     		</div>
           </div>
        </div>
-       <div class="row">
-       	 <p class="col-lg-12">{!! $event['commentaire'] !!}</p>
-       	
-       </div>       
-       <h2>Voir les images</h2>
-       <div class="row mt-3">
-          <div class="col-lg-2 col-sm-4 mb-4">
-             <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-          </div>
-          <div class="col-lg-2 col-sm-4 mb-4">
-             <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-          </div>
-          <div class="col-lg-2 col-sm-4 mb-4">
-             <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-          </div>
-          <div class="col-lg-2 col-sm-4 mb-4">
-             <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-          </div>
-          <div class="col-lg-2 col-sm-4 mb-4">
-             <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-          </div>
-          <div class="col-lg-2 col-sm-4 mb-4">
-             <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-          </div>
-          <div class="col-lg-2 col-sm-4 mb-4">
-             <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-          </div>
-          <div class="col-lg-2 col-sm-4 mb-4">
-             <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-          </div>
-          <div class="col-lg-2 col-sm-4 mb-4">
-             <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-          </div>
-       </div>
+       <div class="row col-lg-12">{!! $event['commentaire'] !!}</div>   
+           
+        @if (count($photos) > 0)
+            <h2>Galerie photo</h2>
+            <div class="row mt-3">
+        		@foreach ($photos as $photo)
+                    <div class="col-lg-3 col-sm-6 mb-4">
+                       <img class="img-fluid" src="{!! url('img/event/gallery/'.$event['id'].'/'.$photo) !!}" alt="">
+                    </div>            	
+        		@endforeach
+            </div>
+        @endif
     </div>
 @endsection

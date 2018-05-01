@@ -14,6 +14,7 @@
       <script src="{{ asset('../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
       <script src="{{ asset('ckeditor5/ckeditor.js') }}"></script>
       <script src="{{ asset('js/clockpicker.js') }}"></script>
+      <script src="{{ asset('js/dropzone.js') }}"></script>
       
       <!-- Police -->
       <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -25,6 +26,7 @@
       <link href="{{ asset('css/app.css') }}" rel="stylesheet">
       <link href="{{ asset('css/effectHover.css') }}" rel="stylesheet">
       <link href="{{ asset('css/clockpicker.css') }}" rel="stylesheet">
+      <link href="{{ asset('css/dropzone.css') }}" rel="stylesheet">
       
       <!-- Calendar -->
       @if(isset($calendar))

@@ -57,6 +57,8 @@ Route::post('admin/event/add', 'Admin\AdminEventController@validateCreateEvent')
 Route::get('admin/event/{id}', 'Admin\AdminEventController@editEvent');
 Route::post('admin/event/{id}', 'Admin\AdminEventController@validateEditEvent');
 Route::delete('admin/event/{id}', 'Admin\AdminEventController@deleteEvent');
+Route::get('admin/event/gallery/{id}', 'Admin\AdminEventController@gallery');
+Route::post('admin/event/gallery/{id}', 'Admin\AdminEventController@addPhoto');
 
 /* ------------------------------------------------------------------------- */
 

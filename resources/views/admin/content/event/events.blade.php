@@ -31,7 +31,10 @@
                         <td>
                            <a class="btn btn-sm btn-primary float-left" title="Afficher cet évènement" href="{{ asset('event/detail/').'/'.$item['id'] }}">
                            		<i class="fa fa-search w-32"></i>
-                           </a>                              
+                           </a> 
+                           <a class="btn btn-sm btn-success ml-1 float-left" title="Afficher cet évènement" href="{{ asset('admin/event/gallery').'/'.$item['id'] }}">
+                           		<i class="fa fa-picture-o w-32"></i>
+                           </a>                                                              
                            <a class="btn btn-sm btn-warning ml-1 float-left" title="Modifier cet évènement" href="{{ asset('admin/event/').'/'.$item['id'] }}">
                            		<i class="fa fa-pencil-square-o w-32"></i>
                            </a>

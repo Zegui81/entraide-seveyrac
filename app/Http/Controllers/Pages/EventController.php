@@ -47,15 +47,27 @@ class EventController extends Controller
     }
     
     public function detail($id) {
-        $rqt = Event::where('id', $id)->get();
+        $event = Event::where('id', $id)->first();
         
-        if ($rqt->count() == 0) {
+        if ($event == null) {
             // Page inexistante
+            return redirect('/404');
         }
         
-        $event = $rqt->first();
+        $dossier = public_path('img/event/gallery').'/'.$id;
+        if (!file_exists($dossier)) {
+            // Création du dossier s'il n'existe pas
+            mkdir($dossier, 0777, true);
+        }
+        
+        // Chargement de la liste des photos
+        $photos = scandir($dossier);
+        unset($photos[0]); // Fichier .
+        unset($photos[1]); // Fichier ..
+        
         return view('pages.event.detail')
-            ->withEvent($event->eventToArray());
+            ->withEvent($event->eventToArray())
+            ->withPhotos($photos);
     }
     
 }

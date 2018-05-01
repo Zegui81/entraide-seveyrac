@@ -19,7 +19,7 @@
           <div class="col-lg-6 mh-250px">
              <h2>{{ $nextEvent['titre'] }}</h2>
              <h6 class="mb-2 text-muted">{{ $nextEvent['debut'] }}</h6>
-             <div class="text-hidden">{{ $nextEvent['commentaire'] }}</div>
+             <div class="text-hidden">{!! $nextEvent['commentaire'] !!}</div>
              <div class="hidden"></div>
              <a class="btn btn-primary bottom-0" style="z-index:2;" href="{{ asset('event/detail/'.$nextEvent['id']) }}">
              Afficher l'évènement&nbsp;&nbsp;<i class="fa fa-chevron-right"></i>
