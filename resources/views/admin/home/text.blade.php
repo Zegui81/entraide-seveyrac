@@ -27,7 +27,7 @@
                 	<hr>
                 	<div class="form-row">
                 		<div class="form-group col-md-12">
-                            {!! Form::label('texteGauche', 'Texte en bas', array('class' => 'control-label')) !!}
+                            {!! Form::label('textBas', 'Texte en bas', array('class' => 'control-label')) !!}
                             <div class="form-group">
                         		{!! Form::textarea('textBas', null, ['name' => 'textBas', 'id' => 'textBas', 'rows' => '10']) !!}
                 			</div>

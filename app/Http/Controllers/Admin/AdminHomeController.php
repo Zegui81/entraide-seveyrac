@@ -31,7 +31,6 @@ class AdminHomeController extends Controller
         return view('admin.home.carousel')
                 ->withListPhoto($liste)
                 ->withEdit(false);
-        
     }
     
     public function addPicture(CarouselRequest $request)
@@ -92,6 +91,26 @@ class AdminHomeController extends Controller
         return view('admin.home.text')
             ->withTextGauche($texteGauche->content)
             ->withTextBas($texteBas->content);
+    }
+    
+    public function footer() 
+    {
+        $footer = Text::where('code', 'FOOTER')->first();
+        if ($footer == null) {
+            // Création du texte si inexistant
+            $footer = new Text();
+            $footer->code = 'FOOTER';
+            $footer->save();
+        }
+        return view('admin.home.footer')
+            ->withFooter($footer->content);
+    }
+    
+    public function updateFooter(Request $request) {
+        $footer = Text::where('code', 'FOOTER')->first();
+        $footer->content = $request->footer;
+        $footer->save();
+        return redirect('/admin');
     }
     
     public function updateAccueil(Request $request) {

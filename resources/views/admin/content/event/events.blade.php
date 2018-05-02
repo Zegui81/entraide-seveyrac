@@ -32,7 +32,7 @@
                            <a class="btn btn-sm btn-primary float-left" title="Afficher cet évènement" href="{{ asset('event/detail/').'/'.$item['id'] }}">
                            		<i class="fa fa-search w-32"></i>
                            </a> 
-                           <a class="btn btn-sm btn-success ml-1 float-left" title="Afficher cet évènement" href="{{ asset('admin/event/gallery').'/'.$item['id'] }}">
+                           <a class="btn btn-sm btn-success ml-1 float-left" title="Modifier la gallerie de cet évènement" href="{{ asset('admin/event/gallery').'/'.$item['id'] }}">
                            		<i class="fa fa-picture-o w-32"></i>
                            </a>                                                              
                            <a class="btn btn-sm btn-warning ml-1 float-left" title="Modifier cet évènement" href="{{ asset('admin/event/').'/'.$item['id'] }}">

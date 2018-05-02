@@ -5,7 +5,7 @@
         <div class="card">
           <div class="card-header"><h4 class="mb-0">Ajouter un adhérent</h4></div>
           <div class="card-body">
-       	  	  @include('auth/formRegister')
+       	  	  @include('form/register')
        	  </div>
 		</div>
     </div>

@@ -27,7 +27,7 @@
                            <img class="img-fluid" src="{!! url('img/event/gallery/'.$event['id'].'/'.$photo) !!}" alt="">
                            <div class="delete-icon">
                                <a href="{{ asset('admin/event/gallery').'/'.$event['id'].'/'.$photo }}">
-                               	   <i class="fa fa-trash fa-lg text-danger"></i>
+                               	   <i class="fa fa-times fa-lg text-danger"></i>
                                </a>
                            </div>
                         </div>            	

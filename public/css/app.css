@@ -17,6 +17,15 @@
 	color: red;
 }
 
+.dropdown-item {
+	color: rgba(255,255,255,.5)!important;
+}
+
+.dropdown-item:hover {
+	color: white!important;
+	background-color: inherit;
+}
+
 .input-group>.form-control {
     border-top-right-radius: 0.25rem!important;
     border-bottom-right-radius: 0.25rem!important;

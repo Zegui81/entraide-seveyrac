@@ -16,7 +16,7 @@ class Administrator
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() &&  Auth::user()->actif == 2) {
+        if (Auth::user() && Auth::user()->actif == 2) {
             return $next($request);
         }
         

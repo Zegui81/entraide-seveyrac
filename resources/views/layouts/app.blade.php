@@ -30,7 +30,7 @@
       <link href="{{ asset('css/modal.css') }}" rel="stylesheet">
       
       <!-- Calendar -->
-      @if(isset($calendar))
+      @if(isset($HEAD_calendar))
  		<link href="{{ asset('fullcalendar/fullcalendar.min.css') }}" rel="stylesheet">
         <script src="{{ asset('fullcalendar/moment.min.js') }}"></script>
         <script src="{{ asset('fullcalendar/fullcalendar.min.js') }}"></script>
@@ -54,9 +54,8 @@
                      <a class="nav-link" href="about.html">Transports solidaires</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="galerie.html">Galeries</a>
+                     <a class="nav-link" href="{{ asset('/covoit') }}">Covoiturage</a>
                   </li>
-
                </ul>
                
                @auth
@@ -64,9 +63,18 @@
 					    @if (Auth::user()->actif == 2)
                             <li class="nav-item">
                                <a class="nav-link" href="{{ asset('/admin') }}">Administrer le site</a>
-                            </li>					    
-    					@endif
-                      <li class="nav-item">
+                            </li>
+                        @else
+        					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Proposer...&nbsp;</a>
+        						<div class="dropdown-menu bg-dark nav-item">
+        							<a class="dropdown-item nav-link" href="{{ asset('/covoit/propose') }}">un covoiturage</a>
+									<a class="dropdown-item nav-link" href="#">un transport solidaire</a>
+									<div class="dropdown-divider bg-dark"></div>
+									<a class="dropdown-item nav-link" href="#">un évènement</a>
+        						</div>
+        					</li> 
+						@endif
+					<li class="nav-item">
                          <a class="nav-link" href="{{ asset('/logout') }}">Se déconnecter</a>
                       </li>
                    </ul>
@@ -90,10 +98,9 @@
       @yield('content')
       
       <!-- Footer -->
-      <footer class="py-5 bg-dark">
+      <footer class="py-4 bg-dark">
          <div class="container">
-            <p class="m-0 text-center text-white">Contact : Laurence Bonnefon 05 65 71 79 03</p>
-            <p class="m-0 text-center text-white">&nbsp; &nbsp; &nbsp; &nbsp; Carole Carrière 06 21 51 09 27</p>
+         	<div class="m-0 text-center text-white footer">{!! App\Text::where('code', 'FOOTER')->first()->content !!}</div>
          </div>
       </footer>
    </body>

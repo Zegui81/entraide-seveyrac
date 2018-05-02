@@ -42,7 +42,7 @@ class EventController extends Controller
             array_push($liste, $event->eventToArrayForCalendar());
         }
         return view('pages.event.calendar')
-            ->with('calendar', true)
+            ->with('HEAD_calendar', true)
             ->with('events', $liste);
     }
     

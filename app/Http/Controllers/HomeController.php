@@ -32,10 +32,12 @@ class HomeController extends Controller
         
         $texteGauche = Text::where('code', 'HOME_TEXT_GAUCHE')->first();
         $texteBas = Text::where('code', 'HOME_TEXT_BAS')->first();
+        $footer = Text::where('code', 'FOOTER')->first();
         
         return view('home')
             ->withCarousel($liste)
             ->withTextGauche($texteGauche->content)
             ->withTextBas($texteBas->content);
+//             ->withFooter($footer->content);
     }
 }

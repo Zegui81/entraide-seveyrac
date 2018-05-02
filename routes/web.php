@@ -19,10 +19,19 @@ Route::get('/', 'HomeController@index');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout'); 
 
+/* PAGES ------------------------------------------------------------------- */
 // Evènements
 Route::get('event', 'EventController@home');
 Route::get('event/calendar', 'EventController@calendar');
 Route::get('event/detail/{id}', 'EventController@detail');
+
+// Covoiturage
+Route::get('covoit', 'Pages\CovoitController@home');
+Route::get('covoit/search/{day}', 'Pages\CovoitController@search');
+Route::get('covoit/calendar', 'Pages\CovoitController@calendar');
+
+Route::get('covoit/propose', 'Pages\CovoitController@publish');
+Route::post('covoit/propose', 'Pages\CovoitController@validateCreateCovoit');
 
 /* ADMINISTRATION ---------------------------------------------------------- */
 // Menu administraion
@@ -50,6 +59,10 @@ Route::get('admin/home/carousel/{id}', 'Admin\AdminHomeController@removePicture'
 Route::get('admin/home/text', 'Admin\AdminHomeController@text');
 Route::post('admin/home/text', 'Admin\AdminHomeController@updateAccueil');
 
+// Footer
+Route::get('admin/home/footer', 'Admin\AdminHomeController@footer');
+Route::post('admin/home/footer', 'Admin\AdminHomeController@updateFooter');
+
 // Évènements
 Route::get('admin/event', 'Admin\AdminEventController@events');
 Route::get('admin/event/add', 'Admin\AdminEventController@createEvent');
@@ -60,6 +73,12 @@ Route::delete('admin/event/{id}', 'Admin\AdminEventController@deleteEvent');
 Route::get('admin/event/gallery/{id}', 'Admin\AdminEventController@gallery');
 Route::post('admin/event/gallery/{id}', 'Admin\AdminEventController@addPhoto');
 Route::get('admin/event/gallery/{id}/{photo}', 'Admin\AdminEventController@deletePhoto');
+
+// Covoiturages
+Route::get('admin/covoit', 'Admin\AdminCovoitController@covoits');
+Route::get('admin/covoit/{id}', 'Admin\AdminCovoitController@editCovoit');
+Route::patch('admin/covoit/{id}', 'Admin\AdminCovoitController@validateEditCovoit');
+Route::delete('admin/covoit/{id}', 'Admin\AdminCovoitController@deleteCovoit');
 
 /* ------------------------------------------------------------------------- */
 

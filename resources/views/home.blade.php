@@ -33,13 +33,15 @@
     
     <div class="container">
     	<div class="row mb-4 mt-4">
-    		<div class="col-lg-6">
-				{!! $textGauche !!}
-    		</div>
-    		<div class="col-lg-6">
-    			<img class="img-fluid rounded" src="img/home.jpg" alt="">
-    		</div>
-    		<div class="card text-center w-100">
+    		<div class="row">
+        		<div class="col-lg-6">
+    				{!! $textGauche !!}
+        		</div>
+        		<div class="col-lg-6">
+        			<img class="img-fluid rounded" src="img/home.jpg" alt="">
+        		</div>
+        	</div>
+    		<div class="card text-center w-100 mt-2">
         		<div class="card-body">
  					{!! $textBas !!}
         		</div>

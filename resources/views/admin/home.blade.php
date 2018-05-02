@@ -73,11 +73,11 @@
                       </div>
                    </div>
                 </a>
-                <a class="col-md-4 p-2" href="{{ asset('admin/user/add') }}">
+                <a class="col-md-4 p-2" href="{{ asset('admin/covoit') }}">
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
-                         <h3>0</h3>
-                         <small>Covoiturage</small>
+                         <h3>{{ $nbCovoit }}</h3>
+                         <small>Covoiturages</small>
                       </div>
                       <div class="icon">
                          <i class="fa fa-car fa-5x"></i>
@@ -90,23 +90,23 @@
        
        <div class="card mt-3">
           <div class="card-header">
-             <h4 class="mb-0">Page d'accueil</h4>
+             <h4 class="mb-0">Configuration générale</h4>
           </div>
           <div class="card-body">
              <div class="row">
-                <a class="col-md-6 p-2" href="{{ asset('admin/home/carousel') }}">
+                <a class="col-md-4 p-2" href="{{ asset('admin/home/carousel') }}">
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
                          <h3 class="float-left">{{ $nbImagesCarousel }} </h3>
                          <h6 class="pt-11px">&nbsp;{{ $nbImagesCarousel > 1 ? 'images' : 'image' }}</h6>
-                         <small>Carousel</small>
+                         <small>Carousel d'accueil</small>
                       </div>
                       <div class="icon">
                          <i class="fa fa-picture-o fa-5x"></i>
                       </div>
                    </div>
                 </a>
-                <a class="col-md-6 p-2" href="{{ asset('admin/home/text') }}">
+                <a class="col-md-4 p-2" href="{{ asset('admin/home/text') }}">
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
                          <h3>&nbsp;</h3>
@@ -117,6 +117,18 @@
                       </div>
                    </div>
                 </a>
+                </a>
+                <a class="col-md-4 p-2" href="{{ asset('admin/home/footer') }}">
+                   <div class="board btn btn-info w-100 p-3">
+                      <div class="number">
+                         <h3>&nbsp;</h3>
+                         <small>Pied de page du site</small>
+                      </div>
+                      <div class="icon">
+                         <i class="fa fa-level-down fa-5x"></i>
+                      </div>
+                   </div>
+                </a>                
              </div>
           </div>
        </div>
