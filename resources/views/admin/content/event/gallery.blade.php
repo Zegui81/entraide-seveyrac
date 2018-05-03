@@ -19,7 +19,10 @@
         	Dropzone.options.upload = {
         		url: window.location.href,
         		acceptedFiles: '.png,.jpg,.gif,.bmp,.jpeg',
-        		dictInvalidFileType: 'Vous ne pouvez importer que des photos.'
+        		dictInvalidFileType: 'Vous ne pouvez importer que des photos.',
+        		queuecomplete: function() {
+            		location.reload();
+        		}
         	};
         </script>
         

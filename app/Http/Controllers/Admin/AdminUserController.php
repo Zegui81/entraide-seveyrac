@@ -33,13 +33,13 @@ class AdminUserController extends Controller
         foreach ($users as $user) {
             array_push($liste, $user->userToArray());
         }
-        return view('admin.users.membership')->withListMembership($liste);
+        return view('admin.user.memberships')->withListMembership($liste);
     }
     
     /**
      * Confirme la demande d'adhésion
      */
-    public function confirm($id) 
+    public function confirmMembership($id) 
     {
         $user = User::where('id', $id)->first();
         $user->actif = 1;
@@ -58,7 +58,7 @@ class AdminUserController extends Controller
     /**
      * Rejette la demande d'adhésion
      */
-    public function reject($id)
+    public function rejectMembership($id)
     {
         User::destroy($id);
         
@@ -84,13 +84,13 @@ class AdminUserController extends Controller
         foreach ($users as $user) {
             array_push($liste, $user->userToArray());
         }
-        return view('admin.users.user')->withListUser($liste);
+        return view('admin.user.users')->withListUser($liste);
     }
     
     /**
      * Suppression d'un utilisateurs
      */
-    public function delete($id) 
+    public function deleteUser($id) 
     {
         User::destroy($id);
         
@@ -109,7 +109,7 @@ class AdminUserController extends Controller
      */
     public function register() 
     {
-        return view('admin.users.register');
+        return view('admin.user.user');
     }
     
     /**

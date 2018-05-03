@@ -13,7 +13,7 @@
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
                          <h3>{{ $nbUser }}</h3>
-                         <small>Liste des adhérents</small>
+                         <small>Adhérents</small>
                       </div>
                       <div class="icon">
                          <i class="fa fa-users fa-5x"></i>
@@ -59,7 +59,7 @@
                          <small>Évènements</small>
                       </div>
                       <div class="icon">
-                         <i class="fa fa-calendar-check-o fa-5x"></i>
+                         <i class="fa fa-calendar fa-5x"></i>
                       </div>
                    </div>
                 </a>
