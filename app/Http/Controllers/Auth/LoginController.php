@@ -45,9 +45,13 @@ class LoginController extends Controller
     }
     
     public function login(Request $request) {
-            
-        if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
         
+        if (Auth::viaRemember()) {
+            // Remember me utilisé
+            return redirect()->back();
+        }
+            
+        if (Auth::attempt(['email' => request('email'), 'password' => request('password')], $request->remember)) {
             if (Auth::check() && Auth::user()->actif == 0) {
                 // User inactif
                 Auth::logout();

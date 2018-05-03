@@ -10,6 +10,8 @@
              </a>
           </li>
        </ul>
+       @include('layouts/message')
+       
        @if (count($listEvent) == 0)
        	  <h5 class="alert-heading text-center mb-0">Aucun évènement</h5>
        @else

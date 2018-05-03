@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container mb-4 mt-4">
+    	@include('layouts/message')
         <div class="card">
             <div class="card-header"><h4 class="mb-0">Demandes d'admission</h4></div>
             <div class="card-body">
@@ -45,16 +46,5 @@
         		@endif
         	</div>
     	</div>
-    	@if (Request::isMethod('patch'))
-    		<div class="alert alert-success mt-2 text-center" role="alert">
-   				<i class="fa fa-check fa-2x" aria-hidden="true"></i>&nbsp;La demande d'admission a été acceptée.
-			</div>
-    	@endif
-    	
-    	@if (Request::isMethod('delete'))
-    		<div class="alert alert-warning mt-2 text-center" role="alert">
-   				<span><i class="fa fa-ban fa-2x" aria-hidden="true"></i>&nbsp;La demande d'admission a été rejetée.</span>
-			</div>
-    	@endif
     </div>
 @endsection

@@ -44,7 +44,15 @@ class AdminUserController extends Controller
         $user = User::where('id', $id)->first();
         $user->actif = 1;
         $user->save();
-        return $this->membership();
+        
+        // Message de confirmation
+        $message = array(
+            'type' => 'success',
+            'icon' => 'check',
+            'content' => 'La demande d\'admission a été acceptée.'
+        );
+        
+        return redirect('admin/membership')->with('message', $message);
     }
     
     /**
@@ -53,7 +61,14 @@ class AdminUserController extends Controller
     public function reject($id)
     {
         User::destroy($id);
-        return $this->membership();
+        
+        // Message de validation
+        $message = array(
+            'type' => 'warning',
+            'icon' => 'times',
+            'content' => 'La demande d\'admission a été rejetée.'
+        );
+        return redirect('admin/membership')->with('message', $message);
     }
     
     /**
@@ -78,7 +93,15 @@ class AdminUserController extends Controller
     public function delete($id) 
     {
         User::destroy($id);
-        return $this->user();
+        
+        // Message de validation
+        $message = array(
+            'type' => 'warning',
+            'icon' => 'trash',
+            'content' => 'L\'utilisateur a été supprimé avec succés.'
+        );
+        
+        return redirect('admin/user')->with('message', $message);
     }
     
     /**
@@ -90,7 +113,7 @@ class AdminUserController extends Controller
     }
     
     /**
-     * AJout d'un utilisateur
+     * Ajout d'un utilisateur
      */
     public function addUser(UserRequest $request)
     {
@@ -98,7 +121,13 @@ class AdminUserController extends Controller
         $user = $this->create($request->all());
         $user->actif = 1;
         $user->save();
-        return redirect('admin');
+        
+        $message = array(
+            'type' => 'success',
+            'icon' => 'check',
+            'content' => 'L\'adhérent a été ajouté avec succés.'
+        );
+        return redirect('admin/user')->with('message', $message);
     }
     
     /**

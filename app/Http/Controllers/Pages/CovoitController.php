@@ -52,7 +52,15 @@ class CovoitController extends Controller
             // Administrateur
             return redirect('admin/covoit');
         }
-        return redirect('covoit');
+        
+        // Message de validation
+        $message = array(
+            'type' => 'success',
+            'icon' => 'car',
+            'content' => 'Votre covoiturage a été publié avec succés.'
+        );
+        
+        return redirect('/')->with('message', $message);
     }
     
     protected function validateCovoit(CovoitRequest $request, Covoit $covoit) {

@@ -58,14 +58,29 @@ class AdminEventController extends Controller
     {
         $event = new Event();
         $this->validateEvent($request, $event);
-        return redirect('admin/event');
+        
+        // Message de validation
+        $message = array(
+            'type' => 'success',
+            'icon' => 'calendar-check-o',
+            'content' => 'L\'évènement a été créé avec succés.'
+        );
+        
+        return redirect('admin/event')->with('message', $message);
     }
 
     public function validateEditEvent(EventRequest $request, $id)
     {
         $event = Event::where('id', $id)->first();
         $this->validateEvent($request, $event);
-        return redirect('admin/event');
+        
+        // Message de validation
+        $message = array(
+            'type' => 'success',
+            'icon' => 'calendar-check-o',
+            'content' => 'L\'évènement a été édité avec succés.'
+        );
+        return redirect('admin/event')->with('message', $message);
     }
     
     private function validateEvent(EventRequest $request, Event $event)
@@ -100,7 +115,14 @@ class AdminEventController extends Controller
     public function deleteEvent($id)
     {
         Event::destroy($id);
-        return redirect('admin/event');
+        
+        // Message de validation
+        $message = array(
+            'type' => 'warning',
+            'icon' => 'calendar-times-o',
+            'content' => 'L\'évènement a été supprimé avec succés.'
+        );
+        return redirect('admin/event')->with('message', $message);
     }
     
     public function gallery($id)

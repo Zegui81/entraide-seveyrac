@@ -10,6 +10,8 @@
              </a>
           </li>
        </ul>
+       @include('layouts/message')
+       
        @if (count($listUser) == 0)
            <h5 class="alert-heading text-center mb-0">Aucune adhérent</h5>
        @else
@@ -42,12 +44,6 @@
                  @endforeach
               </tbody>
            </table>
-       @endif
-       
-       @if (Request::isMethod('delete'))
-           <div class="alert alert-warning mt-2 text-center" role="alert">
-              <span><i class="fa fa-trash fa-2x" aria-hidden="true"></i>&nbsp;L'utilisateur a été supprimé.</span>
-           </div>
        @endif
     </div>
 @endsection

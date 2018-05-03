@@ -32,7 +32,8 @@
     </header>
     
     <div class="container">
-    	<div class="row mb-4 mt-4">
+        @include('layouts/message')
+    	<div class="mb-4 mt-4">
     		<div class="row">
         		<div class="col-lg-6">
     				{!! $textGauche !!}

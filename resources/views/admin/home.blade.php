@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container mt-4 mb-4">
+       @include('layouts/message')
        <div class="card">
           <div class="card-header">
              <h4 class="mb-0">Utilisateurs</h4>

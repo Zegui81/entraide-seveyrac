@@ -14,7 +14,7 @@
         <div class="card">
           <div class="card-header"><h4 class="mb-0">Faire une demande d'adhésion</h4></div>
           <div class="card-body">
-       	  	  @include('form/register')
+       	  	  @include('forms/register')
        	  </div>
 		</div>
     </div>

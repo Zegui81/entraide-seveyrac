@@ -39,7 +39,15 @@ class AdminCovoitController extends CovoitController
     public function validateEditCovoit(CovoitRequest $request, $id) {
         $covoit = Covoit::where('id', $id)->first();
         $this->validateCovoit($request, $covoit);
-        return redirect('admin/covoit');
+        
+        // Message de validation
+        $message = array(
+            'type' => 'success',
+            'icon' => 'check',
+            'content' => 'Le covoiturage a été modifié avec succés.'
+        );
+        
+        return redirect('admin/covoit')->with('message', $message);
     }
     
     public function deleteCovoit($id)

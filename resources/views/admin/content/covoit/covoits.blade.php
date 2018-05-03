@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mb-4 mt-4">
+    <div class="container mb-4 mt-4">    
        <ul class="breadcrumb">
           <li class="">Covoiturages</li>
           <li class="ml-auto">
@@ -10,6 +10,8 @@
              </a>
           </li>
        </ul>
+       @include('layouts/message')
+       
        @if (count($listCovoit) == 0)
        	  <h5 class="alert-heading text-center mb-0">Aucun covoiturage</h5>
        @else

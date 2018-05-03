@@ -5,6 +5,11 @@
         <ul class="breadcrumb">
           <li>Gallerie de photos de : &nbsp;</li>
           <li class="active">{{ $event['titre'] }}</li>
+          <li class="ml-auto">
+             <a class="btn btn-primary" href="{{ asset('admin/event') }}">Retour aux évènements&nbsp;&nbsp;
+             <i class="fa fa-calendar"></i>
+             </a>
+          </li>
         </ul>
         {!! Form::open(['enctype' => 'multipart/form-data', 'class' => 'dropzone needsclick', 'id' => 'upload']) !!}
            <div class="dz-message needsclick">Déplacez les photos ici<br>ou<br>Cliquez ici pour importer les photos</div>

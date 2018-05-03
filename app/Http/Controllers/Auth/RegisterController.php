@@ -66,7 +66,15 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
         $user = $this->create($request->all());
         Auth::logout(); // Déconnexion
-        return redirect('/');
+
+        // Message de validation
+        $message = array(
+            'type' => 'success',
+            'icon' => 'user',
+            'content' => 'Votre demande d\'admission a été envoyée.'
+        );
+        
+        return redirect('/')->with('message', $message);
     }
     
     /**
