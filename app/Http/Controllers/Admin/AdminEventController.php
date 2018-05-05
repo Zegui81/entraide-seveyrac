@@ -96,7 +96,6 @@ class AdminEventController extends Controller
             $dateDebut->setTime($heureDebut[0], $heureDebut[1], 0, 0);
             $heureFin = explode(':', $request->heureFin);
             $dateFin->setTime($heureFin[0], $heureFin[1], 0, 0);
-            
         }
 
         $event->journee = isset($request->journee) ? 1 : 0;

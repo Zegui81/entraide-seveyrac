@@ -46,7 +46,14 @@ class AdminHomeController extends Controller
         $request->photo->move($destinationPath, 
             $photo->id.'.'.$request->photo->extension());
         
-        return redirect()->back()->with('success', true);
+        // Message de confirmation
+        $message = array(
+            'type' => 'success',
+            'icon' => 'check',
+            'content' => 'La photo a bien été ajoutée.'
+        );
+        
+        return redirect('admin/home/carousel')->with('message', $message);
     }
     
     protected function createPhotoCarousel(array $data)
@@ -65,7 +72,15 @@ class AdminHomeController extends Controller
         $photo = Carousel::where('id', $id)->first();
         unlink(public_path('img\carousel').'\\'.$id.'.'.$photo->ext);
         Carousel::destroy($id);
-        return redirect()->back();
+        
+        // Message de confirmation
+        $message = array(
+            'type' => 'warning',
+            'icon' => 'trash',
+            'content' => 'La photo a bien été supprimée.'
+        );
+        
+        return redirect('admin/home/carousel')->with('message', $message);
     }
     
     public function text()

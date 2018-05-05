@@ -2,6 +2,7 @@
 
 @section('content') 
     <div class="container mt-4 mb-4">
+    	@include('layouts/message')
         <div class="card">
           <div class="card-header"><h4 class="mb-0">Ajouter une photo</h4></div>
           <div class="card-body">
@@ -23,18 +24,11 @@
                 		{!! $errors->first('photo', '<small class="invalid-feedback">:message</small>') !!}
                 	</div>
                 	
-                	@if (!$edit)
-                		{!! Form::button('Ajouter la photo&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"></i>', array('type' => 'submit', 'class' => 'btn btn-primary pull-right')) !!}
-                	@endif
+            		{!! Form::button('Ajouter la photo&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"></i>', array('type' => 'submit', 'class' => 'btn btn-primary pull-right')) !!}
                 	
                 {!! Form::close() !!}
        	  </div>
 		</div>
-		@if (session()->has('success'))
-    		<div class="alert alert-success mt-2 text-center" role="alert">
-   				<i class="fa fa-check fa-2x" aria-hidden="true"></i>&nbsp;La photo a bien été ajoutée.
-			</div>
-    	@endif
     	
         <div class="card mt-4">
         	<div class="card-header"><h4 class="mb-0">Photos présentes</h4></div>

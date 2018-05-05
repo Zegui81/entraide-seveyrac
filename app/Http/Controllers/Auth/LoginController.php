@@ -68,8 +68,7 @@ class LoginController extends Controller
         // Echec d'authentification
         return redirect('login')
             ->withInput($request->only('email', 'remember'))
-            ->withErrors(['login' => $this->getFailedLoginMessage()
-        ]);
+            ->withErrors(['login' => $this->getFailedLoginMessage()]);
     }
     
     protected function getFailedLoginMessage()

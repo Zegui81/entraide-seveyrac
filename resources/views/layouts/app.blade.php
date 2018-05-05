@@ -51,7 +51,7 @@
                      <a class="nav-link" href="{{ asset('/event') }}">Evénements</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="about.html">Transports solidaires</a>
+                     <a class="nav-link" href="{{ asset('/transport') }}">Transports solidaires</a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link" href="{{ asset('/covoit') }}">Covoiturage</a>
@@ -65,12 +65,12 @@
                                <a class="nav-link" href="{{ asset('/admin') }}">Administrer le site</a>
                             </li>
                         @else
-        					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Proposer...&nbsp;</a>
+        					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace personnel&nbsp;</a>
         						<div class="dropdown-menu bg-dark nav-item">
-        							<a class="dropdown-item nav-link" href="{{ asset('/covoit/propose') }}">un covoiturage</a>
-									<a class="dropdown-item nav-link" href="#">un transport solidaire</a>
+        							<a class="dropdown-item nav-link" href="{{ asset('/covoit/propose') }}">Mes covoiturages</a>
+									<a class="dropdown-item nav-link" href="{{ asset('/transport/manage') }}">Mes transports solidaires</a>
 									<div class="dropdown-divider bg-dark"></div>
-									<a class="dropdown-item nav-link" href="#">un évènement</a>
+									<a class="dropdown-item nav-link" href="#">Proposer un évènement</a>
         						</div>
         					</li> 
 						@endif

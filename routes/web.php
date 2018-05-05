@@ -33,6 +33,14 @@ Route::get('covoit/calendar', 'Pages\CovoitController@calendar');
 Route::get('covoit/propose', 'Pages\CovoitController@publish');
 Route::post('covoit/propose', 'Pages\CovoitController@validateCreateCovoit');
 
+// Transports solidaires
+Route::get('transport', 'Pages\TransportSolidaireController@home');
+Route::get('transport/search/{id}', 'Pages\TransportSolidaireController@search');
+
+Route::get('transport/manage', 'Pages\TransportSolidaireController@manage');
+Route::post('transport/manage', 'Pages\TransportSolidaireController@createTransport');
+Route::delete('transport/manage/{id}', 'Pages\TransportSolidaireController@deleteTransport');
+
 /* ADMINISTRATION ---------------------------------------------------------- */
 // Menu administraion
 Route::get('admin', 'Admin\AdminController@index'); 
