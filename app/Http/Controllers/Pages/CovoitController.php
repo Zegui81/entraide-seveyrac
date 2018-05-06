@@ -40,8 +40,18 @@ class CovoitController extends Controller
             ->withDateSearch(date('d/m/Y', strtotime($day)));
     } 
     
-    public function publish() {
-        return view('pages.covoit.publish')->withCovoit(null);
+    public function manage()
+    {
+        $covoits = Covoit::where('user_id', Auth::user()->id)
+            ->orderBy('depart', 'desc')->get();
+        
+        $liste = array();
+        foreach ($covoits as $covoit) {
+            array_push($liste, $covoit->covoitToArray());
+        }
+        return view('pages.covoit.manage')
+            ->withCovoit(null)
+            ->withCovoits($liste);
     }
     
     public function validateCreateCovoit(CovoitRequest $request) {
@@ -57,10 +67,31 @@ class CovoitController extends Controller
         $message = array(
             'type' => 'success',
             'icon' => 'car',
-            'content' => 'Votre covoiturage a été publié avec succés.'
+            'content' => 'Votre covoiturage a été publié.'
         );
         
-        return redirect('/')->with('message', $message);
+        return redirect('covoit/manage')->with('message', $message);
+    }
+    
+    public function editCovoit($id) {
+        $covoit = Covoit::where('id', $id)->first();
+        
+        return view('pages.covoit.covoit')
+            ->withCovoit($covoit->covoitToArray());
+    }
+    
+    public function validateEditCovoit(CovoitRequest $request, $id)
+    {
+        $covoit = Covoit::where('id', $id)->first();
+        $this->validateCovoit($request, $covoit);
+        
+        // Message de validation
+        $message = array(
+            'type' => 'success',
+            'icon' => 'check',
+            'content' => 'Le covoiturage a été modifié avec succés.'
+        );
+        return redirect('covoit/manage')->with('message', $message);
     }
     
     protected function validateCovoit(CovoitRequest $request, Covoit $covoit) {
@@ -73,11 +104,13 @@ class CovoitController extends Controller
         $heureDepart = explode(':', $request->heureDepart);
         $dateDepart->setTime($heureDepart[0], $heureDepart[1], 0, 0);
         $covoit->depart = $dateDepart;
-        
-        if (empty($covoit->user_id)) {
-            // Création
+                
+        if (Auth::user()->actif == 2) {
+            $covoit->user_id = $request->organisateur;
+        } else {
             $covoit->user_id = Auth::user()->id;
-        }
+        }  
+        
         $covoit->save();
     }
     
@@ -91,5 +124,18 @@ class CovoitController extends Controller
         return view('pages.covoit.calendar')
         ->with('HEAD_calendar', true) // Imports dans le header
         ->with('covoits', $liste);
+    }
+    
+    public function deleteCovoit($id) {
+        Covoit::destroy($id);
+        
+        // Message de validation
+        $message = array(
+            'type' => 'warning',
+            'icon' => 'trash',
+            'content' => 'Votre covoiturage a été supprimé.'
+        );
+        
+        return redirect('covoit/manage')->with('message', $message);
     }
 }

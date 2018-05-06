@@ -15,21 +15,17 @@
                 	<div class="input-group-prepend">
                       <div class="input-group-text"><i class="fa fa-calendar-o" aria-hidden="true"></i></div>
                     </div>
-<!--                     <input class="form-control" name="jourDepart" type="date" id="jourDepart"> -->
                   	{!! Form::select('jour', $jours, null, ['id' => 'jour' , 'class' => 'form-control']) !!}
-                  	
                   	<div class="input-group-append">
                         <a class="btn btn-primary" id="search">
                          <i class="fa fa-search"></i>
                         </a>
-                  </div>
+                    </div>
             	</div>
             </div>
           </div>
         </div>
 
-
-        <!-- Blog Entries Column -->
         <div class="col-md-8 text-center">
 		@if (count($transports) > 0)
           @foreach ($transports as $item) 
@@ -65,6 +61,7 @@
 
       </div>       
 	<script type="text/javascript">
+		$('#jour').val({{ $numJour }});
 		$('#search').click(function() {
 	    	window.location = "{{ asset('transport/search') }}" + "/" + $('#jour').val();
 		});

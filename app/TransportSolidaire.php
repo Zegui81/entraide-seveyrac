@@ -18,9 +18,10 @@ class TransportSolidaire extends Model
         $organisateur = User::where('id', $this->user_id)->first();
         return array(
             'id' => $this->id,
+            'numJour' => $this->jour,
             'jour' => TransportSolidaire::JOURS[$this->jour],
-            'heureDepart' => date('H\:i', strtotime($this->heureDepart)),
-            'heureRetour' => date('H\:i', strtotime($this->heureRetour)),
+            'heureDepart' => $this->heureDepart == null ? '' : date('H\:i', strtotime($this->heureDepart)),
+            'heureRetour' => $this->heureRetour == null ? '' : date('H\:i', strtotime($this->heureRetour)),
             'commentaire' => $this->commentaire,
             'organisateur' => $organisateur->userToArray()
         );

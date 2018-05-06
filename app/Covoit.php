@@ -19,6 +19,7 @@ class Covoit extends Model
             'origine' => $this->origine,
             'destination' => $this->destination,
             'depart' => date('d/m/Y \à H\hi', strtotime($this->depart)),
+            'jourDepart' => date('Y-m-d', strtotime($this->depart)),
             'heureDepart' => date('H\:i', strtotime($this->depart)),
             'nbPlace' => $this->nbPlace,
             'commentaire' => $this->commentaire,
@@ -31,21 +32,6 @@ class Covoit extends Model
             'title' => $this->origine.' > '.$this->destination,
             'start' => date('Y-m-d\TH\:i', strtotime($this->depart)),
             'url' => url('covoit/search/'.date('Y-m-d', strtotime($this->depart))),
-        );
-    }
-    
-    public function covoitToArrayForAdmin() {
-        $organisateur = User::where('id', $this->user_id)->first();
-        return array(
-            'id' => $this->id,
-            'origine' => $this->origine,
-            'destination' => $this->destination,
-            'nbPlace' => $this->nbPlace,
-            'jourDepart' => date('Y-m-d', strtotime($this->depart)),
-            'heureDepart' => date('H\:i', strtotime($this->depart)),
-            'commentaire' => $this->commentaire,
-            'url' => url('covoit/detail/'.$this->id),
-            'organisateur' => $this->user_id
         );
     }
 }

@@ -67,7 +67,7 @@
                         @else
         					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace personnel&nbsp;</a>
         						<div class="dropdown-menu bg-dark nav-item">
-        							<a class="dropdown-item nav-link" href="{{ asset('/covoit/propose') }}">Mes covoiturages</a>
+        							<a class="dropdown-item nav-link" href="{{ asset('/covoit/manage') }}">Mes covoiturages</a>
 									<a class="dropdown-item nav-link" href="{{ asset('/transport/manage') }}">Mes transports solidaires</a>
 									<div class="dropdown-divider bg-dark"></div>
 									<a class="dropdown-item nav-link" href="#">Proposer un évènement</a>

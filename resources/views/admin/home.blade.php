@@ -13,7 +13,7 @@
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
                          <h3>{{ $nbUser }}</h3>
-                         <small>Adhérents</small>
+                         <small>{{ $nbUser > 1 ? 'Adhérents' : 'Adhérent' }}</small>
                       </div>
                       <div class="icon">
                          <i class="fa fa-users fa-5x"></i>
@@ -24,7 +24,7 @@
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
                          <h3>{{ $nbDemandeAdhesion }}</h3>
-                         <small>Demandes d'adhésion</small>
+                         <small>{{ $nbDemandeAdhesion > 1 ? 'Demandes d\'adhésion' : 'Demande d\'adhésion' }}</small>
                       </div>
                       <div class="icon">
                          <i class="fa fa-paper-plane fa-5x"></i>
@@ -56,18 +56,18 @@
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
                          <h3>{{ $nbEvent }}</h3>
-                         <small>Évènements</small>
+                         <small>{{ $nbEvent > 1 ? 'Évènements' : 'Évènement' }}</small>
                       </div>
                       <div class="icon">
                          <i class="fa fa-calendar fa-5x"></i>
                       </div>
                    </div>
                 </a>
-                <a class="col-md-4 p-2" href="{{ asset('admin/membership') }}">
+                <a class="col-md-4 p-2" href="{{ asset('admin/transport') }}">
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
-                         <h3>0</h3>
-                         <small>Transport solidaire</small>
+                         <h3>{{ $nbTransport }}</h3>
+                         <small>{{ $nbTransport > 1 ? 'Transports solidaires' : 'Transport solidaire' }}</small>
                       </div>
                       <div class="icon">
                          <i class="fa fa-sign-language fa-5x"></i>
@@ -78,7 +78,7 @@
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
                          <h3>{{ $nbCovoit }}</h3>
-                         <small>Covoiturages</small>
+                         <small>{{ $nbCovoit > 1 ? 'Covoiturages' : 'Covoiturage' }}</small>
                       </div>
                       <div class="icon">
                          <i class="fa fa-car fa-5x"></i>

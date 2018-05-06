@@ -1,10 +1,24 @@
 {!! Form::open() !!}
 	@csrf
 	{!! Form::hidden('id', $covoit['id']) !!}
-	{!! Form::hidden('user_id', $covoit['organisateur']) !!}
+
+	@if (Auth::user()->actif == 2)
+    	<div class="form-row"> 
+        	<div class="form-group col-md-12">
+    			{!! Form::label('organisateur', 'Organisateur') !!}
+    			<div class="input-group">
+                	<div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></div>
+                    </div>
+        			{!! Form::select('organisateur', $users, null, ['id' => 'organisateur' , 'class' => 'form-control '.($errors->has('organisateur') ? 'is-invalid' : '')]) !!}
+        			{!! $errors->first('organisateur', '<small class="invalid-feedback">:message</small>') !!}
+        		</div>
+    		</div>
+    	</div>
+    @endif
 	
 	<div class="form-row">
-    	<div class="form-group col-md-6 {!! $errors->has('jourDebut') ? 'has-error' : '' !!}">
+    	<div class="form-group col-md-6 {!! $errors->has('origine') ? 'has-error' : '' !!}">
     		{!! Form::label('origine', 'Départ', array('class' => 'col-form-label required', 'placeholder' => 'Lieu de départ')) !!}
 			<div class="input-group">
             	<div class="input-group-prepend">
@@ -75,6 +89,7 @@
 	@endif
 {!! Form::close() !!}
 <script type="text/javascript">
+	$('#organisateur').val({{ $covoit['organisateur']['id'] }});
     $('.clockpicker').clockpicker({
         placement: 'bottom',
         align: 'right',

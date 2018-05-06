@@ -5,7 +5,7 @@
        <ul class="breadcrumb">
           <li class="">Covoiturages</li>
           <li class="ml-auto">
-             <a class="btn btn-primary" href="{{ asset('covoit/propose') }}">Publier un covoiturage&nbsp;&nbsp;
+             <a class="btn btn-primary" href="{{ asset('admin/covoit/publish') }}">Publier un covoiturage&nbsp;&nbsp;
              <i class="fa fa-car"></i>
              </a>
           </li>

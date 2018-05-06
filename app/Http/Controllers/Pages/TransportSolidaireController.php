@@ -34,12 +34,14 @@ class TransportSolidaireController extends Controller
         return view('pages.transportSolidaire.search')
             ->withJours(TransportSolidaire::JOURS)
             ->withJour(strtolower(TransportSolidaire::JOURS[$numDay]))
+            ->withNumJour($numDay)
             ->withTransports($liste);
     }
     
     public function manage()
     {
-        $transports = TransportSolidaire::where('user_id', Auth::user()->id)->get();
+        $transports = TransportSolidaire::where('user_id', Auth::user()->id)
+            ->orderBy('jour')->get();
         
         $liste = array();
         foreach ($transports as $transport) {
@@ -52,17 +54,38 @@ class TransportSolidaireController extends Controller
             ->withTransports($liste);
     }
     
-    public function createTransport(TransportSolidaireRequest $request) {
+    public function validateCreateTransport(TransportSolidaireRequest $request) {
         $transport = new TransportSolidaire();
         $this->validateTransport($request, $transport);
         
         // Message de validation
         $message = array(
             'type' => 'success',
-            'icon' => 'check',
+            'icon' => 'car',
             'content' => 'Votre transport solidaire a été publié avec succés.'
         );
+        return redirect('transport/manage')->with('message', $message);
+    }
+    
+    public function editTransport($id) {
+        $transport = TransportSolidaire::where('id', $id)->first();
         
+        return view('pages.transportSolidaire.transport')
+            ->withTransport($transport->transportToArray())
+            ->withJours(TransportSolidaire::JOURS);
+    }
+    
+    public function validateEditTransport(TransportSolidaireRequest $request, $id)
+    {
+        $transport = TransportSolidaire::where('id', $id)->first();
+        $this->validateTransport($request, $transport);
+        
+        // Message de validation
+        $message = array(
+            'type' => 'success',
+            'icon' => 'check',
+            'content' => 'Le transport solidaire a été modifié avec succés.'
+        );
         return redirect('transport/manage')->with('message', $message);
     }
     
@@ -70,13 +93,13 @@ class TransportSolidaireController extends Controller
         TransportSolidaire $transport) {
         $transport->jour = $request->jour;
         
-        if (isset($request->heureDepart)) {
+        if (!empty($request->heureDepart)) {
             $transport->heureDepart = new \DateTime();
             $heureDepart = explode(':', $request->heureDepart);
             $transport->heureDepart->setTime($heureDepart[0], $heureDepart[1], 0, 0);
         }
         
-        if (isset($request->heureRetour)) {
+        if (!empty($request->heureRetour)) {
             $transport->heureRetour = new \DateTime();
             $heureRetour = explode(':', $request->heureRetour);
             $transport->heureRetour->setTime($heureRetour[0], $heureRetour[1], 0, 0);
@@ -84,10 +107,12 @@ class TransportSolidaireController extends Controller
         
         $transport->commentaire = $request->commentaire;
         
-        if (empty($transport->user_id)) {
-            // Création
+        if (Auth::user()->actif == 2) {
+            $transport->user_id = $request->organisateur;
+        } else {
             $transport->user_id = Auth::user()->id;
-        }
+        }  
+        
         $transport->save();
     }
     

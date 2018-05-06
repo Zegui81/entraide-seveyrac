@@ -30,15 +30,22 @@ Route::get('covoit', 'Pages\CovoitController@home');
 Route::get('covoit/search/{day}', 'Pages\CovoitController@search');
 Route::get('covoit/calendar', 'Pages\CovoitController@calendar');
 
-Route::get('covoit/propose', 'Pages\CovoitController@publish');
-Route::post('covoit/propose', 'Pages\CovoitController@validateCreateCovoit');
+Route::get('covoit/manage', 'Pages\CovoitController@manage');
+Route::post('covoit/manage', 'Pages\CovoitController@validateCreateCovoit');
+
+Route::get('covoit/manage/{id}', 'Pages\CovoitController@editCovoit');
+Route::patch('covoit/manage/{id}', 'Pages\CovoitController@validateEditCovoit');
+Route::delete('covoit/manage/{id}', 'Pages\CovoitController@deleteCovoit');
 
 // Transports solidaires
 Route::get('transport', 'Pages\TransportSolidaireController@home');
 Route::get('transport/search/{id}', 'Pages\TransportSolidaireController@search');
 
 Route::get('transport/manage', 'Pages\TransportSolidaireController@manage');
-Route::post('transport/manage', 'Pages\TransportSolidaireController@createTransport');
+Route::post('transport/manage', 'Pages\TransportSolidaireController@validateCreateTransport');
+
+Route::get('transport/manage/{id}', 'Pages\TransportSolidaireController@editTransport');
+Route::patch('transport/manage/{id}', 'Pages\TransportSolidaireController@validateEditTransport');
 Route::delete('transport/manage/{id}', 'Pages\TransportSolidaireController@deleteTransport');
 
 /* ADMINISTRATION ---------------------------------------------------------- */
@@ -84,9 +91,23 @@ Route::get('admin/event/gallery/{id}/{photo}', 'Admin\AdminEventController@delet
 
 // Covoiturages
 Route::get('admin/covoit', 'Admin\AdminCovoitController@covoits');
+
+Route::get('admin/covoit/publish', 'Admin\AdminCovoitController@createCovoit');
+Route::post('admin/covoit/publish', 'Admin\AdminCovoitController@validateCreateCovoit');
+
 Route::get('admin/covoit/{id}', 'Admin\AdminCovoitController@editCovoit');
 Route::patch('admin/covoit/{id}', 'Admin\AdminCovoitController@validateEditCovoit');
 Route::delete('admin/covoit/{id}', 'Admin\AdminCovoitController@deleteCovoit');
+
+// Transports solidaires
+Route::get('admin/transport', 'Admin\AdminTransportSolidaireController@transports');
+
+Route::get('admin/transport/publish', 'Admin\AdminTransportSolidaireController@createTransport');
+Route::post('admin/transport/publish', 'Admin\AdminTransportSolidaireController@validateCreateTransport');
+
+Route::get('admin/transport/{id}', 'Admin\AdminTransportSolidaireController@editTransport');
+Route::patch('admin/transport/{id}', 'Admin\AdminTransportSolidaireController@validateEditTransport');
+Route::delete('admin/transport/{id}', 'Admin\AdminTransportSolidaireController@deleteTransport');
 
 /* ------------------------------------------------------------------------- */
 

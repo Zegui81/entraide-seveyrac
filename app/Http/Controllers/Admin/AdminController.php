@@ -7,6 +7,7 @@ use App\User;
 use App\Carousel;
 use App\Event;
 use App\Covoit;
+use App\TransportSolidaire;
 
 class AdminController extends Controller
 {
@@ -32,12 +33,14 @@ class AdminController extends Controller
         $nbImagesCarousel = Carousel::count();
         $nbEvent = Event::count();
         $nbCovoit = Covoit::count();
+        $nbTransport = TransportSolidaire::count();
         
         return view('admin.home')
             ->withNbImagesCarousel($nbImagesCarousel)
             ->withNbDemandeAdhesion($nbDemandeAdhesion)
             ->withNbUser($nbUser)
             ->withNbEvent($nbEvent)
-            ->withNbCovoit($nbCovoit);
+            ->withNbCovoit($nbCovoit)
+            ->withNbTransport($nbTransport);
     }
 }

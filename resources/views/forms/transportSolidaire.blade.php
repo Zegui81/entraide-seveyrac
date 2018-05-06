@@ -1,7 +1,21 @@
 {!! Form::open() !!}
 	@csrf
 	{!! Form::hidden('id', $transport['id']) !!}
-	{!! Form::hidden('user_id', $transport['organisateur']) !!}
+	
+	@if (Auth::user()->actif == 2)
+    	<div class="form-row"> 
+        	<div class="form-group col-md-12">
+    			{!! Form::label('organisateur', 'Organisateur') !!}
+    			<div class="input-group">
+                	<div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></div>
+                    </div>
+        			{!! Form::select('organisateur', $users, null, ['id' => 'organisateur' , 'class' => 'form-control '.($errors->has('organisateur') ? 'is-invalid' : '')]) !!}
+        			{!! $errors->first('organisateur', '<small class="invalid-feedback">:message</small>') !!}
+        		</div>
+    		</div>
+    	</div>
+    @endif
 	
 	<div class="form-row">
     	<div class="form-group col-md-4 {!! $errors->has('jour') ? 'has-error' : '' !!}">
@@ -29,7 +43,7 @@
             	<div class="input-group-prepend">
                   <div class="input-group-text"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
                 </div>
-                {!! Form::text('heureRetour', $transport['heureDepart'], ['class' => 'form-control '.($errors->has('heureRetour') ? 'is-invalid' : ''), 'placeholder' => '--:--', 'onkeydown' => 'return false']) !!}
+                {!! Form::text('heureRetour', $transport['heureRetour'], ['class' => 'form-control '.($errors->has('heureRetour') ? 'is-invalid' : ''), 'placeholder' => '--:--', 'onkeydown' => 'return false']) !!}
 				{!! $errors->first('heureDepart', '<div class="invalid-feedback">:message</div>') !!}
             </div>   
 		</div>   
@@ -45,12 +59,14 @@
 	</div>
 	@if ($transport != null)
 		{!! method_field('patch') !!}
-		{!! Form::button('Éditer le covoiturage&nbsp;&nbsp;<i class="fa fa-car" aria-hidden="true"></i>', array('type' => 'submit', 'class' => 'btn btn-primary pull-right')) !!}
+		{!! Form::button('Éditer le transport solidaire&nbsp;&nbsp;<i class="fa fa-car" aria-hidden="true"></i>', array('type' => 'submit', 'class' => 'btn btn-primary pull-right')) !!}
 	@else
 		{!! Form::button('Publier un transport solidaire&nbsp;&nbsp;<i class="fa fa-car" aria-hidden="true"></i>', array('type' => 'submit', 'class' => 'btn btn-primary pull-right')) !!}
 	@endif
 {!! Form::close() !!}
 <script type="text/javascript">
+    $('#organisateur').val({{ $transport['organisateur']['id'] }});
+    $('#jour').val({{ $transport['numJour'] }});
     $('.clockpicker').clockpicker({
         placement: 'bottom',
         align: 'right',
