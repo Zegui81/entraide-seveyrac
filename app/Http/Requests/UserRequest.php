@@ -13,6 +13,7 @@ class UserRequest extends FormRequest
         'password_confirmation' => 'required|same:password',
         'nom' => 'required|alpha',
         'prenom' => 'required|alpha',
+        'adresse' => 'required',
         'telFixe' => 'sometimes|nullable|digits:10',
         'telPortable' => 'sometimes|nullable|digits:10'
     ];

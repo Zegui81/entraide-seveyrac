@@ -31,7 +31,7 @@
 		</div>
     	
         <div class="card mt-4">
-        	<div class="card-header"><h4 class="mb-0">Photos présentes</h4></div>
+        	<div class="card-header"><h4 class="mb-0">Photos importées</h4></div>
           	<div class="card-body">
           		@foreach ($listPhoto as $item)
       			    <div class="hovereffect col-lg-4 col-sm-4">

@@ -7,7 +7,7 @@
       
       <!-- CSRF Token -->
       <meta name="csrf-token" content="{{ csrf_token() }}">
-      <title>{{ config('app.name') }}</title>
+      <title>De Pierres et de Chênes</title>
       
       <!-- Scripts -->
       <script src="{{ asset('../vendor/components/jquery/jquery.min.js') }}"></script>
@@ -41,21 +41,31 @@
       <!-- Navigation -->
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top" id="top">
          <div class="container">
-            <a class="navbar-brand" href="{{ asset('/') }}">De pierres et de chênes</a>
+            <a class="navbar-brand" href="{{ asset('/') }}">De Pierres et de Chênes</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                <ul class="nav navbar-nav navbar-left">
-                  <li class="nav-item">
-                     <a class="nav-link" href="{{ asset('/event') }}">Evénements</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="{{ asset('/transport') }}">Transports solidaires</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="{{ asset('/covoit') }}">Covoiturage</a>
-                  </li>
+               	  @guest
+                      <li class="nav-item">
+                         <a class="nav-link" href="{{ asset('/event') }}">Nos évènements à venir</a>
+                      </li>
+                      <li class="nav-item">
+                         <a class="nav-link" href="{{ asset('/contact') }}">Nous contacter</a>
+                      </li>                      
+                  @endguest
+                  @auth
+                      <li class="nav-item">
+                         <a class="nav-link" href="{{ asset('/event') }}">Évènements</a>
+                      </li>                  
+                      <li class="nav-item">
+                         <a class="nav-link" href="{{ asset('/transport') }}">Transports solidaires</a>
+                      </li>
+                      <li class="nav-item">
+                         <a class="nav-link" href="{{ asset('/covoit') }}">Covoiturage</a>
+                      </li>
+                  @endauth
                </ul>
                
                @auth

@@ -9,7 +9,7 @@
           </div>
           <div class="card-body">
              <div class="row">
-                <a class="col-md-4 p-2" href="{{ asset('/admin/user') }}">
+                <a class="col-md-6 p-2" href="{{ asset('/admin/user') }}">
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
                          <h3>{{ $nbUser }}</h3>
@@ -20,8 +20,19 @@
                       </div>
                    </div>
                 </a>
-                <a class="col-md-4 p-2" href="{{ asset('admin/membership') }}">
+                <a class="col-md-6 p-2" href="{{ asset('admin/user/add') }}">
                    <div class="board btn btn-info w-100 p-3">
+                      <div class="number">
+                         <h3>&nbsp;</h3>
+                         <small>Ajouter un adhérent</small>
+                      </div>
+                      <div class="icon">
+                         <i class="fa fa-user-plus fa-5x"></i>
+                      </div>
+                   </div>
+                </a>
+               <a class="col-md-6 p-2" href="{{ asset('admin/membership') }}">
+                   <div class="board btn btn-info w-100 p-3 {{ $nbDemandeAdhesion > 0 ? 'text-danger' : '' }}">
                       <div class="number">
                          <h3>{{ $nbDemandeAdhesion }}</h3>
                          <small>{{ $nbDemandeAdhesion > 1 ? 'Demandes d\'adhésion' : 'Demande d\'adhésion' }}</small>
@@ -31,14 +42,14 @@
                       </div>
                    </div>
                 </a>
-                <a class="col-md-4 p-2" href="{{ asset('admin/user/add') }}">
-                   <div class="board btn btn-info w-100 p-3">
+                <a class="col-md-6 p-2" href="{{ asset('admin/contact') }}">
+                   <div class="board btn btn-info w-100 p-3 {{ $nbContact > 0 ? 'text-danger' : '' }}">
                       <div class="number">
-                         <h3>&nbsp;</h3>
-                         <small>Ajouter un adhérent</small>
+                         <h3>{{ $nbContact }}</h3>
+                         <small>{{ $nbContact > 1 ? 'Prises de contact' : 'Prise de contact' }}</small>
                       </div>
                       <div class="icon">
-                         <i class="fa fa-user-plus fa-5x"></i>
+                         <i class="fa fa-paper-plane fa-5x"></i>
                       </div>
                    </div>
                 </a>

@@ -4,18 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Carousel;
 use App\Text;
+use App\Http\Requests\ContactRequest;
+use App\Contact;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //$this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -38,6 +31,32 @@ class HomeController extends Controller
             ->withCarousel($liste)
             ->withTextGauche($texteGauche->content)
             ->withTextBas($texteBas->content);
-//             ->withFooter($footer->content);
+    }
+    
+    public function contact() {
+        return view('contact');
+    }
+    
+    public function createContact(ContactRequest $request)
+    {
+        $contact = new Contact();
+        $this->validateContact($request, $contact);
+        
+        $message = array(
+            'type' => 'success',
+            'icon' => 'check',
+            'content' => 'Votre message a bien été envoyé aux administrateurs du site.'
+        );
+        
+        return redirect('/')->with('message', $message);
+    }
+    
+    protected function validateContact(ContactRequest $request, Contact $contact)
+    {
+        $contact->email = $request->email;
+        $contact->nom = $request->nom;
+        $contact->prenom = $request->prenom;
+        $contact->message = $request->message;
+        $contact->save();
     }
 }

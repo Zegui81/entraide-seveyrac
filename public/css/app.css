@@ -161,3 +161,33 @@
 .delete-icon a {
 	color: #000;
 }
+
+.paye, .n-paye {
+	min-width: 100px;
+}
+
+.paye:hover {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.paye:after {
+    content: 'Payé';
+}
+
+.paye:hover:after {
+    content: 'Annuler';
+}
+
+.n-paye:hover {
+	background-color: #28a745;
+	border-color: #28a745;
+}
+
+.n-paye:after {
+    content: 'Non payé';
+}
+
+.n-paye:hover:after {
+    content: 'Confirmer';
+}

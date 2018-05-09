@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UserEditRequest;
+use App\Http\Controllers\Controller;
 
 class AdminUserController extends Controller
 {
@@ -77,14 +77,58 @@ class AdminUserController extends Controller
     public function user()
     {
         // Utilisateurs actif
-        $users = User::where('actif', 1)
-            ->where('id', '!=', Auth::user()->id)->get();
+        $users = User::where('actif', '>=', 1)->get();
         
         $liste = array();
         foreach ($users as $user) {
             array_push($liste, $user->userToArray());
         }
         return view('admin.user.users')->withListUser($liste);
+    }
+    
+    public function changeCotisation($id)
+    {
+        $user = User::where('id', $id)->first();
+        $user->cotisation = !$user->cotisation;
+        $user->save();
+        
+        $message = array(
+            'type' => 'success',
+            'icon' => 'check',
+            'content' => 'La cotisation d\'un utilisateur a été modifié.'
+        );
+        return redirect('admin/user')->with('message', $message);
+    }
+    
+    public function editUser($id) 
+    {
+        $user = User::where('id', $id)->first();
+        
+        return view('admin.user.editUser')->withUser($user->userEditToArray());
+    }
+    
+    public function validateEditUser(UserEditRequest $request, $id)
+    {
+        $user = User::where('id', $id)->first();
+        $this->validateUser($request, $user);
+        
+        // Message de validation
+        $message = array(
+            'type' => 'success',
+            'icon' => 'check',
+            'content' => 'L\'utilisateur a été modifié.'
+        );
+        return redirect('admin/user')->with('message', $message);
+    }
+    
+    protected function validateUser(UserEditRequest $request, User $user) 
+    {
+        $user->nom = $request->nom;
+        $user->prenom = $request->prenom;
+        $user->adresse = $request->adresse;
+        $user->telFixe = $request->telFixe;
+        $user->telPortable = $request->telPortable;
+        $user->save();
     }
     
     /**
@@ -159,5 +203,44 @@ class AdminUserController extends Controller
         return Validator::make($data,
             UserRequest::getRules(),
             UserRequest::getMessages());
+    }
+    
+    public function upgrade($id)
+    {
+        $nbAdmin = User::where('actif', 2)->count();
+        $message = null;
+        
+        if ($nbAdmin >= 3) {
+            $message = array(
+                'type' => 'danger',
+                'icon' => 'ban',
+                'content' => 'Opération impossible. Vous possédez déjà 3 administrateurs.'
+            );
+        } else {        
+            $user = User::where('id', $id)->first();
+            $user->actif = 2;
+            $user->save();
+            
+            $message = array(
+                'type' => 'success',
+                'icon' => 'check',
+                'content' => 'L\'adhérent a été promu en administrateur.'
+            );
+        }
+        return redirect('admin/user')->with('message', $message);
+    }
+    
+    public function downgrade($id)
+    {
+        $user = User::where('id', $id)->first();
+        $user->actif = 1;
+        $user->save();
+        
+        $message = array(
+            'type' => 'success',
+            'icon' => 'check',
+            'content' => 'L\'adhérent n\'est plus administrateur.'
+        );
+        return redirect('admin/user')->with('message', $message);
     }
 }

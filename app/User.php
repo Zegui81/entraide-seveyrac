@@ -9,7 +9,7 @@ class User extends Model implements Authenticatable
 {
     protected $table = 'users';
     
-    protected $fillable = ['id', 'email', 'password', 'nom', 'prenom', 'telFixe', 'telPortable', 'actif', 'remember_token', 'created_at', 'updated_at'];
+    protected $fillable = ['id', 'email', 'password', 'nom', 'prenom', 'telFixe', 'telPortable', 'actif', 'remember_token', 'created_at', 'updated_at', 'adresse', 'cotisation'];
     
     protected $hidden = ['password', 'remember_token'];
     
@@ -54,7 +54,24 @@ class User extends Model implements Authenticatable
             'prenom' => $this->prenom,
             'telFixe' =>  isset($this->telFixe) ? chunk_split($this->telFixe, 2, ' ') : null,
             'telPortable' => isset($this->telPortable) ? chunk_split($this->telPortable, 2, ' ') : null,
+            'adresse' => $this->adresse,
+            'actif' => $this->actif,
+            'cotisation' => $this->cotisation,
             'created_at' => date('d/m/Y \à H\hi', strtotime($this->created_at))
+        );
+    }
+    
+    public function userEditToArray()
+    {
+        return array(
+            'id' => $this->id,
+            'email' => $this->email,
+            'nom' =>  $this->nom,
+            'prenom' => $this->prenom,
+            'telFixe' =>  $this->telFixe,
+            'telPortable' => $this->telPortable,
+            'adresse' => $this->adresse,
+            'cotisation' => $this->cotisation,
         );
     }
 }

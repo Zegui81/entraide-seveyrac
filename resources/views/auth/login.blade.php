@@ -40,7 +40,6 @@
                     	{!! Form::label('remember', 'Se souvenir de moi', array('class' => 'col-form-label')) !!}
                     	
             			{!! Form::button('Se connecter&nbsp;&nbsp;<i class="fa fa-sign-in" aria-hidden="true"></i>', array('type' => 'submit', 'class' => 'btn btn-primary pull-right')) !!}
-    					{!! Form::button('Mot de passe oublié ?', array('type' => 'submit', 'class' => 'btn btn-link pull-right', 'href' => route('password.request'))) !!}
                     </div>
                 </div>
           	{!! Form::close() !!}

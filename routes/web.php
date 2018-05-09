@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Auth;
 // Accueil
 Route::get('/', 'HomeController@index');
 
+Route::get('contact', 'HomeController@contact');
+Route::post('contact', 'HomeController@createContact');
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout'); 
 
 /* PAGES ------------------------------------------------------------------- */
@@ -59,6 +62,14 @@ Route::delete('admin/membership/{id}', 'Admin\AdminUserController@rejectMembersh
 
 // Liste des adhérents
 Route::get('admin/user', 'Admin\AdminUserController@user');
+
+Route::get('admin/user/{id}', 'Admin\AdminUserController@editUser');
+Route::patch('admin/user/{id}', 'Admin\AdminUserController@validateEditUser');
+Route::get('admin/user/cotisation/{id}', 'Admin\AdminUserController@changeCotisation');
+
+Route::patch('admin/user/upgrade/{id}', 'Admin\AdminUserController@upgrade');
+Route::patch('admin/user/downgrade/{id}', 'Admin\AdminUserController@downgrade');
+
 Route::delete('admin/user/{id}', 'Admin\AdminUserController@deleteUser');
 
 // Ajouter un membre
@@ -110,8 +121,5 @@ Route::patch('admin/transport/{id}', 'Admin\AdminTransportSolidaireController@va
 Route::delete('admin/transport/{id}', 'Admin\AdminTransportSolidaireController@deleteTransport');
 
 /* ------------------------------------------------------------------------- */
-
-Route::get('contact', 'FirstController@getFormContact');
-Route::post('contact', 'FirstController@postFormContact');
 
 Auth::routes();

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mb-4 mt-4">
         <ul class="breadcrumb">
-          <li>Gallerie de photos de : &nbsp;</li>
+          <li>Galerie de photos de : &nbsp;</li>
           <li class="active">{{ $event['titre'] }}</li>
           <li class="ml-auto">
              <a class="btn btn-primary" href="{{ asset('admin/event') }}">Retour aux évènements&nbsp;&nbsp;
@@ -27,7 +27,7 @@
         </script>
         
         <div class="card mt-3">
-            <div class="card-header"><h4 class="mb-0">Photos présentes</h4></div>
+            <div class="card-header"><h4 class="mb-0">Photos importées</h4></div>
             <div class="card-body">
             	<div class="row mt-3">
             		@foreach ($photos as $photo)

@@ -14,7 +14,7 @@ class EventController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('event');
+        $this->middleware('auth')->except('home');
     }
     
     public function home() 

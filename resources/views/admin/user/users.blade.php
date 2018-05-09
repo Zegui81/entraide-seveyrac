@@ -22,23 +22,41 @@
                     <th scope="col">Email</th>
                     <th scope="col">Téléphone</th>
                     <th scope="col">Mobile</th>
-                    <th scope="col">Demande</th>
+                    <th scope="col">Cotisation</th>
                     <th scope="col">Actions</th>
                  </tr>
               </thead>
               <tbody>
                  @foreach ($listUser as $item)
-                     <tr>
+                     <tr {{ Auth::user()->id == $item['id'] ? 'class=table-warning' : '' }}>
                         <td>{{ $item['prenom'].' '.$item['nom'] }}</td>
                         <td>{{ $item['email'] }}</td>
                         <td>{{ $item['telFixe'] }}</td>
                         <td>{{ $item['telPortable'] }}</td>
-                        <td>{{ $item['created_at'] }}</td>
+                        <td><a class="btn btn-{{ $item['cotisation'] ? 'success paye' : 'danger n-paye' }}" href="{{ asset('admin/user/cotisation').'/'.$item['id'] }}"></a></td>
                         <td>
-                           {!! Form::open(['url' => 'admin/user/'.$item['id'], 'method' => 'POST', 'class' => 'float-left']) !!}
-                               {!! method_field('delete') !!}
-                               {!! Form::button('<i class="fa fa-trash" aria-hidden="true"></i>', array('title' => 'Supprimer ce membre', 'type' => 'submit', 'class' => 'btn btn-sm btn-danger w-32px')) !!}
-                           {!! Form::close() !!}
+					    	@if (Auth::user()->id != $item['id'])
+					    		@if ($item['actif'] == 1)
+    					    		{!! Form::open(['url' => 'admin/user/upgrade/'.$item['id'], 'method' => 'POST', 'class' => 'float-left mr-1']) !!}
+                                       {!! method_field('patch') !!}
+                                       {!! Form::button('<i class="fa fa-angle-double-up" aria-hidden="true"></i>', array('title' => 'Promouvoir ce membre', 'type' => 'submit', 'class' => 'btn btn-sm btn-success w-32px')) !!}
+                                    {!! Form::close() !!}
+					    		@elseif ($item['actif'] == 2)
+    					    		{!! Form::open(['url' => 'admin/user/downgrade/'.$item['id'], 'method' => 'POST', 'class' => 'float-left mr-1']) !!}
+                                       {!! method_field('patch') !!}
+                                       {!! Form::button('<i class="fa fa-angle-double-down" aria-hidden="true"></i>', array('title' => 'Destituer ce membre', 'type' => 'submit', 'class' => 'btn btn-sm btn-secondary w-32px')) !!}
+                                    {!! Form::close() !!}					    		
+					    		@endif
+                            @endif
+                            <a class="btn btn-sm btn-warning mr-1 float-left" title="Modifier cet utilisateur" href="{{ asset('admin/user/').'/'.$item['id'] }}">
+                           		<i class="fa fa-pencil-square-o w-32"></i>
+                            </a>
+					    	@if (Auth::user()->id != $item['id'])
+                               {!! Form::open(['url' => 'admin/user/'.$item['id'], 'method' => 'POST', 'class' => 'float-left']) !!}
+                                   {!! method_field('delete') !!}
+                                   {!! Form::button('<i class="fa fa-trash" aria-hidden="true"></i>', array('title' => 'Supprimer ce membre', 'type' => 'submit', 'class' => 'btn btn-sm btn-danger w-32px')) !!}
+                               {!! Form::close() !!}
+                            @endif
                         </td>
                      </tr>
                  @endforeach

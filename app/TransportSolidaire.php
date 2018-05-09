@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TransportSolidaire extends Model
 {
-    public const JOURS = ['Tous les jours', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+    public const JOURS = ['À la demande', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
     
     protected $table = 'transport_solidaire';
     
