@@ -51,9 +51,20 @@ Route::get('transport/manage/{id}', 'Pages\TransportSolidaireController@editTran
 Route::patch('transport/manage/{id}', 'Pages\TransportSolidaireController@validateEditTransport');
 Route::delete('transport/manage/{id}', 'Pages\TransportSolidaireController@deleteTransport');
 
+// Presse
+Route::get('news', 'Pages\PresseController@articles');
+
 /* ADMINISTRATION ---------------------------------------------------------- */
 // Menu administraion
 Route::get('admin', 'Admin\AdminController@index'); 
+
+// Formulaire d'adhésion
+Route::get('admin/user/form', 'Admin\AdminUserController@formMembership');
+Route::post('admin/user/form', 'Admin\AdminUserController@editFormMembership');
+
+// Contacts
+Route::get('admin/contact', 'Admin\AdminHomeController@contacts');
+Route::delete('admin/contact/{id}', 'Admin\AdminHomeController@deleteContact');
 
 // Demandes d'admission
 Route::get('admin/membership', 'Admin\AdminUserController@membership');
@@ -119,6 +130,11 @@ Route::post('admin/transport/publish', 'Admin\AdminTransportSolidaireController@
 Route::get('admin/transport/{id}', 'Admin\AdminTransportSolidaireController@editTransport');
 Route::patch('admin/transport/{id}', 'Admin\AdminTransportSolidaireController@validateEditTransport');
 Route::delete('admin/transport/{id}', 'Admin\AdminTransportSolidaireController@deleteTransport');
+
+// Presse
+Route::get('admin/news', 'Admin\AdminPresseController@articles');
+Route::post('admin/news', 'Admin\AdminPresseController@publish');
+Route::get('admin/news/{id}', 'Admin\AdminPresseController@deleteArticle');
 
 /* ------------------------------------------------------------------------- */
 

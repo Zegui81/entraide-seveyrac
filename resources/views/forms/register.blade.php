@@ -1,7 +1,7 @@
 {!! Form::open() !!}
 	@csrf
 	@if ($user == null)
-    	<div class="form-group">
+    	<div class="form-group {{ $errors->has('email') ? 'has-danger' : '' }}">
     		{!! Form::label('email', 'Email', array('class' => 'col-form-label required')) !!}
     		<div class="input-group">
             	<div class="input-group-prepend">

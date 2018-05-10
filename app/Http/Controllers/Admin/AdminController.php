@@ -9,6 +9,7 @@ use App\Event;
 use App\Covoit;
 use App\TransportSolidaire;
 use App\Contact;
+use App\Presse;
 
 class AdminController extends Controller
 {
@@ -36,6 +37,7 @@ class AdminController extends Controller
         $nbCovoit = Covoit::count();
         $nbTransport = TransportSolidaire::count();
         $nbContact = Contact::count();
+        $nbArticle = Presse::count();
         
         return view('admin.home')
             ->withNbImagesCarousel($nbImagesCarousel)
@@ -44,6 +46,7 @@ class AdminController extends Controller
             ->withNbEvent($nbEvent)
             ->withNbCovoit($nbCovoit)
             ->withNbTransport($nbTransport)
-            ->withNbContact($nbContact);
+            ->withNbContact($nbContact)
+            ->withNbArticle($nbArticle);
     }
 }

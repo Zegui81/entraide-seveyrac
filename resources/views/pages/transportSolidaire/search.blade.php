@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mb-4 mt-4">
        <ul class="breadcrumb">
-          <li class="active">Transports solidaires pour {{ $jour }}</li>
+          <li class="active">Transports solidaires : {{ $jour }}</li>
        </ul>
        @include('layouts/message')
        <div class="row">

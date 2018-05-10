@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContactTable extends Migration
+class CreatePresseTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateContactTable extends Migration
      */
     public function up()
     {
-        Schema::create('contact', function (Blueprint $table) {
+        Schema::create('presse', function (Blueprint $table) {
             // Paramètres
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';
@@ -21,11 +21,9 @@ class CreateContactTable extends Migration
             
             // Champs
             $table->increments('id');
-            $table->string('email', 100);
-            $table->string('nom', 50);
-            $table->string('prenom', 50);
-            $table->text('message');
-            $table->timestamps();
+            $table->string('titre', 100);
+            $table->dateTime('datePubli');
+            $table->text('description')->nullable();
         });
     }
 
@@ -36,6 +34,6 @@ class CreateContactTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact');
+        Schema::dropIfExists('presse');
     }
 }

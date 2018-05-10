@@ -169,10 +169,11 @@
 .paye:hover {
     background-color: #dc3545;
     border-color: #dc3545;
+    color: white!important;
 }
 
 .paye:after {
-    content: 'Payé';
+    content: 'Payée';
 }
 
 .paye:hover:after {
@@ -182,12 +183,17 @@
 .n-paye:hover {
 	background-color: #28a745;
 	border-color: #28a745;
+	color: white!important;
 }
 
 .n-paye:after {
-    content: 'Non payé';
+    content: 'Non payée';
 }
 
 .n-paye:hover:after {
     content: 'Confirmer';
+}
+
+.d-flex {
+	flex-wrap: wrap;
 }

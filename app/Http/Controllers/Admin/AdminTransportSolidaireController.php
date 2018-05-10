@@ -19,7 +19,6 @@ class AdminTransportSolidaireController extends TransportSolidaireController
         $this->middleware('admin');
     }
     
-    
     public function transports()
     {
         // Liste des évènements

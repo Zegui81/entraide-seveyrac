@@ -8,6 +8,7 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserEditRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class AdminUserController extends Controller
 {
@@ -53,6 +54,30 @@ class AdminUserController extends Controller
         );
         
         return redirect('admin/membership')->with('message', $message);
+    }
+    
+    public function formMembership() 
+    {
+        return view('admin.user.formMembership');
+    }
+    
+    public function editFormMembership(Request $request)
+    {
+        $message = null;
+        
+        if ($request->photo != null) {
+            $destinationPath = public_path('img');
+            $request->photo->move($destinationPath, 'form.jpg');
+            
+            // Message de validation
+            $message = array(
+                'type' => 'success',
+                'icon' => 'check',
+                'content' => 'Le formulaire d\'adhésion a été modifié.'
+            );
+        }
+        
+        return redirect('admin')->with('message', $message);
     }
     
     /**

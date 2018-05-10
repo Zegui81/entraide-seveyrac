@@ -17,10 +17,10 @@
                 		<div class="form-group col-md-6">
                 			<div>
                                 {!! Form::label('photo', "Image à droite", array('class' => 'control-label')) !!}
-                    			<input name="photo" type="file" id="photo" class="form-control" onchange="displayApercu(this);">
+                    			<input name="photo" type="file" id="photo" class="form-control" onchange="displayApercu(this);" accept=".jpg, .jpeg, .png">
                 			</div>
                 			<div class="text-center mt-1">
-                	 	       <img class="img-fluid rounded" id="apercu" src="{{ asset('img/home.jpg') }}" alt="your image"/>
+                	 	       <img class="img-fluid rounded" id="apercu" src="{{ asset('img/home.jpg') }}" />
                 			</div>
                         </div>
                 	</div>      

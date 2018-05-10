@@ -7,6 +7,7 @@ use App\Carousel;
 use App\Http\Requests\CarouselRequest;
 use App\Text;
 use Illuminate\Http\Request;
+use App\Contact;
 
 class AdminHomeController extends Controller
 {
@@ -70,7 +71,9 @@ class AdminHomeController extends Controller
     public function removePicture($id)
     {
         $photo = Carousel::where('id', $id)->first();
-        unlink(public_path('img\carousel').'\\'.$id.'.'.$photo->ext);
+        if (file_exists(public_path('img\carousel').'\\'.$id.'.'.$photo->ext)) {
+            unlink(public_path('img\carousel') . '\\' . $id . '.' . $photo->ext);
+        }
         Carousel::destroy($id);
         
         // Message de confirmation
@@ -142,5 +145,30 @@ class AdminHomeController extends Controller
             $request->photo->move($destinationPath, 'home.jpg');
         }
         return redirect('/');
+    }
+    
+    public function contacts() {
+        $contacts = Contact::all();
+        
+        $liste = array();
+        foreach ($contacts as $contact) {
+            array_push($liste, $contact->contactToArray());
+        }
+        return view('admin.content.contact.contacts')
+            ->withContacts($liste);
+    }
+    
+    public function deleteContact($id)
+    {
+        Contact::destroy($id);
+        
+        // Message de confirmation
+        $message = array(
+            'type' => 'success',
+            'icon' => 'check',
+            'content' => 'Le message a bien été supprimé.'
+        );
+        
+        return redirect('admin/contact')->with('message', $message);
     }
 }

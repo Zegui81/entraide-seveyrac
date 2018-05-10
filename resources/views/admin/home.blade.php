@@ -46,10 +46,10 @@
                    <div class="board btn btn-info w-100 p-3 {{ $nbContact > 0 ? 'text-danger' : '' }}">
                       <div class="number">
                          <h3>{{ $nbContact }}</h3>
-                         <small>{{ $nbContact > 1 ? 'Prises de contact' : 'Prise de contact' }}</small>
+                         <small>{{ $nbContact > 1 ? 'Messages laissés' : 'Message laissé	' }}</small>
                       </div>
                       <div class="icon">
-                         <i class="fa fa-paper-plane fa-5x"></i>
+                         <i class="fa fa-commenting-o fa-5x"></i>
                       </div>
                    </div>
                 </a>
@@ -63,7 +63,7 @@
           </div>
           <div class="card-body">
              <div class="row">
-                <a class="col-md-4 p-2" href="{{ asset('admin/event') }}">
+                <a class="col-md-6 p-2" href="{{ asset('admin/event') }}">
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
                          <h3>{{ $nbEvent }}</h3>
@@ -74,7 +74,18 @@
                       </div>
                    </div>
                 </a>
-                <a class="col-md-4 p-2" href="{{ asset('admin/transport') }}">
+                <a class="col-md-6 p-2" href="{{ asset('admin/news') }}">
+                   <div class="board btn btn-info w-100 p-3">
+                      <div class="number">
+                         <h3>{{ $nbArticle }}</h3>
+                         <small>{{ $nbArticle > 1 ? 'articles' : 'article' }}</small>
+                      </div>
+                      <div class="icon">
+                         <i class="fa fa-newspaper-o fa-5x"></i>
+                      </div>
+                   </div>
+                </a>                
+                <a class="col-md-6 p-2" href="{{ asset('admin/transport') }}">
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
                          <h3>{{ $nbTransport }}</h3>
@@ -85,7 +96,7 @@
                       </div>
                    </div>
                 </a>
-                <a class="col-md-4 p-2" href="{{ asset('admin/covoit') }}">
+                <a class="col-md-6 p-2" href="{{ asset('admin/covoit') }}">
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
                          <h3>{{ $nbCovoit }}</h3>
@@ -106,7 +117,7 @@
           </div>
           <div class="card-body">
              <div class="row">
-                <a class="col-md-4 p-2" href="{{ asset('admin/home/carousel') }}">
+                <a class="col-md-6 p-2" href="{{ asset('admin/home/carousel') }}">
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
                          <h3 class="float-left">{{ $nbImagesCarousel }} </h3>
@@ -118,7 +129,7 @@
                       </div>
                    </div>
                 </a>
-                <a class="col-md-4 p-2" href="{{ asset('admin/home/text') }}">
+                <a class="col-md-6 p-2" href="{{ asset('admin/home/text') }}">
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
                          <h3>&nbsp;</h3>
@@ -130,7 +141,7 @@
                    </div>
                 </a>
                 </a>
-                <a class="col-md-4 p-2" href="{{ asset('admin/home/footer') }}">
+                <a class="col-md-6 p-2" href="{{ asset('admin/home/footer') }}">
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
                          <h3>&nbsp;</h3>
@@ -140,7 +151,18 @@
                          <i class="fa fa-level-down fa-5x"></i>
                       </div>
                    </div>
-                </a>                
+                </a> 
+                <a class="col-md-6 p-2" href="{{ asset('admin/user/form') }}">
+                   <div class="board btn btn-info w-100 p-3">
+                      <div class="number">
+                         <h3>&nbsp;</h3>
+                         <small>Formulaire d'adhésion</small>
+                      </div>
+                      <div class="icon">
+                         <i class="fa fa-file-text fa-5x"></i>
+                      </div>
+                   </div>
+                </a>                                 
              </div>
           </div>
        </div>

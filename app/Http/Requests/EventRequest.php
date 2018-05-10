@@ -29,7 +29,8 @@ class EventRequest extends FormRequest
             'jourFin' => 'required|date',
             'organisateur' => 'required',
             'heureDebut' => 'required_if:journee,0',
-            'heureFin' => 'required_if:journee,0'
+            'heureFin' => 'required_if:journee,0',
+            'photo' => 'image'
         ];
     }
 }

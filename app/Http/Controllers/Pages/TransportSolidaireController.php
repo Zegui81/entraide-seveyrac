@@ -33,7 +33,7 @@ class TransportSolidaireController extends Controller
         
         return view('pages.transportSolidaire.search')
             ->withJours(TransportSolidaire::JOURS)
-            ->withJour(strtolower(TransportSolidaire::JOURS[$numDay]))
+            ->withJour(TransportSolidaire::JOURS[$numDay])
             ->withNumJour($numDay)
             ->withTransports($liste);
     }

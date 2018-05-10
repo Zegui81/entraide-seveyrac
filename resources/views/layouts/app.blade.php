@@ -51,21 +51,26 @@
                       <li class="nav-item">
                          <a class="nav-link" href="{{ asset('/event') }}">Nos évènements à venir</a>
                       </li>
-                      <li class="nav-item">
-                         <a class="nav-link" href="{{ asset('/contact') }}">Nous contacter</a>
-                      </li>                      
                   @endguest
                   @auth
                       <li class="nav-item">
                          <a class="nav-link" href="{{ asset('/event') }}">Évènements</a>
                       </li>                  
                       <li class="nav-item">
-                         <a class="nav-link" href="{{ asset('/transport') }}">Transports solidaires</a>
+                         <a class="nav-link" href="{{ asset('/transport') }}">Transport solidaire</a>
                       </li>
                       <li class="nav-item">
                          <a class="nav-link" href="{{ asset('/covoit') }}">Covoiturage</a>
                       </li>
                   @endauth
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ asset('/news') }}">On parle de nous !</a>
+                  </li>
+                  @guest
+                      <li class="nav-item">
+                         <a class="nav-link" href="{{ asset('/contact') }}">Nous contacter</a>
+                      </li>                      
+                  @endguest
                </ul>
                
                @auth

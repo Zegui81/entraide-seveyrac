@@ -78,9 +78,10 @@
     			{!! $errors->first('organisateur', '<small class="invalid-feedback">:message</small>') !!}
     		</div>
 		</div>
-		<div class="form-group col-md-6">
+		<div class="form-group col-md-6 {!! $errors->has('photo') ? 'has-error' : '' !!}">
             {!! Form::label('photo', "Image de l'évènement", array('class' => 'control-label')) !!}
-			<input name="photo" type="file" id="photo" class="form-control">
+			<input name="photo" type="file" id="photo" class="form-control {{ $errors->has('photo') ? 'is-invalid' : '' }}" accept=".jpg, .jpeg, .png">
+			{!! $errors->first('photo', '<small class="invalid-feedback">:message</small>') !!}
         </div>
     </div>    
     

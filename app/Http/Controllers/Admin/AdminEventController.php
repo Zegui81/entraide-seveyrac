@@ -63,9 +63,8 @@ class AdminEventController extends Controller
         $message = array(
             'type' => 'success',
             'icon' => 'calendar-check-o',
-            'content' => 'L\'évènement a été créé avec succés.'
+            'content' => 'L\'évènement a été créé.'
         );
-        
         return redirect('admin/event')->with('message', $message);
     }
 
@@ -114,6 +113,15 @@ class AdminEventController extends Controller
     public function deleteEvent($id)
     {
         Event::destroy($id);
+        if (file_exists(public_path('img\event').'\\'.$id.'.jpg')) {
+            unlink(public_path('img\event').'\\'.$id.'.jpg'); // Photos principales
+        }
+        
+        $files = glob(public_path('img\event\gallery').'\\'.$id.'\\*'); // Tous les fichiers
+        foreach ($files as $file) { // iterate files
+            if(is_file($file))
+                unlink($file); // delete file
+        }
         
         // Message de validation
         $message = array(
@@ -156,7 +164,9 @@ class AdminEventController extends Controller
     }
     
     public function deletePhoto($id, $photo) {
-        unlink(public_path('img\event\gallery').'\\'.$id.'\\'.$photo);
+        if (file_exists(public_path('img\event\gallery').'\\'.$id.'\\'.$photo)) {
+            unlink(public_path('img\event\gallery').'\\'.$id.'\\'.$photo);
+        }
         return redirect()->back();
     }
 }
