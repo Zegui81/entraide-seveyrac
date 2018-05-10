@@ -2,15 +2,17 @@
 
 @section('content')
     <div class="container mt-4 mb-4">
-    	<div class="card">
-        	<div class="card-header"><h4 class="mb-0">Télécharger et imprimer notre formulaire</h4></div>
-        	<div class="card-body">
-        		<button type="button" class="btn btn-primary btn-lg btn-block">Télécharger au format PDF&nbsp;
-        			<i class="fa fa-download"></i>
-        		</button>
-        	</div>
-        </div>	
-        <div class="hr">&nbsp;OU&nbsp;</div>  
+    	@if (file_exists(public_path('img\form.jpg')))
+        	<div class="card">
+            	<div class="card-header"><h4 class="mb-0">Imprimer notre formulaire d'adhésion</h4></div>
+            	<div class="card-body">
+                	<a class="btn btn-primary btn-lg btn-block" href="{{ asset('formRegister') }}">
+                         Télécharger le formulaire au format JPG&nbsp;&nbsp;<i class="fa fa-download"></i>
+                    </a>
+            	</div>
+            </div>	
+            <div class="hr">&nbsp;OU&nbsp;</div>
+        @endif  
         <div class="card">
           <div class="card-header"><h4 class="mb-0">Faire une demande d'adhésion</h4></div>
           <div class="card-body">

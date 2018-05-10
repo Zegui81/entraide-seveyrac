@@ -48,6 +48,21 @@ class RegisterController extends Controller
         return view('auth.register')->withUser(null);
     }
     
+    public function downloadForm() {
+        $file = public_path('img\form.jpg');
+        if (file_exists($file)) {
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename="Séveyrac - Demande d\'adhésion.jpg"');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            readfile($file);
+            exit;
+        }
+    }
+    
     /**
      * Create a new user instance after a valid registration.
      *

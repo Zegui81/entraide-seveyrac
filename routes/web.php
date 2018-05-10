@@ -20,6 +20,8 @@ Route::get('/', 'HomeController@index');
 Route::get('contact', 'HomeController@contact');
 Route::post('contact', 'HomeController@createContact');
 
+Route::get('formRegister', 'Auth\RegisterController@downloadForm');
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout'); 
 
 /* PAGES ------------------------------------------------------------------- */
