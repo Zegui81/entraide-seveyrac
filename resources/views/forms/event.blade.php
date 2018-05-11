@@ -40,7 +40,7 @@
     <div class="form-row">
         <div class="form-group col-md-12 {!! $errors->has('nom') ? 'has-error' : '' !!}">
 			{!! Form::label('journee', 'Toute la journée&nbsp;') !!}
-			{!! Form::checkbox('journee', 1, $event['journee'] == 1, ['id' => 'checkhour']) !!}
+			{!! Form::checkbox('journee', null, $event['journee'] == 1, ['id' => 'checkhour']) !!}
 		</div>    
     </div> 
     
@@ -55,7 +55,7 @@
 				{!! $errors->first('heureDebut', '<div class="invalid-feedback">:message</div>') !!}
             </div>   
 		</div>                	
-		<div class="form-group col-md-6 {!! $errors->has('heureDebut') ? 'has-error' : '' !!}">
+		<div class="form-group col-md-6 {!! $errors->has('heureFin') ? 'has-error' : '' !!}">
     		{!! Form::label('heureFin', 'Heure de fin', array('class' => 'col-form-label required')) !!}
 			<div class="input-group clockpicker">
             	<div class="input-group-prepend">

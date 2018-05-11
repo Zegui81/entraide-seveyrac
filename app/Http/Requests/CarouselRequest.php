@@ -24,7 +24,22 @@ class CarouselRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo' => 'required'
+            'titre' => 'max:50',
+            'photo' => 'required|image'
+        ];
+    }
+    
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'titre.max' => 'Le titre de la photo ne doit pas dépasser 50 caractères',
+            'photo.required' => 'Une photo doit être renseignée.',
+            'photo.image' => 'Le fichier renseigné doit être une image.'
         ];
     }
 }

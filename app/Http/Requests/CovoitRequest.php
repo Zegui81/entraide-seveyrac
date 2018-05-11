@@ -24,12 +24,30 @@ class CovoitRequest extends FormRequest
     public function rules()
     {
         return [
-            'origine' => 'required',
-            'destination' => 'required',
+            'origine' => 'required|max:100',
+            'destination' => 'required|max:100',
             'jourDepart' => 'required',
             'heureDepart' => 'required',
             'nbPlace' => 'required',
             'commentaire' => ''
+        ];
+    }
+    
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'origine.required' => 'Votre lieu de départ doit être renseigné.',
+            'destination.required' => 'Votre lieu de destination doit être renseigné.',
+            'jourDepart.required' => 'Le jour de votre départ doit être renseigné.',
+            'heureDepart.required' => 'L\'heure de votre départ doit être renseignée.',
+            'nbPlace.required' => 'Le nombre de places disponibles doit être renseigné.',
+            'origine.max' => 'Votre lieu de départ ne peut pas dépasser 100 caractères.',
+            'destination.max' => 'Votre lieu de destination ne peut pas dépasser 100 caractères.'
         ];
     }
 }

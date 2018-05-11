@@ -18,9 +18,9 @@
 			{!! $errors->first('nom', '<small class="invalid-feedback">:message</small>') !!}
 		</div>
 		
-		<div class="form-group col-md-6 {!! $errors->has('nom') ? 'has-error' : '' !!}">
+		<div class="form-group col-md-6 {!! $errors->has('prenom') ? 'has-error' : '' !!}">
 			{!! Form::label('prenom', 'Prénom', array('class' => 'required')) !!}
-			{!! Form::text('prenom', null, ['class' => 'form-control '.($errors->has('nom') ? 'is-invalid' : ''), 'placeholder' => 'Prénom']) !!}
+			{!! Form::text('prenom', null, ['class' => 'form-control '.($errors->has('prenom') ? 'is-invalid' : ''), 'placeholder' => 'Prénom']) !!}
 			{!! $errors->first('prenom', '<div class="invalid-feedback">:message</div>') !!}
 		</div>
     </div>    

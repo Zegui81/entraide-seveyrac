@@ -31,7 +31,7 @@ class AdminController extends Controller
     public function index()
     {
         $nbDemandeAdhesion = User::where('actif', 0)->count();
-        $nbUser = User::where('actif', 1)->count();
+        $nbUser = User::where('actif', '>=', 1)->count();
         $nbImagesCarousel = Carousel::count();
         $nbPropositionEvent = Event::where('actif', false)->count();
         $nbEvent = Event::where('actif', true)->count();
