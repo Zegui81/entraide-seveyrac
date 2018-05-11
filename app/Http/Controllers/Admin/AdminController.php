@@ -33,7 +33,8 @@ class AdminController extends Controller
         $nbDemandeAdhesion = User::where('actif', 0)->count();
         $nbUser = User::where('actif', 1)->count();
         $nbImagesCarousel = Carousel::count();
-        $nbEvent = Event::count();
+        $nbPropositionEvent = Event::where('actif', false)->count();
+        $nbEvent = Event::where('actif', true)->count();
         $nbCovoit = Covoit::count();
         $nbTransport = TransportSolidaire::count();
         $nbContact = Contact::count();
@@ -44,6 +45,7 @@ class AdminController extends Controller
             ->withNbDemandeAdhesion($nbDemandeAdhesion)
             ->withNbUser($nbUser)
             ->withNbEvent($nbEvent)
+            ->withNbPropositionEvent($nbPropositionEvent)
             ->withNbCovoit($nbCovoit)
             ->withNbTransport($nbTransport)
             ->withNbContact($nbContact)

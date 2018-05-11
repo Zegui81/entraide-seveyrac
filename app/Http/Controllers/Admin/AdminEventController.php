@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Event;
-use App\Http\Controllers\Controller;
 use App\User;
 use App\Http\Requests\EventRequest;
 use Illuminate\Http\Request;
+use App\Http\Controllers\EventController;
 
-class AdminEventController extends Controller
+class AdminEventController extends EventController
 {
     /**
      * Create a new controller instance.
@@ -23,13 +23,28 @@ class AdminEventController extends Controller
     public function events()
     {
         // Liste des évènements
-        $events = Event::orderBy('debut', 'desc')->get();
+        $events = Event::where('actif', true)
+            ->orderBy('debut', 'desc')->get();
         
         $liste = array();
         foreach ($events as $event) {
             array_push($liste, $event->eventToArray());
         }
         return view('admin.content.event.events')
+            ->withListEvent($liste);
+    }
+    
+    public function proposeEvents()
+    {
+        // Liste des évènements
+        $events = Event::where('actif', false)
+            ->orderBy('debut', 'desc')->get();
+        
+        $liste = array();
+        foreach ($events as $event) {
+            array_push($liste, $event->eventToArray());
+        }
+        return view('admin.content.event.propose')
             ->withListEvent($liste);
     }
     
@@ -57,6 +72,7 @@ class AdminEventController extends Controller
     public function validateCreateEvent(EventRequest $request) 
     {
         $event = new Event();
+        $event->actif = true;
         $this->validateEvent($request, $event);
         
         // Message de validation
@@ -77,37 +93,54 @@ class AdminEventController extends Controller
         $message = array(
             'type' => 'success',
             'icon' => 'calendar-check-o',
-            'content' => 'L\'évènement a été édité avec succés.'
+            'content' => 'L\'évènement a bien été édité.'
         );
         return redirect('admin/event')->with('message', $message);
     }
     
-    private function validateEvent(EventRequest $request, Event $event)
+    public function validateEditProposeEvent(EventRequest $request, $id)
     {
-        $event->titre = $request->titre;
-        $event->user_id = $request->organisateur;
+        $event = Event::where('id', $id)->first();
+        $this->validateEvent($request, $event);
         
-        // Conversion des dates
-        $dateDebut = new \DateTime($request->jourDebut);
-        $dateFin = new \DateTime($request->jourFin);
-        if (!isset($request->journee)) {
-            $heureDebut = explode(':', $request->heureDebut);
-            $dateDebut->setTime($heureDebut[0], $heureDebut[1], 0, 0);
-            $heureFin = explode(':', $request->heureFin);
-            $dateFin->setTime($heureFin[0], $heureFin[1], 0, 0);
-        }
-
-        $event->journee = isset($request->journee) ? 1 : 0;
-        $event->debut = $dateDebut;
-        $event->fin = $dateFin;
-        $event->commentaire = $request->description;
+        // Message de validation
+        $message = array(
+            'type' => 'success',
+            'icon' => 'calendar-check-o',
+            'content' => 'La proposition d\'évènement a bien été éditée.'
+        );
+        return redirect('admin/propose/event')->with('message', $message);
+    }
+    
+    public function publishEvent($id)
+    {
+        $event = Event::where('id', $id)->first();
+        $event->actif = true;
         $event->save();
         
-        // Import de la photo
-        if ($request->photo != null) {
-            $destinationPath = public_path('img/event');
-            $request->photo->move($destinationPath, $event->id.'.jpg');
+        // Message de validation
+        $message = array(
+            'type' => 'success',
+            'icon' => 'calendar-check-o',
+            'content' => 'La proposition d\'évènement a bien été publiée.'
+        );
+        return redirect('admin/propose/event')->with('message', $message);
+    }
+    
+    public function refuseEvent($id)
+    {
+        Event::destroy($id);
+        if (file_exists(public_path('img\event').'\\'.$id.'.jpg')) {
+            unlink(public_path('img\event').'\\'.$id.'.jpg'); // Photos principales
         }
+                
+        // Message de validation
+        $message = array(
+            'type' => 'warning',
+            'icon' => 'calendar-times-o',
+            'content' => 'L\'évènement proposé a bien été refusé.'
+        );
+        return redirect('admin/propose/event')->with('message', $message);
     }
     
     public function deleteEvent($id)

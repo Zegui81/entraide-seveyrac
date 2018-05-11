@@ -85,7 +85,9 @@
         							<a class="dropdown-item nav-link" href="{{ asset('/covoit/manage') }}">Mes covoiturages</a>
 									<a class="dropdown-item nav-link" href="{{ asset('/transport/manage') }}">Mes transports solidaires</a>
 									<div class="dropdown-divider bg-dark"></div>
-									<a class="dropdown-item nav-link" href="#">Proposer un évènement</a>
+									<a class="dropdown-item nav-link" href="{{ asset('/event/propose') }}">Proposer un évènement</a>
+									<div class="dropdown-divider bg-dark"></div>
+        							<a class="dropdown-item nav-link" href="{{ asset('/profile') }}">Éditer mon profil</a>
         						</div>
         					</li> 
 						@endif

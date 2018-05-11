@@ -50,10 +50,5 @@
               </tbody>
            </table>
        @endif
-       @if (Request::isMethod('delete'))
-           <div class="alert alert-warning mt-2 text-center" role="alert">
-              <span><i class="fa fa-trash fa-2x" aria-hidden="true"></i>&nbsp;L'utilisateur a été supprimé.</span>
-           </div>
-       @endif
     </div>
 @endsection

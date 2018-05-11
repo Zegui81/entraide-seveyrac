@@ -70,22 +70,22 @@
                          <small>{{ $nbEvent > 1 ? 'Évènements' : 'Évènement' }}</small>
                       </div>
                       <div class="icon">
-                         <i class="fa fa-calendar fa-5x"></i>
+                         <i class="fa fa-calendar-check-o fa-5x"></i>
                       </div>
                    </div>
                 </a>
-                <a class="col-md-6 p-2" href="{{ asset('admin/news') }}">
-                   <div class="board btn btn-info w-100 p-3">
+                <a class="col-md-6 p-2" href="{{ asset('admin/propose/event') }}">
+                   <div class="board btn btn-info w-100 p-3 {{ $nbPropositionEvent > 0 ? 'text-danger' : '' }}">
                       <div class="number">
-                         <h3>{{ $nbArticle }}</h3>
-                         <small>{{ $nbArticle > 1 ? 'articles' : 'article' }}</small>
+                         <h3>{{ $nbPropositionEvent }}</h3>
+                         <small>{{ $nbPropositionEvent > 1 ? 'propositions d\'évènements' : 'proposition d\'évènement' }}</small>
                       </div>
                       <div class="icon">
-                         <i class="fa fa-newspaper-o fa-5x"></i>
+                         <i class="fa fa-calendar-plus-o fa-5x"></i>
                       </div>
                    </div>
-                </a>                
-                <a class="col-md-6 p-2" href="{{ asset('admin/transport') }}">
+                </a>                               
+                <a class="col-md-4 p-2" href="{{ asset('admin/transport') }}">
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
                          <h3>{{ $nbTransport }}</h3>
@@ -96,7 +96,7 @@
                       </div>
                    </div>
                 </a>
-                <a class="col-md-6 p-2" href="{{ asset('admin/covoit') }}">
+                <a class="col-md-4 p-2" href="{{ asset('admin/covoit') }}">
                    <div class="board btn btn-info w-100 p-3">
                       <div class="number">
                          <h3>{{ $nbCovoit }}</h3>
@@ -107,6 +107,17 @@
                       </div>
                    </div>
                 </a>
+                <a class="col-md-4 p-2" href="{{ asset('admin/news') }}">
+                   <div class="board btn btn-info w-100 p-3">
+                      <div class="number">
+                         <h3>{{ $nbArticle }}</h3>
+                         <small>{{ $nbArticle > 1 ? 'articles' : 'article' }}</small>
+                      </div>
+                      <div class="icon">
+                         <i class="fa fa-newspaper-o fa-5x"></i>
+                      </div>
+                   </div>
+                </a>                 
              </div>
           </div>
        </div>

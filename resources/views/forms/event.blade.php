@@ -67,23 +67,32 @@
 		</div>
     </div>                     
 	
-    <div class="form-row"> 
-    	<div class="form-group col-md-6 {!! $errors->has('organisateur') ? 'has-error' : '' !!}">
-			{!! Form::label('organisateur', 'Organisateur') !!}
-			<div class="input-group">
-            	<div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></div>
-                </div>
-    			{!! Form::select('organisateur', $users, null, ['id' => 'organisateur' , 'class' => 'form-control '.($errors->has('organisateur') ? 'is-invalid' : '')]) !!}
-    			{!! $errors->first('organisateur', '<small class="invalid-feedback">:message</small>') !!}
+	@if (Auth::user()->actif == 2)
+        <div class="form-row"> 
+        	<div class="form-group col-md-6 {!! $errors->has('organisateur') ? 'has-error' : '' !!}">
+    			{!! Form::label('organisateur', 'Organisateur') !!}
+    			<div class="input-group">
+                	<div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></div>
+                    </div>
+        			{!! Form::select('organisateur', $users, $event['organisateur']['id'], ['id' => 'organisateur' , 'class' => 'form-control '.($errors->has('organisateur') ? 'is-invalid' : '')]) !!}
+        			{!! $errors->first('organisateur', '<small class="invalid-feedback">:message</small>') !!}
+        		</div>
     		</div>
-		</div>
-		<div class="form-group col-md-6 {!! $errors->has('photo') ? 'has-error' : '' !!}">
+    		<div class="form-group col-md-6 {!! $errors->has('photo') ? 'has-error' : '' !!}">
+                {!! Form::label('photo', "Image de l'évènement", array('class' => 'control-label')) !!}
+    			<input name="photo" type="file" id="photo" class="form-control {{ $errors->has('photo') ? 'is-invalid' : '' }}" accept=".jpg, .jpeg, .png">
+    			{!! $errors->first('photo', '<small class="invalid-feedback">:message</small>') !!}
+            </div>
+        </div>
+    @else
+    	{!! Form::text('organisateur', Auth::user()->id, ['class' => 'form-control d-none']) !!}
+    	<div class="form-group {!! $errors->has('photo') ? 'has-error' : '' !!}">
             {!! Form::label('photo', "Image de l'évènement", array('class' => 'control-label')) !!}
 			<input name="photo" type="file" id="photo" class="form-control {{ $errors->has('photo') ? 'is-invalid' : '' }}" accept=".jpg, .jpeg, .png">
 			{!! $errors->first('photo', '<small class="invalid-feedback">:message</small>') !!}
         </div>
-    </div>    
+    @endif 
     
     <div class="form-row">
 		<div class="form-group col-md-12 mb-1">
@@ -93,11 +102,16 @@
 			</div>
 		</div>
 	</div>
-	@if ($edit)
-		{!! Form::button('Éditer l\'évènement&nbsp;&nbsp;<i class="fa fa-calendar-check-o" aria-hidden="true"></i>', array('type' => 'submit', 'class' => 'btn btn-primary pull-right')) !!}
+	@if (Auth::user()->actif == 2)
+    	@if ($edit)
+    		{!! method_field('patch') !!}
+    		{!! Form::button('Éditer l\'évènement&nbsp;&nbsp;<i class="fa fa-calendar-check-o" aria-hidden="true"></i>', array('type' => 'submit', 'class' => 'btn btn-primary pull-right')) !!}
+    	@else
+    		{!! Form::button('Créer l\'évènement&nbsp;&nbsp;<i class="fa fa-calendar-plus-o" aria-hidden="true"></i>', array('type' => 'submit', 'class' => 'btn btn-primary pull-right')) !!}
+    	@endif 	
 	@else
-		{!! Form::button('Créer l\'évènement&nbsp;&nbsp;<i class="fa fa-calendar-plus-o" aria-hidden="true"></i>', array('type' => 'submit', 'class' => 'btn btn-primary pull-right')) !!}
-	@endif
+    	{!! Form::button('Proposer l\'évènement&nbsp;&nbsp;<i class="fa fa-calendar-plus-o" aria-hidden="true"></i>', array('type' => 'submit', 'class' => 'btn btn-primary pull-right')) !!}
+	@endif    	
 {!! Form::close() !!}
 
 <script type="text/javascript">
@@ -111,7 +125,6 @@
     changeCheckJournee(); // Premier contrôle
     $('#checkhour').on('change', changeCheckJournee); 
     
-    $("#organisateur").val({{ Auth::user()->id }});
     $('.clockpicker').clockpicker({
         placement: 'bottom',
         align: 'right',

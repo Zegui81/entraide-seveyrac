@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 // Accueil
 Route::get('/', 'HomeController@index');
+Route::get('404', 'HomeController@inexist');
 
 Route::get('contact', 'HomeController@contact');
 Route::post('contact', 'HomeController@createContact');
@@ -25,10 +26,20 @@ Route::get('formRegister', 'Auth\RegisterController@downloadForm');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout'); 
 
 /* PAGES ------------------------------------------------------------------- */
+// User
+Route::get('profile', 'Auth\ResetPasswordController@profile');
+Route::patch('profile', 'Auth\ResetPasswordController@editProfile');
+
+Route::get('profile/password', 'Auth\ResetPasswordController@resetPassword');
+Route::patch('profile/password', 'Auth\ResetPasswordController@confirmResetPassword');
+
 // Evènements
 Route::get('event', 'EventController@home');
 Route::get('event/calendar', 'EventController@calendar');
 Route::get('event/detail/{id}', 'EventController@detail');
+
+Route::get('event/propose', 'EventController@propose');
+Route::post('event/propose', 'EventController@sendEvent');
 
 // Covoiturage
 Route::get('covoit', 'Pages\CovoitController@home');
@@ -83,6 +94,9 @@ Route::get('admin/user/cotisation/{id}', 'Admin\AdminUserController@changeCotisa
 Route::patch('admin/user/upgrade/{id}', 'Admin\AdminUserController@upgrade');
 Route::patch('admin/user/downgrade/{id}', 'Admin\AdminUserController@downgrade');
 
+Route::get('admin/user/password/{id}', 'Admin\AdminUserController@resetPassword');
+Route::patch('admin/user/password/{id}', 'Admin\AdminUserController@confirmResetPassword');
+
 Route::delete('admin/user/{id}', 'Admin\AdminUserController@deleteUser');
 
 // Ajouter un membre
@@ -104,10 +118,17 @@ Route::post('admin/home/footer', 'Admin\AdminHomeController@updateFooter');
 
 // Évènements
 Route::get('admin/event', 'Admin\AdminEventController@events');
+
+Route::get('admin/propose/event', 'Admin\AdminEventController@proposeEvents');
+Route::get('admin/propose/event/{id}', 'Admin\AdminEventController@editEvent');
+Route::patch('admin/propose/event/{id}', 'Admin\AdminEventController@validateEditProposeEvent');
+Route::patch('admin/publish/event/{id}', 'Admin\AdminEventController@publishEvent');
+Route::delete('admin/propose/event/{id}', 'Admin\AdminEventController@refuseEvent');
+
 Route::get('admin/event/add', 'Admin\AdminEventController@createEvent');
 Route::post('admin/event/add', 'Admin\AdminEventController@validateCreateEvent');
 Route::get('admin/event/{id}', 'Admin\AdminEventController@editEvent');
-Route::post('admin/event/{id}', 'Admin\AdminEventController@validateEditEvent');
+Route::patch('admin/event/{id}', 'Admin\AdminEventController@validateEditEvent');
 Route::delete('admin/event/{id}', 'Admin\AdminEventController@deleteEvent');
 Route::get('admin/event/gallery/{id}', 'Admin\AdminEventController@gallery');
 Route::post('admin/event/gallery/{id}', 'Admin\AdminEventController@addPhoto');

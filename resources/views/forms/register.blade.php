@@ -85,6 +85,17 @@
             </div>   
 		</div>
     </div>   
+    @auth
+    	@if (Auth::user()->actif == 2)
+            <a class="btn btn-secondary pull-left" href="{{ asset('admin/user/password').'/'.$user['id'] }}">
+                 Changer le mot de passe&nbsp;&nbsp;<i class="fa fa-key"></i>
+            </a>    	
+    	@else
+            <a class="btn btn-secondary pull-left" href="{{ asset('profile/password') }}">
+                 Modifier mon mot de passe&nbsp;&nbsp;<i class="fa fa-key"></i>
+            </a>   
+    	@endif    
+	@endauth
     @if ($user != null)
     	@if (Auth::user()->actif == 2)
     		{!! method_field('patch') !!}

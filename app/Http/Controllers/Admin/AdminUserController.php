@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserEditRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\ResetPasswordRequest;
 
 class AdminUserController extends Controller
 {
@@ -128,8 +129,7 @@ class AdminUserController extends Controller
     public function editUser($id) 
     {
         $user = User::where('id', $id)->first();
-        
-        return view('admin.user.editUser')->withUser($user->userEditToArray());
+        return view('pages.user.user')->withUser($user->userEditToArray());
     }
     
     public function validateEditUser(UserEditRequest $request, $id)
@@ -267,5 +267,26 @@ class AdminUserController extends Controller
             'content' => 'L\'adhérent n\'est plus administrateur.'
         );
         return redirect('admin/user')->with('message', $message);
+    }
+    
+    public function resetPassword($id)
+    {
+        return view('auth.password');
+    }
+    
+    public function confirmResetPassword(ResetPasswordRequest $request, $id)
+    {
+        $user = User::where('id', $id)->first();
+        $user->password = Hash::make($request->password);
+        $user->save();
+        
+        // Message de validation
+        $message = array(
+            'type' => 'success',
+            'icon' => 'check',
+            'content' => 'Le mot de passe de l\'utilisateur a bien été changé.'
+        );
+        
+        return redirect('/admin/user/'.$id)->with('message', $message);
     }
 }

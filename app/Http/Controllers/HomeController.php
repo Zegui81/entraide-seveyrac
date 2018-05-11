@@ -33,7 +33,19 @@ class HomeController extends Controller
             ->withTextBas($texteBas->content);
     }
     
-    public function contact() {
+    public function inexist()
+    {
+        $message = array(
+            'type' => 'danger',
+            'icon' => 'exclamation-triangle',
+            'content' => 'La page que vous avez demandé n\'existe pas.'
+        );
+        
+        return redirect('/')->with('message', $message);
+    }
+    
+    public function contact() 
+    {
         return view('contact');
     }
     
