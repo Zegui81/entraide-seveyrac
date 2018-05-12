@@ -53,7 +53,7 @@
       <!-- Navigation -->
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top" id="top">
          <div class="container">
-            <a class="navbar-brand" href="{{ asset('/') }}">De Pierres et de Chênes</a>
+            <a class="navbar-brand" href="{{ asset('/') }}">Séveyrac - De Pierres et de Chênes</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -92,7 +92,7 @@
                                <a class="nav-link" href="{{ asset('/admin') }}">Administrer le site</a>
                             </li>
                         @else
-        					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace personnel&nbsp;</a>
+        					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace&nbsp;</a>
         						<div class="dropdown-menu bg-dark nav-item">
         							<a class="dropdown-item nav-link" href="{{ asset('/covoit/manage') }}">Mes covoiturages</a>
 									<a class="dropdown-item nav-link" href="{{ asset('/transport/manage') }}">Mes transports solidaires</a>

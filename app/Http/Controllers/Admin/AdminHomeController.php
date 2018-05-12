@@ -82,7 +82,6 @@ class AdminHomeController extends Controller
             'icon' => 'trash',
             'content' => 'La photo a bien été supprimée.'
         );
-        
         return redirect('admin/home/carousel')->with('message', $message);
     }
     
@@ -128,7 +127,14 @@ class AdminHomeController extends Controller
         $footer = Text::where('code', 'FOOTER')->first();
         $footer->content = $request->footer;
         $footer->save();
-        return redirect('/admin');
+        
+        // Message de validation
+        $message = array(
+            'type' => 'success',
+            'icon' => 'check',
+            'content' => 'Le pied de page du site a bien été modifié.'
+        );
+        return redirect('admin')->with('message', $message);
     }
     
     public function updateAccueil(Request $request) {
@@ -144,7 +150,14 @@ class AdminHomeController extends Controller
             $destinationPath = 'public/img';
             $request->photo->move($destinationPath, 'home.jpg');
         }
-        return redirect('/');
+        
+        // Message de validation
+        $message = array(
+            'type' => 'success',
+            'icon' => 'check',
+            'content' => 'La page d\'accueil du site a bien été modifié.'
+        );
+        return redirect('admin')->with('message', $message);
     }
     
     public function contacts() {
@@ -168,7 +181,6 @@ class AdminHomeController extends Controller
             'icon' => 'check',
             'content' => 'Le message a bien été supprimé.'
         );
-        
         return redirect('admin/contact')->with('message', $message);
     }
 }
