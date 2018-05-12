@@ -13,7 +13,7 @@
        </ul>
        
        @if ($nextEvent == null)
-       	  <h5 class="alert-heading text-center mb-0">Aucun évènement à venir</h5>
+       	  <h4 class="alert-heading text-center mb-0">Aucun évènement à venir</h4>
        @else
            <div class="row mb-4">
               <div class="col-lg-6 text-center">

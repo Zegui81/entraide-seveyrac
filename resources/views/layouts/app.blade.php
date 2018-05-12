@@ -4,6 +4,17 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Seveyrac - Association De Pierres et de Chênes. Partage, terroir et patrimoine.
+      		Je suis une association citoyenne et solidaire. Ma philosophie c'est le lien social entre les 
+      		villageois autour de Séveyrac. On se retrouve autour de projets et d'ateliers :
+      		randonnée, art créatif, co-voiturage, bio-diversité, yoga, cuisine, jardinage, patrimoine,
+      		jardins, musicaux, réouverture de chemins, jeux de société, échange de livres, photo..." />
+      <meta name="keywords" content="Seveyrac, Séveyrac, 12330, Rodez, Aveyron, Bozouls, Association,
+      		associations, pierre, pierres, et, Chênes, chene, chêne, partage, terroir, patrimoine,
+      		citoyenne, solidaire, solidaires, philosophie, lien, social, entre,	villageois,
+      		autour, Séveyrac, retrouve, retrouver, projets, projet, ateliers, atelier, covoiturage, transport,
+      		soliaire, randonnée, art, créatif, co-voiturage, bio-diversité, yoga, cuisine, jardinage, patrimoine,
+      		jardins, musicaux, réouverture, chemins, jeux, société, échange de livres, photo..." />
       <link rel="icon" type="image/png" href="{{ asset('public/icon.png') }}" />
       
       <!-- CSRF Token -->
@@ -113,7 +124,9 @@
          </div>
       </nav>
       
-      @yield('content')
+      <div id="main">
+      	  @yield('content')
+      </div>
       
       <!-- Footer -->
       <footer class="py-4 bg-dark footer">

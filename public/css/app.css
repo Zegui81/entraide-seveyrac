@@ -197,3 +197,22 @@
 .d-flex {
 	flex-wrap: wrap;
 }
+
+.footer {
+    margin-top: auto;
+}
+
+#main {
+  padding-top: 52px;
+}
+
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}

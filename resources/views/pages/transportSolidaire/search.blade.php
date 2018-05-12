@@ -55,7 +55,7 @@
               </div>
 		 @endforeach
 		 @else
-		 	<h4 class="mt-5">Aucun transport solidaire n'est prévu {{ $jour }}</h4>
+		 	<h4 class="mt-5">Aucun transport solidaire n'est prévu pour : {{ $jour }}</h4>
 		 @endif
         </div>
 
