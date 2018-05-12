@@ -60,7 +60,7 @@ class EventController extends Controller
             return redirect('/404');
         }
         
-        $dossier = public_path('img/event/gallery').'/'.$id;
+        $dossier = 'public/img/event/gallery/'.$id;
         if (!file_exists($dossier)) {
             // Création du dossier s'il n'existe pas
             mkdir($dossier, 0777, true);
@@ -120,7 +120,7 @@ class EventController extends Controller
         
         // Import de la photo
         if ($request->photo != null) {
-            $destinationPath = public_path('img/event');
+            $destinationPath = 'public/img/event';
             $request->photo->move($destinationPath, $event->id.'.jpg');
         }
     }

@@ -18,7 +18,7 @@
       <script src="{{ asset('public/js/dropzone.js') }}"></script>
       
       <!-- Police -->
-      <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
       
       <!-- CSS -->
       <link rel="stylesheet" href="{{ asset('vendor/twbs/bootstrap/dist/css/bootstrap.min.css') }}">

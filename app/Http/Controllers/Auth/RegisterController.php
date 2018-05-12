@@ -49,7 +49,7 @@ class RegisterController extends Controller
     }
     
     public function downloadForm() {
-        $file = public_path('img\form.jpg');
+        $file = 'public/img/form.jpg';
         if (file_exists($file)) {
             header('Content-Description: File Transfer');
             header('Content-Type: application/octet-stream');

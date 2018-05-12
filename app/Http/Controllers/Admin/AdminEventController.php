@@ -50,7 +50,7 @@ class AdminEventController extends EventController
     
     public function createEvent() 
     {
-        $users = User::orderBy('nom')->get();
+        $users = User::orderBy('nom')->where('actif', '>=', 1)->get();
         
         $liste = array();
         foreach ($users as $user) {
@@ -130,8 +130,8 @@ class AdminEventController extends EventController
     public function refuseEvent($id)
     {
         Event::destroy($id);
-        if (file_exists(public_path('img\event').'\\'.$id.'.jpg')) {
-            unlink(public_path('img\event').'\\'.$id.'.jpg'); // Photos principales
+        if (file_exists('public/img/event/'.$id.'.jpg')) {
+            unlink('public/img/event/'.$id.'.jpg'); // Photos principales
         }
                 
         // Message de validation
@@ -146,11 +146,11 @@ class AdminEventController extends EventController
     public function deleteEvent($id)
     {
         Event::destroy($id);
-        if (file_exists(public_path('img\event').'\\'.$id.'.jpg')) {
-            unlink(public_path('img\event').'\\'.$id.'.jpg'); // Photos principales
+        if (file_exists('public/img/event/'.$id.'.jpg')) {
+            unlink('public/img/event/'.$id.'.jpg'); // Photos principales
         }
         
-        $files = glob(public_path('img\event\gallery').'\\'.$id.'\\*'); // Tous les fichiers
+        $files = glob('public/img/event/gallery/'.$id.'/*'); // Tous les fichiers
         foreach ($files as $file) { // iterate files
             if(is_file($file))
                 unlink($file); // delete file
@@ -169,7 +169,7 @@ class AdminEventController extends EventController
     {
         $event = Event::where('id', $id)->first();
         
-        $dossier = public_path('img/event/gallery').'/'.$id;
+        $dossier = 'public/img/event/gallery/'.$id;
         if (!file_exists($dossier)) {
             // Création du dossier s'il n'existe pas
             mkdir($dossier, 0777, true);
@@ -189,7 +189,7 @@ class AdminEventController extends EventController
     {        
         // Import de la photo
         if ($request->file != null) {
-            $destinationPath = public_path('img/event/gallery').'/'.$id;
+            $destinationPath = 'public/img/event/gallery/'.$id;
             $request->file->move($destinationPath, $request->file->hashName());
         }
         
@@ -197,8 +197,8 @@ class AdminEventController extends EventController
     }
     
     public function deletePhoto($id, $photo) {
-        if (file_exists(public_path('img\event\gallery').'\\'.$id.'\\'.$photo)) {
-            unlink(public_path('img\event\gallery').'\\'.$id.'\\'.$photo);
+        if (file_exists('public/img/event/gallery/'.$id.'/'.$photo)) {
+            unlink('public/img/event/gallery/'.$id.'/'.$photo);
         }
         return redirect()->back();
     }

@@ -48,8 +48,8 @@ class AdminPresseController extends Controller
     public function deleteArticle($id)
     {
         Presse::destroy($id);
-        if (file_exists(public_path('img\presse').'\\'.$id.'.jpg')) {
-            unlink(public_path('img\presse').'\\'.$id.'.jpg');
+        if (file_exists('public/img/presse/'.$id.'.jpg')) {
+            unlink('public/img/presse/'.$id.'.jpg');
         }
         
         // Message de validation
@@ -70,7 +70,7 @@ class AdminPresseController extends Controller
         
         // Import de la photo
         if ($request->photo != null) {
-            $destinationPath = public_path('img/presse');
+            $destinationPath = 'public/img/presse';
             $request->photo->move($destinationPath, $presse->id.'.jpg');
         }
     }

@@ -43,7 +43,7 @@ class AdminHomeController extends Controller
         $photo->save();
         
         // Enregistrement de l'image
-        $destinationPath = public_path('img\carousel');
+        $destinationPath = 'public/img/carousel';
         $request->photo->move($destinationPath, 
             $photo->id.'.'.$request->photo->extension());
         
@@ -71,8 +71,8 @@ class AdminHomeController extends Controller
     public function removePicture($id)
     {
         $photo = Carousel::where('id', $id)->first();
-        if (file_exists(public_path('img\carousel').'\\'.$id.'.'.$photo->ext)) {
-            unlink(public_path('img\carousel') . '\\' . $id . '.' . $photo->ext);
+        if (file_exists('public/img/carousel/'.$id.'.'.$photo->ext)) {
+            unlink('public/img/carousel/'.$id.'.'.$photo->ext);
         }
         Carousel::destroy($id);
         
@@ -141,7 +141,7 @@ class AdminHomeController extends Controller
         $texteBas->save();
         
         if ($request->photo != null) {
-            $destinationPath = public_path('img');
+            $destinationPath = 'public/img';
             $request->photo->move($destinationPath, 'home.jpg');
         }
         return redirect('/');

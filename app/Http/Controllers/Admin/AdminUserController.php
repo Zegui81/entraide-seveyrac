@@ -67,7 +67,7 @@ class AdminUserController extends Controller
         $message = null;
         
         if ($request->photo != null) {
-            $destinationPath = public_path('img');
+            $destinationPath = 'public/img';
             $request->photo->move($destinationPath, 'form.jpg');
             
             // Message de validation

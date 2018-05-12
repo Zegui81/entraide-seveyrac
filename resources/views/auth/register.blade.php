@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-4 mb-4">
-    	@if (file_exists(public_path('img\form.jpg')))
+    	@if (file_exists('public/img/form.jpg'))
         	<div class="card">
             	<div class="card-header"><h4 class="mb-0">Imprimer notre formulaire d'adhésion</h4></div>
             	<div class="card-body">
