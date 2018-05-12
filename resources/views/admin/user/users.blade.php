@@ -5,8 +5,8 @@
        <ul class="breadcrumb">
           <li class="">Adhérents</li>
           <li class="ml-auto">
-             <a class="btn btn-primary" href="{{ asset('admin/user/add') }}">Ajouter un adhérent&nbsp;&nbsp;
-             <i class="fa fa-user-plus"></i>
+             <a class="btn btn-primary" href="{{ asset('admin/user/add') }}">
+             	Ajouter un adhérent&nbsp;&nbsp;<i class="fa fa-user-plus"></i>
              </a>
           </li>
        </ul>

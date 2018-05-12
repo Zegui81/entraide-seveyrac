@@ -32,7 +32,7 @@
             	<div class="row mt-3">
             		@foreach ($photos as $photo)
                         <div class="col-lg-3 col-sm-6 mb-4 suppress">
-                           <img class="img-fluid" src="{!! url('img/event/gallery/'.$event['id'].'/'.$photo) !!}" alt="">
+                           <img class="img-fluid" src="{!! url('public/img/event/gallery/'.$event['id'].'/'.$photo) !!}" alt="">
                            <div class="delete-icon">
                                <a href="{{ asset('admin/event/gallery').'/'.$event['id'].'/'.$photo }}">
                                	   <i class="fa fa-times fa-lg text-danger"></i>

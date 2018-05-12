@@ -5,8 +5,8 @@
        <ul class="breadcrumb">
           <li class="">Transports solidaires</li>
           <li class="ml-auto">
-             <a class="btn btn-primary" href="{{ asset('admin/transport/publish') }}">Publier un transport solidaire&nbsp;&nbsp;
-             <i class="fa fa-car"></i>
+             <a class="btn btn-primary" href="{{ asset('admin/transport/publish') }}">
+             	Publier un transport solidaire&nbsp;&nbsp;<i class="fa fa-car"></i>
              </a>
           </li>
        </ul>

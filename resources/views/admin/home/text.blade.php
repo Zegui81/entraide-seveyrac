@@ -20,7 +20,7 @@
                     			<input name="photo" type="file" id="photo" class="form-control" onchange="displayApercu(this);" accept=".jpg, .jpeg, .png">
                 			</div>
                 			<div class="text-center mt-1">
-                	 	       <img class="img-fluid rounded" id="apercu" src="{{ asset('img/home.jpg') }}" />
+                	 	       <img class="img-fluid rounded" id="apercu" src="{{ asset('public/img/home.jpg') }}" />
                 			</div>
                         </div>
                 	</div>      

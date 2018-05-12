@@ -6,7 +6,7 @@
           <li class="active">Covoiturages du {{ $dateSearch }}</li>
           <li class="ml-auto">
              <a class="btn btn-primary" href="{{ asset('covoit/calendar') }}">
-             Afficher le calendrier&nbsp;&nbsp;<i class="fa fa-calendar"></i>
+             	Afficher le calendrier&nbsp;&nbsp;<i class="fa fa-calendar"></i>
              </a>
           </li>
        </ul>

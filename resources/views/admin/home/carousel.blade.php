@@ -15,7 +15,7 @@
           	<div class="card-body">
           		@foreach ($listPhoto as $item)
       			    <div class="hovereffect col-lg-4 col-sm-4">
-                        <img class="img-fluid" src="{{ asset('img/carousel').'/'.$item['id'].'.'.$item['ext'] }}" alt="">
+                        <img class="img-fluid" src="{{ asset('public/img/carousel').'/'.$item['id'].'.'.$item['ext'] }}" alt="">
                         <div class="overlay">
                            <h2>{{ $item['titre'] }}</h2>
                            <a class="info" href="{{ asset('admin/home/carousel').'/'.$item['id'] }}">Supprimer l'image</a>

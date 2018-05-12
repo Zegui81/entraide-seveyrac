@@ -14,7 +14,7 @@
                     			<input name="photo" type="file" id="photo" class="form-control" onchange="displayApercu(this);">
                 			</div>
                 			<div class="text-center mt-1 col-md-6">
-                	 	       <img class="img-fluid rounded" id="apercu" src="{{ asset('img/form.jpg') }}" alt="your image"/>
+                	 	       <img class="img-fluid rounded" id="apercu" src="{{ asset('public/img/form.jpg') }}" alt="your image"/>
                 			</div>
                         </div>
                 	</div>      

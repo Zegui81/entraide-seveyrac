@@ -4,37 +4,38 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="icon" type="image/png" href="{{ asset('icon.png') }}" />
       
       <!-- CSRF Token -->
       <meta name="csrf-token" content="{{ csrf_token() }}">
       <title>De Pierres et de Chênes</title>
       
       <!-- Scripts -->
-      <script src="{{ asset('../vendor/components/jquery/jquery.min.js') }}"></script>
-      <script src="{{ asset('../vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-      <script src="{{ asset('ckeditor5/ckeditor.js') }}"></script>
-      <script src="{{ asset('js/clockpicker.js') }}"></script>
-      <script src="{{ asset('js/dropzone.js') }}"></script>
+      <script src="{{ asset('vendor/components/jquery/jquery.min.js') }}"></script>
+      <script src="{{ asset('vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+      <script src="{{ asset('public/ckeditor5/ckeditor.js') }}"></script>
+      <script src="{{ asset('public/js/clockpicker.js') }}"></script>
+      <script src="{{ asset('public/js/dropzone.js') }}"></script>
       
       <!-- Police -->
       <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
       
       <!-- CSS -->
-      <link rel="stylesheet" href="{{ asset('../vendor/twbs/bootstrap/dist/css/bootstrap.min.css') }}">
-      <link href="{{ asset('css/template-bootstrap.css') }}" rel="stylesheet">
-      <link href="{{ asset('../vendor/components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-      <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-      <link href="{{ asset('css/effectHover.css') }}" rel="stylesheet">
-      <link href="{{ asset('css/clockpicker.css') }}" rel="stylesheet">
-      <link href="{{ asset('css/dropzone.css') }}" rel="stylesheet">
-      <link href="{{ asset('css/modal.css') }}" rel="stylesheet">
+      <link rel="stylesheet" href="{{ asset('vendor/twbs/bootstrap/dist/css/bootstrap.min.css') }}">
+      <link href="{{ asset('public/css/template-bootstrap.css') }}" rel="stylesheet">
+      <link href="{{ asset('vendor/components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+      <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+      <link href="{{ asset('public/css/effectHover.css') }}" rel="stylesheet">
+      <link href="{{ asset('public/css/clockpicker.css') }}" rel="stylesheet">
+      <link href="{{ asset('public/css/dropzone.css') }}" rel="stylesheet">
+      <link href="{{ asset('public/css/modal.css') }}" rel="stylesheet">
       
-      <!-- Calendar -->
       @if(isset($HEAD_calendar))
- 		<link href="{{ asset('fullcalendar/fullcalendar.min.css') }}" rel="stylesheet">
-        <script src="{{ asset('fullcalendar/moment.min.js') }}"></script>
-        <script src="{{ asset('fullcalendar/fullcalendar.min.js') }}"></script>
-        <script src="{{ asset('fullcalendar/fr.js') }}"></script>
+        <!-- Calendar -->
+ 		<link href="{{ asset('public/fullcalendar/fullcalendar.min.css') }}" rel="stylesheet">
+        <script src="{{ asset('public/fullcalendar/moment.min.js') }}"></script>
+        <script src="{{ asset('public/fullcalendar/fullcalendar.min.js') }}"></script>
+        <script src="{{ asset('public/fullcalendar/fr.js') }}"></script>
       @endif
    </head>
    <body class="text-justify">
@@ -91,9 +92,9 @@
         						</div>
         					</li> 
 						@endif
-					<li class="nav-item">
-                         <a class="nav-link" href="{{ asset('/logout') }}">Se déconnecter</a>
-                      </li>
+					    <li class="nav-item">
+                         	<a class="nav-link" href="{{ asset('/logout') }}">Se déconnecter</a>
+                        </li>
                    </ul>
                @endauth
                

@@ -6,7 +6,7 @@
           @auth
               <li class="ml-auto">
                  <a class="btn btn-primary" href="{{ asset('event/calendar') }}">
-                 Afficher le calendrier&nbsp;&nbsp;<i class="fa fa-calendar"></i>
+                 	Afficher le calendrier&nbsp;&nbsp;<i class="fa fa-calendar"></i>
                  </a>
               </li>
           @endauth
@@ -45,9 +45,9 @@
              <div class="text-hidden">{!! $nextEvent['commentaire'] !!}</div>
              @auth
                  <a class="btn btn-primary bottom-0" style="z-index:2;" href="{{ asset('event/detail/'.$nextEvent['id']) }}">
-                 Afficher l'évènement&nbsp;&nbsp;<i class="fa fa-chevron-right"></i>
+                 	Afficher l'évènement&nbsp;&nbsp;<i class="fa fa-chevron-right"></i>
+                 </a>
              @endauth
-             </a>
           </div>
        </div>
        
