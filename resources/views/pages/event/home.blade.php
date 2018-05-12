@@ -12,45 +12,50 @@
           @endauth
        </ul>
        
-       <div class="row mb-4">
-          <div class="col-lg-6 text-center">
-             <img class="img-fluid rounded" src="{!! asset('public/img/event/'.$nextEvent['id'].'.jpg') !!}" alt="">
-          </div>
-          <div class="col-lg-6 mh-250px">
-             <h2>{{ $nextEvent['titre'] }}</h2>
-             <h6 class="mb-2 text-muted">{{ $nextEvent['debut'] }}</h6>
-             <div class="hidden"></div>
-             @auth
-                 <div class="card text-center">
-                 	<div class="card-header p-2 text-justify"><h6 class="mb-0">Organisateur</h6></div>
-                 	<div class="text-justify p-3 card-body">
-                    	<p class="card-text">
-                    		<b>{{ $nextEvent['organisateur']['prenom'].' '.$nextEvent['organisateur']['nom'] }}</b>
-                    		<br>
-                    		<i class="fa fa-envelope text-center w-25px" aria-hidden="true"></i>:<i> {{ $nextEvent['organisateur']['email'] }}</i>
-                    		
-                    		@if (isset($nextEvent['organisateur']['telFixe']))
-                        		<br>
-                        		<i class="fa fa-phone text-center w-25px" aria-hidden="true"></i>:<i> {{ $nextEvent['organisateur']['telFixe'] }}</i>
-                    		@endif
-                    		
-                      		@if (isset($nextEvent['organisateur']['telPortable']))
-                        		<br>
-                        		<i class="fa fa-mobile text-center w-25px" aria-hidden="true"></i>:<i> {{ $nextEvent['organisateur']['telPortable'] }}</i>
-                    		@endif
-                    	</p>
-                    </div>
-        		</div>
-             @endauth
-             <div class="text-hidden">{!! $nextEvent['commentaire'] !!}</div>
-             @auth
-                 <a class="btn btn-primary bottom-0" style="z-index:2;" href="{{ asset('event/detail/'.$nextEvent['id']) }}">
-                 	Afficher l'évènement&nbsp;&nbsp;<i class="fa fa-chevron-right"></i>
-                 </a>
-             @endauth
-          </div>
-       </div>
-       
+       @if ($nextEvent == null)
+       	  <h5 class="alert-heading text-center mb-0">Aucun évènement à venir</h5>
+       @else
+           <div class="row mb-4">
+              <div class="col-lg-6 text-center">
+                 <img class="img-fluid rounded" src="{!! asset('public/img/event/'.$nextEvent['id'].'.jpg') !!}" alt="">
+              </div>
+              <div class="col-lg-6 mh-250px">
+                 <h2>{{ $nextEvent['titre'] }}</h2>
+                 <h6 class="mb-2 text-muted">{{ $nextEvent['debut'] }}</h6>
+                 <div class="hidden"></div>
+                 @auth
+                 	@if ($nextEvent['organisateur'] != null)
+                         <div class="card text-center">
+                         	<div class="card-header p-2 text-justify"><h6 class="mb-0">Organisateur</h6></div>
+                         	<div class="text-justify p-3 card-body">
+                            	<p class="card-text">
+                            		<b>{{ $nextEvent['organisateur']['prenom'].' '.$nextEvent['organisateur']['nom'] }}</b>
+                            		<br>
+                            		<i class="fa fa-envelope text-center w-25px" aria-hidden="true"></i>:<i> {{ $nextEvent['organisateur']['email'] }}</i>
+                            		
+                            		@if (isset($nextEvent['organisateur']['telFixe']))
+                                		<br>
+                                		<i class="fa fa-phone text-center w-25px" aria-hidden="true"></i>:<i> {{ $nextEvent['organisateur']['telFixe'] }}</i>
+                            		@endif
+                            		
+                              		@if (isset($nextEvent['organisateur']['telPortable']))
+                                		<br>
+                                		<i class="fa fa-mobile text-center w-25px" aria-hidden="true"></i>:<i> {{ $nextEvent['organisateur']['telPortable'] }}</i>
+                            		@endif
+                            	</p>
+                            </div>
+                		</div>
+            		@endif
+                 @endauth
+                 <div class="text-hidden">{!! $nextEvent['commentaire'] !!}</div>
+                 @auth
+                     <a class="btn btn-primary bottom-0" style="z-index:2;" href="{{ asset('event/detail/'.$nextEvent['id']) }}">
+                     	Afficher l'évènement&nbsp;&nbsp;<i class="fa fa-chevron-right"></i>
+                     </a>
+                 @endauth
+              </div>
+           </div>
+       @endif
        @if (count($listNextEvent) > 0)
            <hr>
            <div class="row">

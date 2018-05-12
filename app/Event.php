@@ -14,6 +14,11 @@ class Event extends Model
     
     public function eventToArray() {
         $organisateur = User::where('id', $this->user_id)->first();
+        $user = null;
+        if ($organisateur != null) {
+            $user = $organisateur->userToArray();
+        }
+        
         if ($this->journee) {
             $debut = date('d/m/Y', strtotime($this->debut));
             $fin = date('d/m/Y', strtotime($this->fin));
@@ -29,7 +34,7 @@ class Event extends Model
             'journee' => $this->journee,
             'commentaire' => empty($this->commentaire) ? '<i>Pas de description...</i>' : $this->commentaire,
             'url' => url('event/detail/'.$this->id),
-            'organisateur' => $organisateur->userToArray()
+            'organisateur' => $user
         );
     }
     

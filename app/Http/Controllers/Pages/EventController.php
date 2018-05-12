@@ -24,11 +24,13 @@ class EventController extends Controller
             ->where('actif', true)
             ->orderBy('debut')->paginate(4);
         
-        $nextEvent = $events[0]->eventToArray();
-
+        $nextEvent = null;
         $listNextEvents = array();
-        for ($i = 1; $i < count($events); $i++) {
-            array_push($listNextEvents, $events[$i]->eventToArray());
+        if (count($events) > 0) {
+            $nextEvent = $events[0]->eventToArray();
+            for ($i = 1; $i < count($events); $i++) {
+                array_push($listNextEvents, $events[$i]->eventToArray());
+            }
         }
 
         return view('pages.event.home')

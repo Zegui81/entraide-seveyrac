@@ -4,7 +4,7 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="icon" type="image/png" href="{{ asset('icon.png') }}" />
+      <link rel="icon" type="image/png" href="{{ asset('public/icon.png') }}" />
       
       <!-- CSRF Token -->
       <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -116,9 +116,9 @@
       @yield('content')
       
       <!-- Footer -->
-      <footer class="py-4 bg-dark">
+      <footer class="py-4 bg-dark footer">
          <div class="container">
-         	<div class="m-0 text-center text-white footer">{!! App\Text::where('code', 'FOOTER')->first()->content !!}</div>
+         	<div class="m-0 text-center text-white">{!! App\Text::where('code', 'FOOTER')->first()->content !!}</div>
          </div>
       </footer>
    </body>
