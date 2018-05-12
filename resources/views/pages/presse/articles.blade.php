@@ -14,7 +14,7 @@
                   <h5 class="mb-0">{{ $item['titre'].' ('.$item['datePubli'].')' }}</h5>
                 </div>          
                 <div class="card-body p-3">
-             		<img class="img-fluid rounded mb-4" src="{!! url('img/presse/'.$item['id'].'.jpg') !!}" alt="">
+             		<img class="img-fluid rounded mb-4" src="{!! url('public/img/presse/'.$item['id'].'.jpg') !!}" alt="">
                 </div>
                 @if (!empty($item['description']))
                     <div class="card-footer text-muted">

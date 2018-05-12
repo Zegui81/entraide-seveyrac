@@ -13,7 +13,7 @@
        </ul>
        <div class="row">
           <div class="col-lg-6">
-             <img class="img-fluid rounded mb-4" src="{!! url('img/event/'.$event['id'].'.jpg') !!}" alt="">
+             <img class="img-fluid rounded mb-4" src="{!! url('public/img/event/'.$event['id'].'.jpg') !!}" alt="">
           </div>
           <div class="col-lg-6">
              <h2>{{ $event['titre'] }}</h2>
@@ -47,7 +47,7 @@
             <div class="row mt-3">
         		@foreach ($photos as $photo)
                     <div class="col-lg-3 col-sm-6 mb-4">
-                       <img class="click-event img-fluid" src="{!! url('img/event/gallery/'.$event['id'].'/'.$photo) !!}" alt="">
+                       <img class="click-event img-fluid" src="{!! url('public/img/event/gallery/'.$event['id'].'/'.$photo) !!}" alt="">
                     </div>            	
         		@endforeach
             </div>

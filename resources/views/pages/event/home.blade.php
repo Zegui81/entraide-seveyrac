@@ -14,7 +14,7 @@
        
        <div class="row mb-4">
           <div class="col-lg-6 text-center">
-             <img class="img-fluid rounded" src="{!! url('img/event/'.$nextEvent['id'].'.jpg') !!}" alt="">
+             <img class="img-fluid rounded" src="{!! asset('public/img/event/'.$nextEvent['id'].'.jpg') !!}" alt="">
           </div>
           <div class="col-lg-6 mh-250px">
              <h2>{{ $nextEvent['titre'] }}</h2>
@@ -58,7 +58,7 @@
                   <div class="col-lg-4 mb-2">
                      <div class="card text-center">
                      	<div class="img-etiquette">
-                        	<img class="card-img-top" src="{!! url('img/event/'.$item['id'].'.jpg') !!}" alt="">
+                        	<img class="card-img-top" src="{!! url('public/img/event/'.$item['id'].'.jpg') !!}" alt="">
                         </div>
                         <div class="card-body maxh-100px">
                            <h4 class="card-title">{{ $item['titre'] }}</h4>

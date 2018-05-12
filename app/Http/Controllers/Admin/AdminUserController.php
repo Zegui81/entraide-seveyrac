@@ -178,7 +178,7 @@ class AdminUserController extends Controller
      */
     public function register() 
     {
-        return view('admin.user.user');
+        return view('admin.user.user')->withUser(null);
     }
     
     /**
@@ -212,6 +212,7 @@ class AdminUserController extends Controller
             'password' => Hash::make($data['password']),
             'nom' => $data['nom'],
             'prenom' => $data['prenom'],
+            'adresse' => $data['adresse'],
             'telFixe' => $data['telFixe'],
             'telPortable' => $data['telPortable']
         ]);

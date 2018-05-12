@@ -50,7 +50,7 @@
                                     {!! Form::close() !!}					    		
 					    		@endif
                             @endif
-                            <a class="btn btn-sm btn-warning mr-1 float-left" title="Modifier cet utilisateur" href="{{ asset('admin/user/').'/'.$item['id'] }}">
+                            <a class="btn btn-sm btn-warning mr-1 float-left" title="Modifier cet utilisateur" href="{{ asset('admin/user/edit').'/'.$item['id'] }}">
                            		<i class="fa fa-pencil-square-o w-32"></i>
                             </a>
 					    	@if (Auth::user()->id != $item['id'])

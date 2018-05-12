@@ -87,8 +87,8 @@ Route::delete('admin/membership/{id}', 'Admin\AdminUserController@rejectMembersh
 // Liste des adhérents
 Route::get('admin/user', 'Admin\AdminUserController@user');
 
-Route::get('admin/user/{id}', 'Admin\AdminUserController@editUser');
-Route::patch('admin/user/{id}', 'Admin\AdminUserController@validateEditUser');
+Route::get('admin/user/edit/{id}', 'Admin\AdminUserController@editUser');
+Route::patch('admin/user/edit/{id}', 'Admin\AdminUserController@validateEditUser');
 Route::get('admin/user/cotisation/{id}', 'Admin\AdminUserController@changeCotisation');
 
 Route::patch('admin/user/upgrade/{id}', 'Admin\AdminUserController@upgrade');
