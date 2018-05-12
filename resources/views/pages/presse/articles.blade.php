@@ -24,7 +24,7 @@
            </div>
            @endforeach
        @else
-       	  <h4>Aucun article n'est disponible</h4>
+       	  <h4 class="text-center">Aucun article n'est disponible</h4>
        @endif
     </div>
 @endsection
