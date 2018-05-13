@@ -86,11 +86,11 @@
 		</div>
     </div>   
     @auth
-    	@if (Auth::user()->actif == 2)
+    	@if (Auth::user()->actif == 2 && $user != null)
             <a class="btn btn-secondary pull-left" href="{{ asset('admin/user/password').'/'.$user['id'] }}">
                  Changer le mot de passe&nbsp;&nbsp;<i class="fa fa-key"></i>
             </a>    	
-    	@else
+    	@elseif ($user != null)
             <a class="btn btn-secondary pull-left" href="{{ asset('profile/password') }}">
                  Modifier mon mot de passe&nbsp;&nbsp;<i class="fa fa-key"></i>
             </a>   

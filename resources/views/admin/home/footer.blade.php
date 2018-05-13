@@ -3,7 +3,7 @@
 @section('content') 
     <div class="container mt-4 mb-4">
         <div class="card">
-            <div class="card-header"><h4 class="mb-0">Éditer le texte de l'accueil</h4></div>
+            <div class="card-header"><h4 class="mb-0">Éditer le pied de page du site</h4></div>
             <div class="card-body">
                 {!! Form::open() !!}
                 	@csrf

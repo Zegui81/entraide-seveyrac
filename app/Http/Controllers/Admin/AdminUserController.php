@@ -288,6 +288,6 @@ class AdminUserController extends Controller
             'content' => 'Le mot de passe de l\'utilisateur a bien été changé.'
         );
         
-        return redirect('/admin/user/'.$id)->with('message', $message);
+        return redirect('/admin/user')->with('message', $message);
     }
 }
