@@ -7,7 +7,6 @@
        </ul>
        @include('layouts/message')
 
-        <div class="col-md-12">
 		@if (count($contacts) > 0)
             @foreach ($contacts as $item) 
               <div class="card mb-4">
@@ -27,12 +26,9 @@
                    {!! Form::close() !!}
                 </div>
               </div>
-
 		    @endforeach
 		 @else
 		 	<h4 class="mt-5 text-center">Aucun message n'a été laissé</h4>
 		 @endif
-        </div>
-
     </div>
 @endsection

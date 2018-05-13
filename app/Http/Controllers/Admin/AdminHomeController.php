@@ -161,7 +161,7 @@ class AdminHomeController extends Controller
     }
     
     public function contacts() {
-        $contacts = Contact::all();
+        $contacts = Contact::orderBy('created_at', 'desc')->get();
         
         $liste = array();
         foreach ($contacts as $contact) {

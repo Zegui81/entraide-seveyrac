@@ -37,20 +37,29 @@
 					<p class="card-text text-justify">
                 		<i class="fa fa-envelope text-center w-25px" aria-hidden="true"></i>:<i>&nbsp;{{ $item['organisateur']['email'] }}</i>
                 	</p> 
+                	
                 	<p class="card-text text-justify">
-                		<b class="card-subtitle text-muted">Départ : {{ $item['heureDepart'] }} / Retour : {{ $item['heureRetour'] }}</b>
+                		<b class="card-subtitle text-muted">
+                			@if ($item['heureDepart'] != null)
+                				Départ : {{ $item['heureDepart'] }} 
+                			@endif
+                			
+                			@if ($item['heureRetour'] != null)
+                				/ Retour : {{ $item['heureRetour'] }}
+							@endif                		
+                		</b>
                 	</p>
                 	
                 	<p class="card-text text-justify">{{ $item['commentaire'] }}</p>
                 </div>
                 <div class="card-footer text-muted">
-						@if (isset($item['organisateur']['telFixe']))
-                    		<i class="fa fa-phone text-center w-25px" aria-hidden="true"></i>:<i class="mr-2"> {{ $item['organisateur']['telFixe'] }}</i>
-                		@endif
-                		
-                  		@if (isset($item['organisateur']['telPortable']))
-                    		<i class="ml-2 fa fa-mobile text-center w-25px" aria-hidden="true"></i>:<i> {{ $item['organisateur']['telPortable'] }}</i>
-                		@endif
+					@if (isset($item['organisateur']['telFixe']))
+                		<i class="fa fa-phone text-center w-25px" aria-hidden="true"></i>:<i class="mr-2"> {{ $item['organisateur']['telFixe'] }}</i>
+            		@endif
+            		
+              		@if (isset($item['organisateur']['telPortable']))
+                		<i class="ml-2 fa fa-mobile text-center w-25px" aria-hidden="true"></i>:<i> {{ $item['organisateur']['telPortable'] }}</i>
+            		@endif
                 </div>
               </div>
 		 @endforeach

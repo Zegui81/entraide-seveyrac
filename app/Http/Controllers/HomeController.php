@@ -35,13 +35,20 @@ class HomeController extends Controller
     
     public function inexist()
     {
+        $photos = Carousel::all();
+        $liste = array();
+        foreach ($photos as $photo) {
+            array_push($liste, $photo->carouselToArray());
+        }
+
         $message = array(
             'type' => 'danger',
-            'icon' => 'exclamation-triangle',
-            'content' => 'La page que vous avez demandé n\'existe pas.'
+            'icon' => 'meh-o',
+            'content' => 'La page à laquelle vous essayez d\'accéder n\'existe pas.'
         );
-        
-        return redirect('/')->with('message', $message);
+        return view('404')
+            ->withCarousel($liste)
+            ->withMessage($message);
     }
     
     public function contact() 
@@ -59,7 +66,6 @@ class HomeController extends Controller
             'icon' => 'check',
             'content' => 'Votre message a bien été envoyé aux administrateurs du site.'
         );
-        
         return redirect('/')->with('message', $message);
     }
     

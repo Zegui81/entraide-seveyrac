@@ -48,7 +48,7 @@ class EventRequest extends FormRequest
             'organisateur.required' => 'L\'organisateur de l\'évènement doit être renseigné.',
             'heureDebut.required_without' => 'L\'heure de commencement de l\'évènement doit être renseignée.',
             'heureFin.required_without' => 'L\'heure de fin de l\'évènement doit être renseignée.',
-            'jourDebut.before_or_equal' => 'La date de commencement de l\'évènement doit être avant la date de fin.',
+            'jourDebut.before_or_equal' => 'La date de commencement de l\'évènement ne peut être après la date de fin.',
             'photo.image' => 'Le fichier renseigné doit être une image.'
         ];
     }

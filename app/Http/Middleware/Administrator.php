@@ -19,7 +19,6 @@ class Administrator
         if (Auth::user() && Auth::user()->actif == 2) {
             return $next($request);
         }
-        
-        return redirect('/');
+        return redirect('/login');
     }
 }

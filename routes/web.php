@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 // Accueil
 Route::get('/', 'HomeController@index');
+Route::get('home', function() { return redirect('/'); } );
 Route::get('404', 'HomeController@inexist');
 
 Route::get('contact', 'HomeController@contact');
