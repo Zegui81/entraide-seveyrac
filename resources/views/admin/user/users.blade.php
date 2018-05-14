@@ -20,6 +20,7 @@
                  <tr>
                     <th scope="col">Personne</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Adresse</th>
                     <th scope="col">Téléphone</th>
                     <th scope="col">Mobile</th>
                     <th scope="col">Cotisation</th>
@@ -32,6 +33,17 @@
                      <tr {{ Auth::user()->id == $item['id'] ? 'class=table-warning' : '' }}>
                         <td>{{ $item['prenom'].' '.$item['nom'] }}</td>
                         <td>{{ $item['email'] }}</td>
+                        <td>
+                            <button type="button" id="pop-{{ $item['id'] }}"
+                            	class="btn btn-secondary adresse-popover" 
+                            	data-toggle="popover" 
+                            	data-trigger="focus"
+                            	data-placement="right"
+                            	data-html="true"
+                            	title="Adresse de {{ $item['prenom'].' '.$item['nom'] }}" 
+                            	data-content="{{ $item['adresse'] }}">Voir
+                            </button>
+                        </td>
                         <td>{{ $item['telFixe'] }}</td>
                         <td>{{ $item['telPortable'] }}</td>
                         <td><a class="btn btn-{{ $item['cotisation'] ? 'success paye' : 'danger n-paye' }}" href="{{ asset('admin/user/cotisation').'/'.$item['id'] }}"></a></td>
@@ -64,6 +76,13 @@
                  @endforeach
               </tbody>
            </table>
+           <script type="text/javascript">
+            	$(function () {
+            	  $('.adresse-popover').popover({
+            	    container: 'body'
+            	  })
+            	})
+           </script>
        @endif
     </div>
 @endsection

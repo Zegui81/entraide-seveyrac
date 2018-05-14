@@ -50,6 +50,7 @@ class CovoitController extends Controller
             array_push($liste, $covoit->covoitToArray());
         }
         return view('pages.covoit.manage')
+            ->with('HEAD_clockpicker', true)
             ->withCovoit(null)
             ->withCovoits($liste);
     }
@@ -77,6 +78,7 @@ class CovoitController extends Controller
         $covoit = Covoit::where('id', $id)->first();
         
         return view('pages.covoit.covoit')
+            ->with('HEAD_clockpicker', true)
             ->withCovoit($covoit->covoitToArray());
     }
     

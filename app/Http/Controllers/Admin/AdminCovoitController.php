@@ -41,6 +41,7 @@ class AdminCovoitController extends CovoitController
         }
         
         return view('pages.covoit.covoit')
+            ->with('HEAD_clockpicker', true)
             ->withUsers($liste)
             ->withCovoit(null);
     }
@@ -56,6 +57,7 @@ class AdminCovoitController extends CovoitController
         }
         
         return view('pages.covoit.covoit')
+            ->with('HEAD_clockpicker', true)
             ->withUsers($liste)
             ->withCovoit($covoit->covoitToArray());
     }

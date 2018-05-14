@@ -19,7 +19,7 @@
       
       <!-- CSRF Token -->
       <meta name="csrf-token" content="{{ csrf_token() }}">
-      <title>De Pierres et de Chênes</title>
+      <title>Séveyrac - De Pierres et de Chênes</title>
       
       <!-- Scripts -->
       <script src="{{ asset('vendor/components/jquery/jquery.min.js') }}"></script>
@@ -37,7 +37,9 @@
       <link href="{{ asset('vendor/components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
       <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
       <link href="{{ asset('public/css/effectHover.css') }}" rel="stylesheet">
-      <link href="{{ asset('public/css/clockpicker.css') }}" rel="stylesheet">
+      @if(isset($HEAD_clockpicker))
+	      <link href="{{ asset('public/css/clockpicker.css') }}" rel="stylesheet">
+	  @endif
       <link href="{{ asset('public/css/dropzone.css') }}" rel="stylesheet">
       <link href="{{ asset('public/css/modal.css') }}" rel="stylesheet">
       

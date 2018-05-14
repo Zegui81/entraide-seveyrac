@@ -78,6 +78,7 @@ class EventController extends Controller
     
     public function propose() {
         return view('pages.event.propose')
+            ->with('HEAD_clockpicker', true)
             ->withUsers(null)
             ->withEvent(null)
             ->withEdit(false);

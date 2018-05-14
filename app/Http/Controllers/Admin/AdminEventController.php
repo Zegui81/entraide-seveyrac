@@ -57,6 +57,7 @@ class AdminEventController extends EventController
             $liste[$user->id] = $user->prenom.' '.$user->nom;
         }
         return view('admin.content.event.event')
+            ->with('HEAD_clockpicker', true)
             ->withUsers($liste)
             ->withEvent(null)
             ->withEdit(false);

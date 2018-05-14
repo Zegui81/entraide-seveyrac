@@ -14,6 +14,7 @@
                         <tr>
                           <th scope="col">Personne</th>
                           <th scope="col">Email</th>
+                          <th scope="col">Adresse</th>
                           <th scope="col">Téléphone</th>
                           <th scope="col">Mobile</th>
                           <th scope="col">Demande</th>
@@ -25,6 +26,17 @@
                             <tr>
                               <td>{{ $item['prenom'].' '.$item['nom'] }}</td>
                               <td>{{ $item['email'] }}</td>
+                              <td>
+                                <button type="button" id="pop-{{ $item['id'] }}"
+                                	class="btn btn-secondary adresse-popover" 
+                                	data-toggle="popover" 
+                                	data-trigger="focus"
+                                	data-placement="right"
+                                	data-html="true"
+                                	title="Adresse de {{ $item['prenom'].' '.$item['nom'] }}" 
+                                	data-content="{{ $item['adresse'] }}">Voir
+                                </button>
+                              </td>
                               <td>{{ $item['telFixe'] }}</td>
                               <td>{{ $item['telPortable'] }}</td>
                               <td>{{ $item['created_at'] }}</td>
@@ -43,8 +55,16 @@
                           @endforeach
                       </tbody>
             		</table>
+            		<script type="text/javascript">
+                    	$(function () {
+                    	  $('.adresse-popover').popover({
+                    	    container: 'body'
+                    	  })
+                    	})
+                    </script>
         		@endif
         	</div>
     	</div>
     </div>
+
 @endsection

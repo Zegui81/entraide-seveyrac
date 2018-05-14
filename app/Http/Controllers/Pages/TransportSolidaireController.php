@@ -49,6 +49,7 @@ class TransportSolidaireController extends Controller
         }
         
         return view('pages.transportSolidaire.manage')
+            ->with('HEAD_clockpicker', true)
             ->withTransport(null)
             ->withJours(TransportSolidaire::JOURS)
             ->withTransports($liste);
@@ -71,6 +72,7 @@ class TransportSolidaireController extends Controller
         $transport = TransportSolidaire::where('id', $id)->first();
         
         return view('pages.transportSolidaire.transport')
+            ->with('HEAD_clockpicker', true)
             ->withTransport($transport->transportToArray())
             ->withJours(TransportSolidaire::JOURS);
     }
