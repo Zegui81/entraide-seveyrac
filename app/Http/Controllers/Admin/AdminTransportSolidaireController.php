@@ -34,7 +34,7 @@ class AdminTransportSolidaireController extends TransportSolidaireController
     
     public function createTransport()
     {
-        $users = User::orderBy('nom')->get();
+        $users = User::where('actif', '>=', 1)->orderBy('nom')->get();
         $liste = array();
         foreach ($users as $user) {
             $liste[$user->id] = $user->prenom.' '.$user->nom;
@@ -50,7 +50,7 @@ class AdminTransportSolidaireController extends TransportSolidaireController
     public function editTransport($id)
     {
         $transport = TransportSolidaire::where('id', $id)->first();
-        $users = User::orderBy('nom')->get();
+        $users = User::where('actif', '>=', 1)->orderBy('nom')->get();
         $liste = array();
         foreach ($users as $user) {
             $liste[$user->id] = $user->prenom.' '.$user->nom;

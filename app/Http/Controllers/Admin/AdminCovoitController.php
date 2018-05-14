@@ -34,7 +34,7 @@ class AdminCovoitController extends CovoitController
     
     public function createCovoit()
     {
-        $users = User::orderBy('nom')->get();
+        $users = User::where('actif', '>=', 1)->orderBy('nom')->get();
         $liste = array();
         foreach ($users as $user) {
             $liste[$user->id] = $user->prenom.' '.$user->nom;
@@ -50,7 +50,7 @@ class AdminCovoitController extends CovoitController
     {
         $covoit = Covoit::where('id', $id)->first();
         
-        $users = User::orderBy('nom')->get();
+        $users = User::where('actif', '>=', 1)->orderBy('nom')->get();
         $liste = array();
         foreach ($users as $user) {
             $liste[$user->id] = $user->prenom.' '.$user->nom;

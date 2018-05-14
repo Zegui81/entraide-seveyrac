@@ -29,7 +29,7 @@ class AdminUserController extends Controller
     public function membership() 
     {
         // Utilisateurs inactif
-        $users = User::where('actif', 0)->get();
+        $users = User::where('actif', 0)->orderBy('nom')->get();
         
         $liste = array();
         foreach ($users as $user) {
@@ -103,7 +103,7 @@ class AdminUserController extends Controller
     public function user()
     {
         // Utilisateurs actif
-        $users = User::where('actif', '>=', 1)->get();
+        $users = User::where('actif', '>=', 1)->orderBy('nom')->get();
         
         $liste = array();
         foreach ($users as $user) {
