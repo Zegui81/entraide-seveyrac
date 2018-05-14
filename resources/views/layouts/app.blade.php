@@ -63,7 +63,7 @@
                <ul class="nav navbar-nav navbar-left">
                	  @guest
                       <li class="nav-item">
-                         <a class="nav-link" href="{{ asset('/event') }}">Nos évènements à venir</a>
+                         <a class="nav-link" href="{{ asset('/event') }}">Nos activités</a>
                       </li>
                   @endguest
                   @auth
