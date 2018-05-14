@@ -19,9 +19,9 @@
               <thead>
                  <tr>
                     <th scope="col">Jour</th>
+                    <th scope="col">Organisateur</th>
                     <th scope="col">Heure de départ</th>
                     <th scope="col">Heure de retour</th>
-                    <th scope="col">Organisateur</th>
                     <th scope="col">Actions</th>
                  </tr>
               </thead>
@@ -29,9 +29,9 @@
                  @foreach ($listTransport as $item)
                      <tr>
                         <td>{{ $item['jour'] }}</td>
+                        <td>{{ $item['organisateur']['prenom'].' '.$item['organisateur']['nom'] }}</td>
                         <td>{{ $item['heureDepart'] }}</td>
                         <td>{{ $item['heureRetour'] }}</td>
-                        <td>{{ $item['organisateur']['prenom'].' '.$item['organisateur']['nom'] }}</td>
                         <td>
                            <a class="btn btn-sm btn-warning ml-1 float-left" title="Modifier ce transport solidaire" href="{{ asset('admin/transport/').'/'.$item['id'] }}">
                            		<i class="fa fa-pencil-square-o w-32"></i>

@@ -90,6 +90,6 @@ class ResetPasswordController extends Controller
             'content' => 'Votre mot de passe a bien été changé.'
         );
         
-        return redirect('/')->with('message', $message);
+        return redirect('profile')->with('message', $message);
     }
 }

@@ -124,7 +124,7 @@
     }
     changeCheckJournee(); // Premier contrôle
     $('#checkhour').on('change', changeCheckJournee); 
-    
+	$('#organisateur').val({{ $event['organisateur']['id'] }});
     $('.clockpicker').clockpicker({
         placement: 'bottom',
         align: 'right',

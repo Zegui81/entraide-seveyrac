@@ -57,6 +57,10 @@ class Event extends Model
     
     public function eventToArrayForAdmin() {
         $organisateur = User::where('id', $this->user_id)->first();
+        $user = null;
+        if ($organisateur != null) {
+            $user = $organisateur->userToArray();
+        }
         return array(
             'id' => $this->id,
             'titre' => $this->titre,
@@ -67,7 +71,7 @@ class Event extends Model
             'heureFin' => date('H\:i', strtotime($this->fin)),
             'commentaire' => $this->commentaire,
             'url' => url('event/detail/'.$this->id),
-            'organisateur' => $this->user_id
+            'organisateur' => $user
         );
     }
 }

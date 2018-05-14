@@ -18,22 +18,22 @@
            <table class="table table-striped mb-0">
               <thead>
                  <tr>
+                    <th scope="col">Covoitureur</th>
                     <th scope="col">Départ</th>
                     <th scope="col">Destination</th>
                     <th scope="col">Jour / Heure</th>
                     <th scope="col">Nb places</th>
-                    <th scope="col">Covoitureur</th>
                     <th scope="col">Actions</th>
                  </tr>
               </thead>
               <tbody>
                  @foreach ($listCovoit as $item)
                      <tr>
+                        <td>{{ $item['organisateur']['prenom'].' '.$item['organisateur']['nom'] }}</td>
                         <td>{{ $item['origine'] }}</td>
                         <td>{{ $item['destination'] }}</td>
                         <td>{{ $item['depart'] }}</td>
                         <td>{{ $item['nbPlace'] }}</td>
-                        <td>{{ $item['organisateur']['prenom'].' '.$item['organisateur']['nom'] }}</td>
                         <td>
                            <a class="btn btn-sm btn-warning ml-1 float-left" title="Modifier ce covoiturage" href="{{ asset('admin/covoit/').'/'.$item['id'] }}">
                            		<i class="fa fa-pencil-square-o w-32"></i>
