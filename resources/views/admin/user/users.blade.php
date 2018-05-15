@@ -62,11 +62,12 @@
                                     {!! Form::close() !!}					    		
 					    		@endif
                             @endif
-                            <a class="btn btn-sm btn-warning mr-1 float-left" title="Modifier cet utilisateur" href="{{ asset('admin/user/edit').'/'.$item['id'] }}">
+                            <a class="btn btn-sm btn-warning mr-1 float-left" title="Modifier le profil de ce membre" href="{{ asset('admin/user/edit').'/'.$item['id'] }}">
                            		<i class="fa fa-pencil-square-o w-32"></i>
                             </a>
 					    	@if (Auth::user()->id != $item['id'])
-                               {!! Form::open(['url' => 'admin/user/'.$item['id'], 'method' => 'POST', 'class' => 'float-left', 'onsubmit' => 'return confirm("Souhaitez-vous vraiment supprimer cet adhérent ?")']) !!}
+                               {!! Form::open(['url' => 'admin/user/'.$item['id'], 'method' => 'POST', 'class' => 'float-left',
+                               		 'onsubmit' => 'return confirm("Souhaitez-vous vraiment supprimer cet adhérent ? Ses covoiturages, ainsi que ses transports solidaires le seront également.")']) !!}
                                    {!! method_field('delete') !!}
                                    {!! Form::button('<i class="fa fa-trash" aria-hidden="true"></i>', array('title' => 'Supprimer ce membre', 'type' => 'submit', 'class' => 'btn btn-sm btn-danger w-32px')) !!}
                                {!! Form::close() !!}
