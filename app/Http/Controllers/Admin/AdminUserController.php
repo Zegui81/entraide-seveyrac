@@ -28,7 +28,7 @@ class AdminUserController extends Controller
      */
     public function membership() 
     {
-        // Utilisateurs inactif
+        // s inactif
         $users = User::where('actif', 0)->orderBy('nom')->get();
         
         $liste = array();
@@ -98,11 +98,11 @@ class AdminUserController extends Controller
     }
     
     /**
-     * Tableau des utilisateurs
+     * Tableau des s
      */
     public function user()
     {
-        // Utilisateurs actif
+        // s actif
         $users = User::where('actif', '>=', 1)->orderBy('nom')->get();
         
         $liste = array();
@@ -121,7 +121,7 @@ class AdminUserController extends Controller
         $message = array(
             'type' => 'success',
             'icon' => 'check',
-            'content' => 'La cotisation d\'un utilisateur a été modifiée.'
+            'content' => 'La cotisation d\'un adhérent a été modifiée.'
         );
         return redirect('admin/user')->with('message', $message);
     }
@@ -141,7 +141,7 @@ class AdminUserController extends Controller
         $message = array(
             'type' => 'success',
             'icon' => 'check',
-            'content' => 'L\'utilisateur a bien été modifié.'
+            'content' => 'L\'adhérent a bien été modifié.'
         );
         return redirect('admin/user')->with('message', $message);
     }
@@ -157,7 +157,7 @@ class AdminUserController extends Controller
     }
     
     /**
-     * Suppression d'un utilisateurs
+     * Suppression d'un s
      */
     public function deleteUser($id) 
     {
@@ -167,7 +167,7 @@ class AdminUserController extends Controller
         $message = array(
             'type' => 'warning',
             'icon' => 'trash',
-            'content' => 'L\'utilisateur a bien été supprimé.'
+            'content' => 'L\'adhérent a bien été supprimé.'
         );
         
         return redirect('admin/user')->with('message', $message);
@@ -182,7 +182,7 @@ class AdminUserController extends Controller
     }
     
     /**
-     * Ajout d'un utilisateur
+     * Ajout d'un 
      */
     public function addUser(UserRequest $request)
     {
@@ -285,7 +285,7 @@ class AdminUserController extends Controller
         $message = array(
             'type' => 'success',
             'icon' => 'check',
-            'content' => 'Le mot de passe de l\'utilisateur a bien été changé.'
+            'content' => 'Le mot de passe de l\'adhérent a bien été changé.'
         );
         
         return redirect('/admin/user')->with('message', $message);
