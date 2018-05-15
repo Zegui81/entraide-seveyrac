@@ -38,7 +38,7 @@
                            <a class="btn btn-sm btn-warning ml-1 float-left" title="Modifier ce covoiturage" href="{{ asset('admin/covoit/').'/'.$item['id'] }}">
                            		<i class="fa fa-pencil-square-o w-32"></i>
                            </a>
-                           {!! Form::open(['url' => 'admin/covoit/'.$item['id'], 'method' => 'POST', 'class' => 'float-left ml-1']) !!}
+                           {!! Form::open(['url' => 'admin/covoit/'.$item['id'], 'method' => 'POST', 'class' => 'float-left ml-1', 'onsubmit' => 'return confirm("Souhaitez-vous vraiment supprimer ce covoiturage ?")']) !!}
                                {!! method_field('delete') !!}
                                {!! Form::button('<i class="fa fa-trash" aria-hidden="true"></i>', array('title' => 'Supprimer ce covoiturage', 'type' => 'submit', 'class' => 'btn btn-sm btn-danger w-32px')) !!}
                            {!! Form::close() !!}

@@ -20,7 +20,7 @@
                 	<p class="card-text text-justify">{{ $item['message'] }}</p>
                 </div>
                 <div class="card-footer text-center">
-                   {!! Form::open(['url' => 'admin/contact/'.$item['id'], 'method' => 'POST', 'class' => 'float-left w-100']) !!}
+                   {!! Form::open(['url' => 'admin/contact/'.$item['id'], 'method' => 'POST', 'class' => 'float-left w-100', 'onsubmit' => 'return confirm("Souhaitez-vous vraiment supprimer ce message ?")']) !!}
                        {!! method_field('delete') !!}
 					   {!! Form::button('Supprimer&nbsp;&nbsp;<i class="fa fa-times" aria-hidden="true"></i>', array('type' => 'submit', 'class' => 'btn btn-danger w-75')) !!}
                    {!! Form::close() !!}

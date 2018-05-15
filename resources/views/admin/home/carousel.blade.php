@@ -18,7 +18,7 @@
                         <img class="img-fluid" src="{{ asset('public/img/carousel').'/'.$item['id'].'.'.$item['ext'] }}" alt="">
                         <div class="overlay">
                            <h2>{{ $item['titre'] }}</h2>
-                           <a class="info" href="{{ asset('admin/home/carousel').'/'.$item['id'] }}">Supprimer l'image</a>
+                           <a class="info" href="{{ asset('admin/home/carousel').'/'.$item['id'] }}" onclick="return confirm('Souhaitez-vous vraiment supprimer cette photo ?')">Supprimer l'image</a>
                         </div>
                     </div>
                 @endforeach

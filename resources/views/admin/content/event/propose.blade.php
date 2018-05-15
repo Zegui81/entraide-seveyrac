@@ -33,7 +33,7 @@
                            <a class="btn btn-sm btn-warning ml-1 float-left" title="Modifier cet évènement" href="{{ asset('admin/propose/event/').'/'.$item['id'] }}">
                            		<i class="fa fa-pencil-square-o w-32"></i>
                            </a>
-                           {!! Form::open(['url' => 'admin/propose/event/'.$item['id'], 'method' => 'POST', 'class' => 'float-left ml-1']) !!}
+                           {!! Form::open(['url' => 'admin/propose/event/'.$item['id'], 'method' => 'POST', 'class' => 'float-left ml-1', 'onsubmit' => 'return confirm("Souhaitez-vous vraiment refuser cette proposition d\'évènement ?")']) !!}
                                {!! method_field('delete') !!}
                                {!! Form::button('<i class="fa fa-times" aria-hidden="true"></i>', array('title' => 'Refuser cet évènement', 'type' => 'submit', 'class' => 'btn btn-sm btn-danger w-32px')) !!}
                            {!! Form::close() !!}

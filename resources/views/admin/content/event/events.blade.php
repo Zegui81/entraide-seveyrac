@@ -40,7 +40,8 @@
                            <a class="btn btn-sm btn-warning ml-1 float-left" title="Modifier cet évènement" href="{{ asset('admin/event/').'/'.$item['id'] }}">
                            		<i class="fa fa-pencil-square-o w-32"></i>
                            </a>
-                           {!! Form::open(['url' => 'admin/event/'.$item['id'], 'method' => 'POST', 'class' => 'float-left ml-1']) !!}
+                           {!! Form::open(['url' => 'admin/event/'.$item['id'], 'method' => 'POST', 'class' => 'float-left ml-1', 
+                           		'onsubmit' => 'return confirm("Souhaitez-vous vraiment supprimer cet évènement ? La galerie de photos associée à ce dernier le sera également.")']) !!}
                                {!! method_field('delete') !!}
                                {!! Form::button('<i class="fa fa-trash" aria-hidden="true"></i>', array('title' => 'Supprimer cet évènement', 'type' => 'submit', 'class' => 'btn btn-sm btn-danger w-32px')) !!}
                            {!! Form::close() !!}

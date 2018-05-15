@@ -46,7 +46,7 @@
         							{!! Form::button('<i class="fa fa-check" aria-hidden="true"></i>', array('title' => 'Accepter ce membre', 'type' => 'submit', 'class' => 'btn btn-sm btn-success w-32px')) !!}
               					  {!! Form::close() !!} 
               					  
-              					  {!! Form::open(['url' => 'admin/membership/'.$item['id'], 'method' => 'POST', 'class' => 'float-left']) !!}
+              					  {!! Form::open(['url' => 'admin/membership/'.$item['id'], 'method' => 'POST', 'class' => 'float-left', 'onsubmit' => 'return confirm("Souhaitez-vous vraiment refuser cette demande d\'adhésion ?")']) !!}
                               	  	{!! method_field('delete') !!}
         							{!! Form::button('<i class="fa fa-ban" aria-hidden="true"></i>', array('title' => 'Refuser ce membre', 'type' => 'submit', 'class' => 'btn btn-sm btn-danger w-32px')) !!}
               					  {!! Form::close() !!}

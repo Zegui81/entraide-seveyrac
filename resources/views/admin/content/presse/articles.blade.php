@@ -57,7 +57,7 @@
                         <img class="img-fluid" src="{{ asset('public/img/presse').'/'.$item['id'].'.jpg' }}" alt="">
                         <div class="overlay">
                            <h2>{{ $item['titre'] }}</h2>
-                           <a class="info" href="{{ asset('admin/news').'/'.$item['id'] }}">Supprimer l'article</a>
+                           <a class="info" href="{{ asset('admin/news').'/'.$item['id'] }}" onclick="return confirm('Souhaitez-vous vraiment supprimer cet article ?')">Supprimer l'article</a>
                         </div>
                     </div>
                 @endforeach

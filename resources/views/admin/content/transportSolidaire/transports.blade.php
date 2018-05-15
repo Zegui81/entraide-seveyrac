@@ -36,7 +36,7 @@
                            <a class="btn btn-sm btn-warning ml-1 float-left" title="Modifier ce transport solidaire" href="{{ asset('admin/transport/').'/'.$item['id'] }}">
                            		<i class="fa fa-pencil-square-o w-32"></i>
                            </a>
-                           {!! Form::open(['url' => 'admin/transport/'.$item['id'], 'method' => 'POST', 'class' => 'float-left ml-1']) !!}
+                           {!! Form::open(['url' => 'admin/transport/'.$item['id'], 'method' => 'POST', 'class' => 'float-left ml-1', 'onsubmit' => 'return confirm("Souhaitez-vous vraiment supprimer ce transport solidaire ?")']) !!}
                                {!! method_field('delete') !!}
                                {!! Form::button('<i class="fa fa-trash" aria-hidden="true"></i>', array('title' => 'Supprimer ce transport solidaire', 'type' => 'submit', 'class' => 'btn btn-sm btn-danger w-32px')) !!}
                            {!! Form::close() !!}

@@ -66,7 +66,7 @@
                            		<i class="fa fa-pencil-square-o w-32"></i>
                             </a>
 					    	@if (Auth::user()->id != $item['id'])
-                               {!! Form::open(['url' => 'admin/user/'.$item['id'], 'method' => 'POST', 'class' => 'float-left']) !!}
+                               {!! Form::open(['url' => 'admin/user/'.$item['id'], 'method' => 'POST', 'class' => 'float-left', 'onsubmit' => 'return confirm("Souhaitez-vous vraiment supprimer cet adhérent ?")']) !!}
                                    {!! method_field('delete') !!}
                                    {!! Form::button('<i class="fa fa-trash" aria-hidden="true"></i>', array('title' => 'Supprimer ce membre', 'type' => 'submit', 'class' => 'btn btn-sm btn-danger w-32px')) !!}
                                {!! Form::close() !!}
