@@ -63,7 +63,7 @@ class TransportSolidaireController extends Controller
         $message = array(
             'type' => 'success',
             'icon' => 'car',
-            'content' => 'Votre transport solidaire a été publié avec succés.'
+            'content' => 'Votre transport solidaire a bien été publié.'
         );
         return redirect('transport/manage')->with('message', $message);
     }
@@ -86,7 +86,7 @@ class TransportSolidaireController extends Controller
         $message = array(
             'type' => 'success',
             'icon' => 'check',
-            'content' => 'Le transport solidaire a été modifié avec succés.'
+            'content' => 'Votre transport solidaire a bien été modifié.'
         );
         return redirect('transport/manage')->with('message', $message);
     }
@@ -125,7 +125,7 @@ class TransportSolidaireController extends Controller
         $message = array(
             'type' => 'warning',
             'icon' => 'trash',
-            'content' => 'Votre transport solidaire a été supprimé avec succés.'
+            'content' => 'Votre transport solidaire a bien été supprimé.'
         );
         
         return redirect('transport/manage')->with('message', $message);

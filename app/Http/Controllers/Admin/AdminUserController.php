@@ -121,7 +121,7 @@ class AdminUserController extends Controller
         $message = array(
             'type' => 'success',
             'icon' => 'check',
-            'content' => 'La cotisation d\'un utilisateur a été modifié.'
+            'content' => 'La cotisation d\'un utilisateur a été modifiée.'
         );
         return redirect('admin/user')->with('message', $message);
     }
@@ -141,7 +141,7 @@ class AdminUserController extends Controller
         $message = array(
             'type' => 'success',
             'icon' => 'check',
-            'content' => 'L\'utilisateur a été modifié.'
+            'content' => 'L\'utilisateur a bien été modifié.'
         );
         return redirect('admin/user')->with('message', $message);
     }
@@ -167,7 +167,7 @@ class AdminUserController extends Controller
         $message = array(
             'type' => 'warning',
             'icon' => 'trash',
-            'content' => 'L\'utilisateur a été supprimé avec succés.'
+            'content' => 'L\'utilisateur a bien été supprimé.'
         );
         
         return redirect('admin/user')->with('message', $message);
@@ -194,7 +194,7 @@ class AdminUserController extends Controller
         $message = array(
             'type' => 'success',
             'icon' => 'check',
-            'content' => 'L\'adhérent a été ajouté avec succés.'
+            'content' => 'L\'adhérent a bien été ajouté.'
         );
         return redirect('admin/user')->with('message', $message);
     }

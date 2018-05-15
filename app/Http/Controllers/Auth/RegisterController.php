@@ -91,7 +91,7 @@ class RegisterController extends Controller
         // Message de validation
         $message = array(
             'type' => 'success',
-            'icon' => 'user',
+            'icon' => 'check',
             'content' => 'Votre demande d\'admission a bien été envoyée. '
                 .'Un administrateur prendra contact avec vous après l\'activation de votre compte.'
         );

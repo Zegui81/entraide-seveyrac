@@ -80,7 +80,7 @@ class AdminEventController extends EventController
         $message = array(
             'type' => 'success',
             'icon' => 'calendar-check-o',
-            'content' => 'L\'évènement a été créé.'
+            'content' => 'L\'évènement a bien été créé.'
         );
         return redirect('admin/event')->with('message', $message);
     }
@@ -139,7 +139,7 @@ class AdminEventController extends EventController
         $message = array(
             'type' => 'warning',
             'icon' => 'calendar-times-o',
-            'content' => 'L\'évènement proposé a bien été refusé.'
+            'content' => 'La proposition d\'évènement a bien été refusée.'
         );
         return redirect('admin/propose/event')->with('message', $message);
     }
@@ -161,7 +161,7 @@ class AdminEventController extends EventController
         $message = array(
             'type' => 'warning',
             'icon' => 'calendar-times-o',
-            'content' => 'L\'évènement a été supprimé avec succés.'
+            'content' => 'L\'évènement a bien été supprimé.'
         );
         return redirect('admin/event')->with('message', $message);
     }

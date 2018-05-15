@@ -87,7 +87,7 @@ class ResetPasswordController extends Controller
         $message = array(
             'type' => 'success',
             'icon' => 'check',
-            'content' => 'Votre mot de passe a bien été changé.'
+            'content' => 'Votre mot de passe a bien été modifié.'
         );
         
         return redirect('profile')->with('message', $message);

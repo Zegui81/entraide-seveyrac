@@ -68,7 +68,7 @@ class CovoitController extends Controller
         $message = array(
             'type' => 'success',
             'icon' => 'car',
-            'content' => 'Votre covoiturage a été publié.'
+            'content' => 'Votre covoiturage a bien été publié.'
         );
         
         return redirect('covoit/manage')->with('message', $message);
@@ -91,7 +91,7 @@ class CovoitController extends Controller
         $message = array(
             'type' => 'success',
             'icon' => 'check',
-            'content' => 'Le covoiturage a été modifié avec succés.'
+            'content' => 'Votre covoiturage a bien été modifié.'
         );
         return redirect('covoit/manage')->with('message', $message);
     }
@@ -135,7 +135,7 @@ class CovoitController extends Controller
         $message = array(
             'type' => 'warning',
             'icon' => 'trash',
-            'content' => 'Votre covoiturage a été supprimé.'
+            'content' => 'Votre covoiturage a bien été supprimé.'
         );
         
         return redirect('covoit/manage')->with('message', $message);

@@ -39,7 +39,7 @@ class AdminPresseController extends Controller
         $message = array(
             'type' => 'success',
             'icon' => 'check',
-            'content' => 'L\'article a été publié.'
+            'content' => 'L\'article a bien été publié.'
         );
         
         return redirect('admin/news')->with('message', $message);
@@ -56,7 +56,7 @@ class AdminPresseController extends Controller
         $message = array(
             'type' => 'warning',
             'icon' => 'trash',
-            'content' => 'L\'article a été supprimé.'
+            'content' => 'L\'article a bien été supprimé.'
         );
         return redirect('admin/news')->with('message', $message);
     }

@@ -155,7 +155,7 @@ class AdminHomeController extends Controller
         $message = array(
             'type' => 'success',
             'icon' => 'check',
-            'content' => 'La page d\'accueil du site a bien été modifié.'
+            'content' => 'La page d\'accueil du site a bien été modifiée.'
         );
         return redirect('admin')->with('message', $message);
     }

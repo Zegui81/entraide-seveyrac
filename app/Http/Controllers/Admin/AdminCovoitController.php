@@ -70,8 +70,8 @@ class AdminCovoitController extends CovoitController
         // Message de validation
         $message = array(
             'type' => 'success',
-            'icon' => 'car',
-            'content' => 'Le covoiturage a été publié.'
+            'icon' => 'check',
+            'content' => 'Le covoiturage a bien été publié.'
         );
         return redirect('admin/covoit')->with('message', $message);
     }
@@ -85,7 +85,7 @@ class AdminCovoitController extends CovoitController
         $message = array(
             'type' => 'success',
             'icon' => 'check',
-            'content' => 'Le covoiturage a été modifié.'
+            'content' => 'Le covoiturage a bien été modifié.'
         );
         return redirect('admin/covoit')->with('message', $message);
     }
@@ -98,7 +98,7 @@ class AdminCovoitController extends CovoitController
         $message = array(
             'type' => 'warning',
             'icon' => 'trash',
-            'content' => 'Le covoiturage a été supprimé.'
+            'content' => 'Le covoiturage a bien été supprimé.'
         );
         return redirect('admin/covoit')->with('message', $message);
     }

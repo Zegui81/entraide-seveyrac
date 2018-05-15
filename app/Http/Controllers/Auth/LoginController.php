@@ -73,6 +73,6 @@ class LoginController extends Controller
     
     protected function getFailedLoginMessage()
     {
-        return 'Les informations fournis n\'ont pas permis de vous authentifier.';
+        return 'Les informations fournies n\'ont pas permis de vous authentifier.';
     }
 }
