@@ -30,7 +30,7 @@
               </thead>
               <tbody>
                  @foreach ($listUser as $item)
-                     <tr {{ Auth::user()->id == $item['id'] ? 'class=table-warning' : '' }}>
+                     <tr {{ Auth::user()->id == $item['id'] ? 'class=table-info' : '' }}>
                         <td>{{ $item['prenom'].' '.$item['nom'] }}</td>
                         <td>{{ $item['email'] }}</td>
                         <td>
