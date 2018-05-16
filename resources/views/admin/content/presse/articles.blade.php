@@ -26,7 +26,7 @@
                             	<div class="input-group-prepend">
                                   <div class="input-group-text"><i class="fa fa-calendar-o" aria-hidden="true"></i></div>
                                 </div>
-                                {!! Form::date('datePubli', null, ['class' => 'form-control '.($errors->has('datePubli') ? 'is-invalid' : '')]) !!}
+                                {!! Form::text('datePubli', null, ['placeholder' => 'JJ/MM/AAAA', 'class' => 'datepicker form-control '.($errors->has('datePubli') ? 'is-invalid' : '')]) !!}
                 				{!! $errors->first('datePubli', '<div class="invalid-feedback">:message</div>') !!}
                             </div>                		
                 		</div>
@@ -64,4 +64,32 @@
             </div>
          </div>
     </div>
+    <script type="text/javascript">
+    	$(document).ready(function() {
+        	$.datepicker.regional['fr'] = {
+        		closeText: 'Fermer',
+        		prevText: '&#x3c;Préc',
+        		nextText: 'Suiv&#x3e;',
+        		currentText: 'Aujourd\'hui',
+        		monthNames: ['Janvier','Fevrier','Mars','Avril','Mai','Juin',
+        		'Juillet','Aout','Septembre','Octobre','Novembre','Decembre'],
+        		monthNamesShort: ['Jan','Fev','Mar','Avr','Mai','Jun',
+        		'Jul','Aou','Sep','Oct','Nov','Dec'],
+        		dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
+        		dayNamesShort: ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],
+        		dayNamesMin: ['Di','Lu','Ma','Me','Je','Ve','Sa'],
+        		weekHeader: 'Sm',
+        		dateFormat: 'dd/mm/yy',
+        		firstDay: 1,
+        		isRTL: false,
+        		showMonthAfterYear: false,
+        		yearSuffix: '',
+        		minDate: new Date(2007, 1 - 1, 1),
+        		maxDate: '+12M +0D',
+        		numberOfMonths: 1,
+        		showButtonPanel: true
+          };
+          $(".datepicker").datepicker($.datepicker.regional['fr']);
+        });
+    </script>
 @endsection

@@ -104,8 +104,10 @@ class EventController extends Controller
         $event->user_id = $request->organisateur;
         
         // Conversion des dates
-        $dateDebut = new \DateTime($request->jourDebut);
-        $dateFin = new \DateTime($request->jourFin);
+        $dateDeb = date_create_from_format('j/m/Y', $request->jourDebut);
+        $dateDebut = new \DateTime(date_format($dateDeb, 'Y-m-d'));
+        $dateF = date_create_from_format('j/m/Y', $request->jourFin);
+        $dateFin = new \DateTime(date_format($dateF, 'Y-m-d'));
         if (!isset($request->journee)) {
             $heureDebut = explode(':', $request->heureDebut);
             $dateDebut->setTime($heureDebut[0], $heureDebut[1], 0, 0);

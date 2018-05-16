@@ -19,7 +19,7 @@ class Covoit extends Model
             'origine' => $this->origine,
             'destination' => $this->destination,
             'depart' => date('d/m/Y \à H\hi', strtotime($this->depart)),
-            'jourDepart' => date('Y-m-d', strtotime($this->depart)),
+            'jourDepart' => date('d/m/Y', strtotime($this->depart)),
             'heureDepart' => date('H\:i', strtotime($this->depart)),
             'nbPlace' => $this->nbPlace,
             'commentaire' => $this->commentaire,

@@ -64,7 +64,10 @@ class AdminPresseController extends Controller
     private function validatePresse(PresseRequest $request, Presse $presse)
     {
         $presse->titre = $request->titre;
-        $presse->datePubli = new \DateTime($request->datePubli);
+        
+        $date = date_create_from_format('j/m/Y', $request->datePubli);
+        $presse->datePubli = new \DateTime(date_format($date, 'Y-m-d'));
+        
         $presse->description = $request->description;
         $presse->save();
         

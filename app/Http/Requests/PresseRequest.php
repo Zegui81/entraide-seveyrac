@@ -25,7 +25,7 @@ class PresseRequest extends FormRequest
     {
         return [
             'titre' => 'required|max:100',
-            'datePubli' => 'required|date',
+            'datePubli' => 'required|date_format:"d/m/Y"',
             'description' => '',
             'photo' => 'required|image'
         ];

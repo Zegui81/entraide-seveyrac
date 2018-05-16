@@ -102,7 +102,9 @@ class CovoitController extends Controller
         $covoit->commentaire = $request->commentaire;
         $covoit->nbPlace = $request->nbPlace;
         
-        $dateDepart = new \DateTime($request->jourDepart);
+        $date = date_create_from_format('j/m/Y', $request->jourDepart);
+        $dateDepart = new \DateTime(date_format($date, 'Y-m-d'));
+        
         $heureDepart = explode(':', $request->heureDepart);
         $dateDepart->setTime($heureDepart[0], $heureDepart[1], 0, 0);
         $covoit->depart = $dateDepart;

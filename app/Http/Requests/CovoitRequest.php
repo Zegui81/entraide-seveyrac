@@ -26,7 +26,7 @@ class CovoitRequest extends FormRequest
         return [
             'origine' => 'required|max:100',
             'destination' => 'required|max:100',
-            'jourDepart' => 'required',
+            'jourDepart' => 'required|date_format:"d/m/Y"',
             'heureDepart' => 'required',
             'nbPlace' => 'required',
             'commentaire' => ''

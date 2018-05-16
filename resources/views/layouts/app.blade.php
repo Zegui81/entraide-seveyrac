@@ -23,6 +23,7 @@
       
       <!-- Scripts -->
       <script src="{{ asset('vendor/components/jquery/jquery.min.js') }}"></script>
+      <script src="{{ asset('vendor/components/jqueryui/jquery-ui.js') }}"></script>
       <script src="{{ asset('vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
       <script src="{{ asset('public/ckeditor5/ckeditor.js') }}"></script>
       <script src="{{ asset('public/js/clockpicker.js') }}"></script>
@@ -35,6 +36,7 @@
       <link rel="stylesheet" href="{{ asset('vendor/twbs/bootstrap/dist/css/bootstrap.min.css') }}">
       <link href="{{ asset('public/css/template-bootstrap.css') }}" rel="stylesheet">
       <link href="{{ asset('vendor/components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+      <link href="{{ asset('vendor/components/jqueryui/themes/base/jquery-ui.css') }}" rel="stylesheet">
       <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
       <link href="{{ asset('public/css/effectHover.css') }}" rel="stylesheet">
       @if(isset($HEAD_clockpicker))

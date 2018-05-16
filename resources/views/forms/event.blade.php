@@ -21,7 +21,7 @@
             	<div class="input-group-prepend">
                   <div class="input-group-text"><i class="fa fa-calendar-o" aria-hidden="true"></i></div>
                 </div>
-                {!! Form::date('jourDebut', $event['jourDebut'], ['class' => 'form-control '.($errors->has('jourDebut') ? 'is-invalid' : '')]) !!}
+                {!! Form::text('jourDebut', $event['jourDebut'], ['id' => 'jourDebut', 'placeholder' => 'JJ/MM/AAAA', 'class' => 'datepicker form-control '.($errors->has('jourDebut') ? 'is-invalid' : '')]) !!}
 				{!! $errors->first('jourDebut', '<div class="invalid-feedback">:message</div>') !!}
             </div>                		
 		</div>
@@ -31,7 +31,7 @@
             	<div class="input-group-prepend">
                   <div class="input-group-text"><i class="fa fa-calendar-o" aria-hidden="true"></i></div>
                 </div>
-                {!! Form::date('jourFin', $event['jourFin'], ['class' => 'form-control '.($errors->has('jourFin') ? 'is-invalid' : '')]) !!}
+                {!! Form::text('jourFin', $event['jourFin'], ['id' => 'jourFin', 'placeholder' => 'JJ/MM/AAAA', 'class' => 'datepicker form-control '.($errors->has('jourFin') ? 'is-invalid' : '')]) !!}
 				{!! $errors->first('jourFin', '<div class="invalid-feedback">:message</div>') !!}
             </div>                		
 		</div>
@@ -115,22 +115,84 @@
 {!! Form::close() !!}
 
 <script type="text/javascript">
+    $(document).ready(function() {
+    
+        $("#jourDebut").datepicker({
+            closeText: 'Fermer',
+            prevText: '&#x3c;Préc',
+            nextText: 'Suiv&#x3e;',
+            currentText: 'Aujourd\'hui',
+            monthNames: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',
+                'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'
+            ],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jun',
+                'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'
+            ],
+            dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+            dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+            dayNamesMin: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
+            weekHeader: 'Sm',
+            dateFormat: 'dd/mm/yy',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: '',
+            minDate: new Date(2007, 1 - 1, 1),
+            maxDate: '+12M +0D',
+            numberOfMonths: 1,
+            showButtonPanel: true,
+            onSelect: function(selected) {
+                $("#jourFin").datepicker("option", "minDate", selected)
+            }
+        });
+    
+        $("#jourFin").datepicker({
+            closeText: 'Fermer',
+            prevText: '&#x3c;Préc',
+            nextText: 'Suiv&#x3e;',
+            currentText: 'Aujourd\'hui',
+            monthNames: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',
+                'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'
+            ],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jun',
+                'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'
+            ],
+            dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+            dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+            dayNamesMin: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
+            weekHeader: 'Sm',
+            dateFormat: 'dd/mm/yy',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: '',
+            minDate: new Date(2007, 1 - 1, 1),
+            maxDate: '+12M +0D',
+            numberOfMonths: 1,
+            showButtonPanel: true,
+            onSelect: function(selected) {
+                $("#jourDebut").datepicker("option", "maxDate", selected)
+    
+            }
+        });
+    });
+    
     function changeCheckJournee() {
-    	if ($('#checkhour').is(':checked')) {
-    	    $('#hour-group').css('display', 'none');
-    	} else {
-    	    $('#hour-group').removeAttr('style');
-    	}
+        if ($('#checkhour').is(':checked')) {
+            $('#hour-group').css('display', 'none');
+        } else {
+            $('#hour-group').removeAttr('style');
+        }
     }
     changeCheckJournee(); // Premier contrôle
-    $('#checkhour').on('change', changeCheckJournee); 
-	$('#organisateur').val({{ $event['organisateur']['id'] }});
+    $('#checkhour').on('change', changeCheckJournee);
+    $('#organisateur').val({{ $event['organisateur']['id'] }});
     $('.clockpicker').clockpicker({
         placement: 'bottom',
         align: 'right',
         donetext: 'Ok'
     });
-    var config = [ 'heading', '|', 'bold', 'italic', '|', 'link', 'bulletedList', 'numberedList', 'blockQuote', '|', 'undo', 'redo' ];
+    var config = ['heading', '|', 'bold', 'italic', '|', 'link', 'bulletedList', 'numberedList', 'blockQuote', '|', 'undo', 'redo'];
     ClassicEditor.create(document.querySelector('#description'), {
         toolbar: config
     });

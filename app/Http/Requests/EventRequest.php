@@ -25,8 +25,8 @@ class EventRequest extends FormRequest
     {
         return [
             'titre' => 'required',
-            'jourDebut' => 'required|date|before_or_equal:jourFin',
-            'jourFin' => 'required|date',
+            'jourDebut' => 'required|date_format:"d/m/Y"',
+            'jourFin' => 'required|date_format:"d/m/Y"',
             'organisateur' => 'required',
             'heureDebut' => 'required_without:journee',
             'heureFin' => 'required_without:journee',

@@ -64,8 +64,8 @@ class Event extends Model
         return array(
             'id' => $this->id,
             'titre' => $this->titre,
-            'jourDebut' => date('Y-m-d', strtotime($this->debut)),
-            'jourFin' => date('Y-m-d', strtotime($this->fin)),
+            'jourDebut' => date('d/m/Y', strtotime($this->debut)),
+            'jourFin' => date('d/m/Y', strtotime($this->fin)),
             'journee' => $this->journee,
             'heureDebut' => date('H\:i', strtotime($this->debut)),
             'heureFin' => date('H\:i', strtotime($this->fin)),
